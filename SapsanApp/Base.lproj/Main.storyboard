@@ -32,7 +32,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zo2-eY-J4E">
                                         <rect key="frame" x="0.0" y="36" width="300" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="300" id="uc0-Zd-Kxs"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="uc0-Zd-Kxs"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -42,7 +42,7 @@
                                         <rect key="frame" x="0.0" y="72" width="300" height="35"/>
                                         <color key="backgroundColor" red="0.17175245080000001" green="0.17362866099999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="300" id="MBC-Eb-lGU"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="MBC-Eb-lGU"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="19"/>
                                         <state key="normal" title="ВОЙТИ">
