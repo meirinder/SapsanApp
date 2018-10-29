@@ -1,0 +1,16 @@
+PODS:
+  - AKMaskField (2.0.3)
+
+DEPENDENCIES:
+  - AKMaskField
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AKMaskField
+
+SPEC CHECKSUMS:
+  AKMaskField: b6d147524813e62cd3f15475fa2200ce7a3d2620
+
+PODFILE CHECKSUM: f20f02f12ad07a6eef325af04112e6074d7a9d71
+
+COCOAPODS: 1.5.3

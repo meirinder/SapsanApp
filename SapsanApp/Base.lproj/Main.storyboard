@@ -20,7 +20,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="qd5-eW-iCJ">
                                 <rect key="frame" x="57" y="296.66666666666669" width="300" height="143"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="+7(" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vnC-0A-vaf">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="+7(" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vnC-0A-vaf" customClass="AKMaskField" customModule="AKMaskField">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="300" id="Vnl-sO-AMO"/>
@@ -28,6 +28,13 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="maskExpression" value="+7 ({ddd}) {ddd}-{dd}-{dd}"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="maskTemplate" value="xxx xxx-xx-xx"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="checkFormat:" destination="BYZ-38-t0r" eventType="editingChanged" id="HLc-Pp-2AF"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zo2-eY-J4E">
                                         <rect key="frame" x="0.0" y="36" width="300" height="30"/>
@@ -49,7 +56,8 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="6NS-fP-Gvc" kind="showDetail" id="P1h-ia-wLg"/>
+                                            <action selector="signIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e0p-4x-tRW"/>
+                                            <segue destination="6NS-fP-Gvc" kind="showDetail" identifier="enterSegue" id="P1h-ia-wLg"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="62" translatesAutoresizingMaskIntoConstraints="NO" id="pPx-RM-XLe">
@@ -60,7 +68,7 @@
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="Забыли пароль?"/>
                                                 <connections>
-                                                    <segue destination="1qw-RT-Xxf" kind="showDetail" id="EJh-cq-Vpx"/>
+                                                    <segue destination="1qw-RT-Xxf" kind="showDetail" identifier="recoverPasswordSegue" id="EJh-cq-Vpx"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zAL-fg-Ku7">
@@ -68,7 +76,7 @@
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="Подключиться"/>
                                                 <connections>
-                                                    <segue destination="eI5-3N-eNS" kind="showDetail" id="NaZ-oU-eME"/>
+                                                    <segue destination="eI5-3N-eNS" kind="showDetail" identifier="signUpSegue" id="NaZ-oU-eME"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -84,6 +92,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="4Av-Nh-Es1"/>
+                    <connections>
+                        <outlet property="enterButton" destination="yQQ-Oj-kQt" id="vbh-SN-i8C"/>
+                        <outlet property="passwordTextField" destination="zo2-eY-J4E" id="X8h-NH-Sv6"/>
+                        <outlet property="phoneTextField" destination="vnC-0A-vaf" id="BMZ-Vd-wq6"/>
+                        <outlet property="recoverPasswoedButton" destination="YHg-5U-sVn" id="Ddu-wa-Ngh"/>
+                        <outlet property="signUpButton" destination="zAL-fg-Ku7" id="6K1-Wt-dAq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
