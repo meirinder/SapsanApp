@@ -32,9 +32,6 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="maskExpression" value="+7 ({ddd}) {ddd}-{dd}-{dd}"/>
                                             <userDefinedRuntimeAttribute type="string" keyPath="maskTemplate" value="xxx xxx-xx-xx"/>
                                         </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="checkFormat:" destination="BYZ-38-t0r" eventType="editingChanged" id="HLc-Pp-2AF"/>
-                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zo2-eY-J4E">
                                         <rect key="frame" x="0.0" y="36" width="300" height="30"/>
@@ -43,7 +40,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yQQ-Oj-kQt">
                                         <rect key="frame" x="0.0" y="72" width="300" height="35"/>
@@ -57,7 +54,6 @@
                                         </state>
                                         <connections>
                                             <action selector="signIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e0p-4x-tRW"/>
-                                            <segue destination="6NS-fP-Gvc" kind="showDetail" identifier="enterSegue" id="P1h-ia-wLg"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="62" translatesAutoresizingMaskIntoConstraints="NO" id="pPx-RM-XLe">
@@ -98,6 +94,7 @@
                         <outlet property="phoneTextField" destination="vnC-0A-vaf" id="BMZ-Vd-wq6"/>
                         <outlet property="recoverPasswoedButton" destination="YHg-5U-sVn" id="Ddu-wa-Ngh"/>
                         <outlet property="signUpButton" destination="zAL-fg-Ku7" id="6K1-Wt-dAq"/>
+                        <segue destination="6NS-fP-Gvc" kind="showDetail" identifier="enterSegue" id="cWc-oE-ReT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -25,25 +25,20 @@ class StartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
-    @IBAction func signIn(_ sender: Any) {
-        if (phoneTextField.text == "+7(913)4505353") && (passwordTextField.text == "12345"){
-            print("2323232")
+    @IBAction func signIn(_ sender: Any) {   // Input button Processing
+        if (phoneTextField.text == "+7 (913) 450-53-53") && (passwordTextField.text == "12345"){
+            performSegue(withIdentifier: "enterSegue", sender: self)
+        }else{
+            print("Incorrect login or password")
         }
+        
+
         
     }
     
-    @IBAction func checkFormat(_ sender: Any) {
-//        let firstThreeChar = phoneTextField.text?.prefix(3)
-//        if  firstThreeChar != "+7(" {
-//            phoneTextField.text = "+7("
-//        }
-//        if phoneTextField.text?.count == 6{
-//            phoneTextField.text?.append(")")
-//        }
-    }
+
     
     
     
