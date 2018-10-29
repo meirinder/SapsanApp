@@ -8,22 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		C4C4A06821871CAC0026AA37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C4A06721871CAC0026AA37 /* AppDelegate.swift */; };
-		C4C4A06A21871CAC0026AA37 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C4A06921871CAC0026AA37 /* ViewController.swift */; };
 		C4C4A06D21871CAC0026AA37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4C4A06B21871CAC0026AA37 /* Main.storyboard */; };
 		C4C4A07021871CAC0026AA37 /* SapsanApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C4C4A06E21871CAC0026AA37 /* SapsanApp.xcdatamodeld */; };
 		C4C4A07221871CAF0026AA37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4C4A07121871CAF0026AA37 /* Assets.xcassets */; };
 		C4C4A07521871CAF0026AA37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4C4A07321871CAF0026AA37 /* LaunchScreen.storyboard */; };
+		C4C4A07D218727830026AA37 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C4A07C218727830026AA37 /* StartViewController.swift */; };
+		C4C4A07F2187278D0026AA37 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C4A07E2187278D0026AA37 /* LoginViewController.swift */; };
+		C4C4A083218727C10026AA37 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C4A082218727C10026AA37 /* HomeViewController.swift */; };
+		C4C4A0852187280D0026AA37 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C4A0842187280D0026AA37 /* SignUpViewController.swift */; };
+		C4C4A087218728620026AA37 /* RecoverPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C4A086218728620026AA37 /* RecoverPasswordViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C4C4A06421871CAC0026AA37 /* SapsanApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SapsanApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4C4A06721871CAC0026AA37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C4C4A06921871CAC0026AA37 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C4C4A06C21871CAC0026AA37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C4C4A06F21871CAC0026AA37 /* SapsanApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SapsanApp.xcdatamodel; sourceTree = "<group>"; };
 		C4C4A07121871CAF0026AA37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C4C4A07421871CAF0026AA37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C4C4A07621871CAF0026AA37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4C4A07C218727830026AA37 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		C4C4A07E2187278D0026AA37 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C4C4A082218727C10026AA37 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		C4C4A0842187280D0026AA37 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		C4C4A086218728620026AA37 /* RecoverPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +65,11 @@
 			isa = PBXGroup;
 			children = (
 				C4C4A06721871CAC0026AA37 /* AppDelegate.swift */,
-				C4C4A06921871CAC0026AA37 /* ViewController.swift */,
+				C4C4A0842187280D0026AA37 /* SignUpViewController.swift */,
+				C4C4A082218727C10026AA37 /* HomeViewController.swift */,
+				C4C4A07C218727830026AA37 /* StartViewController.swift */,
+				C4C4A07E2187278D0026AA37 /* LoginViewController.swift */,
+				C4C4A086218728620026AA37 /* RecoverPasswordViewController.swift */,
 				C4C4A06B21871CAC0026AA37 /* Main.storyboard */,
 				C4C4A07121871CAF0026AA37 /* Assets.xcassets */,
 				C4C4A07321871CAF0026AA37 /* LaunchScreen.storyboard */,
@@ -138,9 +150,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4C4A0852187280D0026AA37 /* SignUpViewController.swift in Sources */,
 				C4C4A07021871CAC0026AA37 /* SapsanApp.xcdatamodeld in Sources */,
-				C4C4A06A21871CAC0026AA37 /* ViewController.swift in Sources */,
+				C4C4A07D218727830026AA37 /* StartViewController.swift in Sources */,
+				C4C4A07F2187278D0026AA37 /* LoginViewController.swift in Sources */,
+				C4C4A087218728620026AA37 /* RecoverPasswordViewController.swift in Sources */,
 				C4C4A06821871CAC0026AA37 /* AppDelegate.swift in Sources */,
+				C4C4A083218727C10026AA37 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,7 +309,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sapsan.SapsanApp;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sapsan-SapsanApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -311,7 +327,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sapsan.SapsanApp;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sapsan-SapsanApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
