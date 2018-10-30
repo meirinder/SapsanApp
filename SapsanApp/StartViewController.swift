@@ -28,11 +28,11 @@ class StartViewController: UIViewController {
     }
     
     @IBAction func signIn(_ sender: Any) {   // Input button Processing
-        if (phoneTextField.text == "+7 (913) 450-53-53") && (passwordTextField.text == "12345"){
+       // if (phoneTextField.text == "+7 (913) 450-53-53") && (passwordTextField.text == "12345"){
             performSegue(withIdentifier: "enterSegue", sender: self)
-        }else{
-            print("Incorrect login or password")
-        }
+      //  }else{
+      //      print("Incorrect login or password")
+     //   }
         
 
         
