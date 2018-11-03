@@ -11,39 +11,90 @@ import UIKit
 class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
 
 
+    @IBOutlet weak var chooseCompanyButton: UIButton!
     @IBOutlet weak var menuTableView: UITableView!
+    @IBOutlet weak var dropDownMenuTableView: UITableView!
     
-    let titles = ["Заказы","Транзакции"]
+    let titles = ["Заказы","Транзакции","Поддержка"]
+    let companies = ["1","2","3","4","5","6","7"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         menuTableView.delegate = self
         menuTableView.dataSource = self
+        dropDownMenuTableView.isHidden = true
+    }
+    
+
+    
+    @IBAction func onClicChooseCompanyButton(_ sender: Any) {
+        animate(toggle: dropDownMenuTableView.isHidden)
+    }
+    
+    func animate (toggle: Bool) {
+        if toggle{
+            UIView.animate(withDuration: 0.3, animations: {
+                self.dropDownMenuTableView.isHidden = false
+                
+            })
+        }else{
+            UIView.animate(withDuration: 0.3, animations: {
+                self.dropDownMenuTableView.isHidden = true
+                
+            })
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return titles.count
+        if tableView == self.menuTableView{
+            return titles.count
+        }
+        if tableView == self.dropDownMenuTableView{
+            return companies.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = menuTableView.dequeueReusableCell(withIdentifier: "MenuCell") as! MenuTableViewCell
-        cell.titleLabel.text = titles[indexPath.row]
+        if tableView == self.menuTableView{
+            let cell = menuTableView.dequeueReusableCell(withIdentifier: "MenuCell") as! MenuTableViewCell
+            cell.titleLabel.text = titles[indexPath.row]
+            return cell
+        }
+        if tableView == self.dropDownMenuTableView{
+            let cell = dropDownMenuTableView.dequeueReusableCell(withIdentifier: "DropDownCell", for: indexPath)
+            cell.textLabel?.text = companies[indexPath.row]
+            return cell
+        }
+        let cell = MenuTableViewCell()
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60;
+        if tableView == self.menuTableView{
+            return 60;
+        }
+        return 40
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0:
-            performSegue(withIdentifier: "orderSegue", sender: self)
-            break
-        case 1:
-            performSegue(withIdentifier: "transactionSegue", sender: self)
-        default: break
+        if tableView == self.menuTableView{
+            switch indexPath.row {
+            case 0:
+                performSegue(withIdentifier: "orderSegue", sender: self)
+                break
+            case 1:
+                performSegue(withIdentifier: "transactionSegue", sender: self)
+                break
+            case 2:
+                performSegue(withIdentifier: "supportSegue", sender: self)
+            default: break
+            }
         }
-        
+        if tableView == self.dropDownMenuTableView{
+            animate(toggle: false)
+            chooseCompanyButton.setTitle(companies[indexPath.row], for: .normal)
+        }
 
     }
     

@@ -10,7 +10,6 @@ import UIKit
 
 class OrderItem: NSObject {
 
-    var date: String
     var cleanPrice: String
     var fullPrice: String
     var status : String
@@ -21,7 +20,6 @@ class OrderItem: NSObject {
     
     
     override init() {
-        self.date = ""
         self.cleanPrice = ""
         self.fullPrice = ""
         self.status = ""
@@ -32,8 +30,7 @@ class OrderItem: NSObject {
     }
     
     
-    init(date :String, cleanPrice: String, fullPrice: String,status : String,timeStart: String,timeEnd: String,fromAdress: String,toAdress: String) {
-        self.date = date
+    init(cleanPrice: String, fullPrice: String,status : String,timeStart: String,timeEnd: String,fromAdress: String,toAdress: String) {
         self.cleanPrice = cleanPrice
         self.fullPrice = fullPrice
         self.status = status
