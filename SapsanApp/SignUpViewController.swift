@@ -7,12 +7,20 @@
 //
 
 import UIKit
+import WebKit
 
 class SignUpViewController: UIViewController {
 
+    @IBOutlet weak var wk: WKWebView!
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let url = "https://sapsan.cloud?app=ios"
+        let myUrl = URL(string: url)
+        let request = URLRequest(url: myUrl!)
+        
+        wk.load(request)
         // Do any additional setup after loading the view.
     }
     
