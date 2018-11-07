@@ -13,7 +13,7 @@ class HomeViewController: Menu, UITableViewDelegate, UITableViewDataSource {
     
     var itemStore : [[OrderItem]] = []
     var sections = ["12.04.2018", "11.04.2018", "10.04.2018"]
-
+    var items : [OrderItem] = []
     
     @IBOutlet weak var orderTableView: UITableView!
     @IBOutlet weak var menuBarButtonItem: UIBarButtonItem!
@@ -51,7 +51,15 @@ class HomeViewController: Menu, UITableViewDelegate, UITableViewDataSource {
         for _ in sections {
             itemStore.append([])
         }
+        
+        
         itemStore[0].append(item1)
+        
+        for item in items{
+            itemStore[0].append(item)
+        }
+
+        
         itemStore[0].append(item2)
         itemStore[1].append(item3)
         itemStore[2].append(item4)

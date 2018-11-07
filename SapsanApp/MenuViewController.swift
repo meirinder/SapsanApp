@@ -15,14 +15,31 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var menuTableView: UITableView!
     @IBOutlet weak var dropDownMenuTableView: UITableView!
     
+    
+    
+    
     let titles = ["Заказы","Транзакции","Поддержка"]
     let companies = ["1","2","3","4","5","6","7"]
+    let txtColors = [UIColor.white, UIColor.white, UIColor.white]
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let backgroundImage = UIImage(named: "login_bg.jpg")
+        let imageView = UIImageView(image: backgroundImage)
+        self.menuTableView.backgroundView = imageView
+     //   menuTableView.tableFooterView = UIView(frame)
+        imageView.contentMode = .scaleAspectFill
+
+
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         menuTableView.delegate = self
         menuTableView.dataSource = self
         dropDownMenuTableView.isHidden = true
+        
     }
     
 
@@ -59,6 +76,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if tableView == self.menuTableView{
             let cell = menuTableView.dequeueReusableCell(withIdentifier: "MenuCell") as! MenuTableViewCell
             cell.titleLabel.text = titles[indexPath.row]
+            cell.titleLabel.textColor = txtColors[indexPath.row]
             return cell
         }
         if tableView == self.dropDownMenuTableView{
@@ -81,13 +99,20 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if tableView == self.menuTableView{
             switch indexPath.row {
             case 0:
-                performSegue(withIdentifier: "orderSegue", sender: self)
+                let detVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController")
+                self.navigationController?.pushViewController(detVC!, animated: true)
+                //performSegue(withIdentifier: "orderSegue", sender: self)
                 break
             case 1:
-                performSegue(withIdentifier: "transactionSegue", sender: self)
+                let detVC = self.storyboard?.instantiateViewController(withIdentifier: "TransactionViewController")
+                self.navigationController?.pushViewController(detVC!, animated: true)
+                //performSegue(withIdentifier: "transactionSegue", sender: self)
                 break
             case 2:
-                performSegue(withIdentifier: "supportSegue", sender: self)
+                let detVC = self.storyboard?.instantiateViewController(withIdentifier: "SupportViewController")
+                self.navigationController?.pushViewController(detVC!, animated: true)
+                
+                //performSegue(withIdentifier: "supportSegue", sender: self)
             default: break
             }
         }
@@ -96,6 +121,10 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             chooseCompanyButton.setTitle(companies[indexPath.row], for: .normal)
         }
 
+    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = .clear
+        
     }
     
 }
