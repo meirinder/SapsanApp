@@ -26,10 +26,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="qd5-eW-iCJ">
-                                <rect key="frame" x="29.5" y="261" width="316" height="145"/>
+                                <rect key="frame" x="29.5" y="183" width="316" height="301"/>
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="lVc-6O-5c6">
+                                        <rect key="frame" x="8" y="0.0" width="300" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="150" id="CD6-8F-Mdb"/>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="Hpt-9O-jwr"/>
+                                        </constraints>
+                                    </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="+7(" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vnC-0A-vaf" customClass="AKMaskField" customModule="AKMaskField">
-                                        <rect key="frame" x="8" y="0.0" width="300" height="30"/>
+                                        <rect key="frame" x="8" y="156" width="300" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="300" id="Vnl-sO-AMO"/>
                                         </constraints>
@@ -42,7 +49,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zo2-eY-J4E">
-                                        <rect key="frame" x="8" y="36" width="300" height="30"/>
+                                        <rect key="frame" x="8" y="192" width="300" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="uc0-Zd-Kxs"/>
                                         </constraints>
@@ -51,7 +58,7 @@
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yQQ-Oj-kQt">
-                                        <rect key="frame" x="8" y="72" width="300" height="35"/>
+                                        <rect key="frame" x="8" y="228" width="300" height="35"/>
                                         <color key="backgroundColor" red="0.11372549019607843" green="0.15686274509803921" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="MBC-Eb-lGU"/>
@@ -65,7 +72,7 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="62" translatesAutoresizingMaskIntoConstraints="NO" id="pPx-RM-XLe">
-                                        <rect key="frame" x="0.0" y="113" width="316" height="32"/>
+                                        <rect key="frame" x="0.0" y="269" width="316" height="32"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zAL-fg-Ku7">
                                                 <rect key="frame" x="0.0" y="0.0" width="121" height="32"/>
@@ -101,6 +108,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="4Av-Nh-Es1"/>
                     <connections>
+                        <outlet property="bottomConstraint" destination="ncc-M8-glF" id="85H-A9-muP"/>
                         <outlet property="enterButton" destination="yQQ-Oj-kQt" id="vbh-SN-i8C"/>
                         <outlet property="passwordTextField" destination="zo2-eY-J4E" id="X8h-NH-Sv6"/>
                         <outlet property="phoneTextField" destination="vnC-0A-vaf" id="BMZ-Vd-wq6"/>
@@ -111,7 +119,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1073.913043478261" y="132.06521739130434"/>
+            <point key="canvasLocation" x="1072.8" y="131.78410794602701"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="f9S-0B-4NB">
@@ -145,7 +153,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yx6-av-XqD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1713" y="924"/>
+            <point key="canvasLocation" x="471" y="923"/>
         </scene>
         <!--Recover Password View Controller-->
         <scene sceneID="9ht-YP-sL4">
@@ -173,7 +181,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NeF-t3-InH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="928" y="925"/>
+            <point key="canvasLocation" x="-298" y="923"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="qSe-A2-0ta">
@@ -482,7 +490,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oxM-LZ-QPo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4263" y="133"/>
+            <point key="canvasLocation" x="4210" y="132"/>
         </scene>
         <!--Заказы-->
         <scene sceneID="Igx-Js-4cN">
@@ -631,7 +639,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tnY-67-qe9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3268" y="154"/>
+            <point key="canvasLocation" x="3278" y="134"/>
         </scene>
         <!--Create Order View Controller-->
         <scene sceneID="7nu-Oh-406">
@@ -811,7 +819,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A9q-Sc-baz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4262" y="1058"/>
+            <point key="canvasLocation" x="3278" y="923"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jeG-10-VpM">
@@ -901,11 +909,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GIl-eL-4T2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3268" y="1059"/>
+            <point key="canvasLocation" x="4209" y="924"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo" width="1182" height="600"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BwS-5L-Twi"/>
+        <segue reference="5fx-Ls-6Zi"/>
         <segue reference="hvD-xe-cAe"/>
         <segue reference="7ay-V4-7U8"/>
     </inferredMetricsTieBreakers>

@@ -25,8 +25,12 @@ class CreateOrderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addTapGestureToHideKeyboard()
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(StartViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+//
+//        NotificationCenter.default.addObserver(self, selector: #selector(StartViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 
-        // Do any additional setup after loading the view.
     }
     
 

@@ -20,12 +20,24 @@ class StartViewController: UIViewController {
     @IBOutlet weak var recoverPasswoedButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addTapGestureToHideKeyboard()
 
+        NotificationCenter.default.addObserver(self, selector: #selector(StartViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(StartViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        
     }
+    
+    
+    
+  
+   
     
     
   
@@ -59,4 +71,27 @@ class StartViewController: UIViewController {
     }
     */
 
+}
+
+extension UIViewController {
+    func addTapGestureToHideKeyboard() {
+        let tapGesture = UITapGestureRecognizer(target: view, action: #selector(view.endEditing))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func keyboardWillShow(notification:NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= keyboardSize.height/2
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification:NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height/2
+            }
+        }
+    }
 }
