@@ -27,6 +27,9 @@ class StartViewController: UIViewController {
         super.viewDidLoad()
         addTapGestureToHideKeyboard()
 
+        print(signUpButton.convert(signUpButton.frame.origin, to:self.view).y)
+        
+        
         NotificationCenter.default.addObserver(self, selector: #selector(StartViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(StartViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)

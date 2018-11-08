@@ -13,6 +13,13 @@ class Menu: UIViewController {
     
        var menuVC :MenuViewController!
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+      //  showMenu()
+        hideMenu()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

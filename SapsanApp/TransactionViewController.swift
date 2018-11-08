@@ -16,8 +16,7 @@ class TransactionViewController: Menu {
   //  var menuVC :MenuViewController!
     
     override func viewWillAppear(_ animated: Bool) {
-        showMenu()
-        hideMenu()
+        super.viewWillAppear(animated)
     }
     
     override func viewDidLoad() {

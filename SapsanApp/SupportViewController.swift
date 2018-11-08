@@ -14,8 +14,7 @@ class SupportViewController: Menu {
     @IBOutlet weak var menuBarButtonItem: UIBarButtonItem!
 
     override func viewWillAppear(_ animated: Bool) {
-        showMenu()
-        hideMenu()
+        super.viewWillAppear(animated)
     }
     
     override func viewDidLoad() {

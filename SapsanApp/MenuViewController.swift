@@ -27,7 +27,6 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let backgroundImage = UIImage(named: "login_bg.jpg")
         let imageView = UIImageView(image: backgroundImage)
         self.menuTableView.backgroundView = imageView
-     //   menuTableView.tableFooterView = UIView(frame)
         imageView.contentMode = .scaleAspectFill
 
 
