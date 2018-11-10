@@ -21,10 +21,10 @@ class aaaaatestsssViewController: UIViewController{
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let item = OrderItem(cleanPrice: text.text!, fullPrice: "", status: "", timeStart: "", timeEnd: "", fromAdress: "", toAdress: "")
+        //let item = OrderItem(cleanPrice: text.text!, fullPrice: "", status: "", timeStart: "", timeEnd: "", fromAdress: "", toAdress: "")
         print("121212121")
         let desVC = segue.destination as! HomeViewController
-        desVC.items.append(item)
+      //  desVC.items.append(item)
     }
     
 //    @IBOutlet weak var button: UIButton!

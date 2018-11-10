@@ -17,7 +17,7 @@ class OrderItem: NSObject {
     var timeEnd: String
     var fromAdress: String
     var toAdress: String
-    
+    var statusColor : String
     
     override init() {
         self.cleanPrice = ""
@@ -27,10 +27,11 @@ class OrderItem: NSObject {
         self.timeEnd = ""
         self.fromAdress = ""
         self.toAdress = ""
+        self.statusColor = ""
     }
     
     
-    init(cleanPrice: String, fullPrice: String,status : String,timeStart: String,timeEnd: String,fromAdress: String,toAdress: String) {
+    init(cleanPrice: String, fullPrice: String,status : String,timeStart: String,timeEnd: String,fromAdress: String,toAdress: String, statusColor: String) {
         self.cleanPrice = cleanPrice
         self.fullPrice = fullPrice
         self.status = status
@@ -38,5 +39,6 @@ class OrderItem: NSObject {
         self.timeEnd = timeEnd
         self.fromAdress = fromAdress
         self.toAdress = toAdress
+        self.statusColor = statusColor
     }
 }

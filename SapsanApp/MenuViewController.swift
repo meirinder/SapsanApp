@@ -15,11 +15,12 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var menuTableView: UITableView!
     @IBOutlet weak var dropDownMenuTableView: UITableView!
     
-    
+    static var loginData = LoginJSONStructure()
+
     
     
     let titles = ["Заказы","Транзакции","Поддержка"]
-    let companies = ["1","2","3","4","5","6","7"]
+    var companies = ["1","2"]
     static var txtColors = [UIColor.green, UIColor.white, UIColor.white]
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,10 +39,15 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         menuTableView.delegate = self
         menuTableView.dataSource = self
         dropDownMenuTableView.isHidden = true
-        
+        companies.append(MenuViewController.loginData.userCompanies[0].name!)
+        chooseCompanyButton.setTitle(MenuViewController.loginData.userCompanies[0].name, for: .normal)
     }
     
 
+    func setLoginData(data: LoginJSONStructure) {
+        MenuViewController.loginData = data
+    }
+    
     
     @IBAction func onClicChooseCompanyButton(_ sender: Any) {
         animate(toggle: dropDownMenuTableView.isHidden)

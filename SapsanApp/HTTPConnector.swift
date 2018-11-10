@@ -48,10 +48,52 @@ class HTTPConnector: NSObject {
             }
         }
         task.resume()
-        
- 
-       // return loginJSON
     }
+    
+    
+    func getOrders(idCompany : String, idUser : String, key : String,completion: @escaping (OrderStructure) -> ()){
+        var OrdersJSON = OrderStructure()
+        
+        
+        let body = "class=response&method=add_short_orders&idCompany=" + idCompany + "&" + "idUser=" + idUser
+        let dataOfBody = body.data(using: String.Encoding.utf8)
+        let loginURL = URL(string:"http://app.sapsan.cloud/api/client/"+APIVERSION+"/orders.php")!
+        var reqest = URLRequest(url: loginURL )
+        reqest.httpMethod = "POST"
+        reqest.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        reqest.setValue(key, forHTTPHeaderField: "Mobile-Key")
+        reqest.httpBody = dataOfBody
+        
+        
+        let task = URLSession.shared.dataTask(with: reqest){data,response,error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                return
+            }
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print("response = \(String(describing: response))")
+            }
+            let responseString = String(data: data, encoding: .utf8)
+            print("responseString = \(String(describing: responseString))")
+            
+            do{
+                OrdersJSON = try JSONDecoder().decode(OrderStructure.self, from: data)
+                
+                
+               // print(OrdersJSON.status!)
+                completion(OrdersJSON)
+            }catch let error {
+                print(error)
+            }
+        }
+        task.resume()
+        
+     //   return OrdersJSON
+    }
+    
+    
+    
     
     
 }

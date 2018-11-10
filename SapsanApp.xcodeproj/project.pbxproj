@@ -10,6 +10,7 @@
 		250E85FD947A728C34AEB60A /* Pods_SapsanApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9D77A9B273E9BDE534BB2C /* Pods_SapsanApp.framework */; };
 		C420AEC921948E8500E292E3 /* HTTPConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = C420AEC821948E8500E292E3 /* HTTPConnector.swift */; };
 		C420AECB21949A5200E292E3 /* LoginJSONStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = C420AECA21949A5200E292E3 /* LoginJSONStructure.swift */; };
+		C420AECF2196E28700E292E3 /* shortOrders.swift in Sources */ = {isa = PBXBuildFile; fileRef = C420AECE2196E28700E292E3 /* shortOrders.swift */; };
 		C4C4A06821871CAC0026AA37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C4A06721871CAC0026AA37 /* AppDelegate.swift */; };
 		C4C4A06D21871CAC0026AA37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4C4A06B21871CAC0026AA37 /* Main.storyboard */; };
 		C4C4A07021871CAC0026AA37 /* SapsanApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C4C4A06E21871CAC0026AA37 /* SapsanApp.xcdatamodeld */; };
@@ -38,6 +39,7 @@
 		8B9D77A9B273E9BDE534BB2C /* Pods_SapsanApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SapsanApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C420AEC821948E8500E292E3 /* HTTPConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPConnector.swift; sourceTree = "<group>"; };
 		C420AECA21949A5200E292E3 /* LoginJSONStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginJSONStructure.swift; sourceTree = "<group>"; };
+		C420AECE2196E28700E292E3 /* shortOrders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = shortOrders.swift; path = /Users/savely/Desktop/Projects/SapsanApp/SapsanApp/shortOrders.swift; sourceTree = "<absolute>"; };
 		C4C4A06421871CAC0026AA37 /* SapsanApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SapsanApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4C4A06721871CAC0026AA37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4C4A06C21871CAC0026AA37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				C4C4A07121871CAF0026AA37 /* Assets.xcassets */,
 				C420AEC821948E8500E292E3 /* HTTPConnector.swift */,
 				C420AECA21949A5200E292E3 /* LoginJSONStructure.swift */,
+				C420AECE2196E28700E292E3 /* shortOrders.swift */,
 				C4C4A07321871CAF0026AA37 /* LaunchScreen.storyboard */,
 				C4C4A07621871CAF0026AA37 /* Info.plist */,
 				C4C4A06E21871CAC0026AA37 /* SapsanApp.xcdatamodeld */,
@@ -269,6 +272,7 @@
 				C420AEC921948E8500E292E3 /* HTTPConnector.swift in Sources */,
 				C4DBABA821897AEB00A6BF05 /* OrderItem.swift in Sources */,
 				C4DB32A3218D998A00636C1C /* SupportViewController.swift in Sources */,
+				C420AECF2196E28700E292E3 /* shortOrders.swift in Sources */,
 				C4DBABA621897A9800A6BF05 /* OrderTableViewCell.swift in Sources */,
 				C4DB32A72192EFB500636C1C /* CreateOrderViewController.swift in Sources */,
 				C4DBABA421884B7200A6BF05 /* TransactionViewController.swift in Sources */,

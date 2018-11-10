@@ -43,7 +43,10 @@ class StartViewController: UIViewController {
         if segue.identifier == "enterSegue"{
             let nav = segue.destination as! UINavigationController
             let desVC = nav.topViewController as! HomeViewController
-            desVC.loginData = self.loginData
+            desVC.outLoginData = self.loginData
+            var controller = storyboard!.instantiateViewController(withIdentifier: "MenuVC") as! MenuViewController
+            controller.setLoginData(data: self.loginData)
+
         }
     }
     
