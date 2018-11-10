@@ -20,7 +20,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     let titles = ["Заказы","Транзакции","Поддержка"]
     let companies = ["1","2","3","4","5","6","7"]
-    let txtColors = [UIColor.white, UIColor.white, UIColor.white]
+    static var txtColors = [UIColor.green, UIColor.white, UIColor.white]
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -75,7 +75,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if tableView == self.menuTableView{
             let cell = menuTableView.dequeueReusableCell(withIdentifier: "MenuCell") as! MenuTableViewCell
             cell.titleLabel.text = titles[indexPath.row]
-            cell.titleLabel.textColor = txtColors[indexPath.row]
+            cell.titleLabel.textColor = MenuViewController.txtColors[indexPath.row]
             return cell
         }
         if tableView == self.dropDownMenuTableView{
@@ -100,16 +100,33 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             case 0:
                 let detVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController")
                 self.navigationController?.pushViewController(detVC!, animated: true)
+                
+                
+                MenuViewController.txtColors[0] = UIColor.green
+                MenuViewController.txtColors[1] = UIColor.white
+                MenuViewController.txtColors[2] = UIColor.white
+                menuTableView.reloadData()
+                
                 //performSegue(withIdentifier: "orderSegue", sender: self)
                 break
             case 1:
                 let detVC = self.storyboard?.instantiateViewController(withIdentifier: "TransactionViewController")
                 self.navigationController?.pushViewController(detVC!, animated: true)
+                
+                MenuViewController.txtColors[0] = UIColor.white
+                MenuViewController.txtColors[1] = UIColor.green
+                MenuViewController.txtColors[2] = UIColor.white
+                menuTableView.reloadData()
                 //performSegue(withIdentifier: "transactionSegue", sender: self)
                 break
             case 2:
                 let detVC = self.storyboard?.instantiateViewController(withIdentifier: "SupportViewController")
                 self.navigationController?.pushViewController(detVC!, animated: true)
+                
+                MenuViewController.txtColors[0] = UIColor.white
+                MenuViewController.txtColors[1] = UIColor.white
+                MenuViewController.txtColors[2] = UIColor.green
+                menuTableView.reloadData()
                 
                 //performSegue(withIdentifier: "supportSegue", sender: self)
             default: break

@@ -819,7 +819,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A9q-Sc-baz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3277.5999999999999" y="922.48875562218893"/>
+            <point key="canvasLocation" x="2340" y="958"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jeG-10-VpM">
@@ -916,8 +916,7 @@
         <image name="logo" width="1182" height="600"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bPI-Nu-KWo"/>
-        <segue reference="5fx-Ls-6Zi"/>
+        <segue reference="cWc-oE-ReT"/>
         <segue reference="hvD-xe-cAe"/>
         <segue reference="7ay-V4-7U8"/>
     </inferredMetricsTieBreakers>

@@ -22,57 +22,54 @@ class StartViewController: UIViewController {
     
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
+    var loginData = LoginJSONStructure()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addTapGestureToHideKeyboard()
-
-        print(signUpButton.convert(signUpButton.frame.origin, to:self.view).y)
+        
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(StartViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(StartViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        
     }
     
     
     
-  
    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "enterSegue"{
+            let nav = segue.destination as! UINavigationController
+            let desVC = nav.topViewController as! HomeViewController
+            desVC.loginData = self.loginData
+        }
+    }
     
     
+    func logIn()  {
+        if loginData.status == "OK"{
+            self.performSegue(withIdentifier: "enterSegue", sender: self)
+        }else{
+            print("Incorrect login or password")
+        }
+    }
   
     
     @IBAction func signIn(_ sender: Any) {   // Input button Processing
        
+        let httpConnector = HTTPConnector()
+        httpConnector.login(phone: phoneTextField.text!, password: passwordTextField.text!){ outLoginData in
+            self.loginData = outLoginData
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() +  .seconds(1), execute: {
+            self.logIn()
+        })
         
-       // if (phoneTextField.text == "+7 (913) 450-53-53") && (passwordTextField.text == "12345"){
-            performSegue(withIdentifier: "enterSegue", sender: self)
-      //  }else{
-      //      print("Incorrect login or password")
-     //   }
-        
-
         
     }
     
-
-    
-    
-    
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 

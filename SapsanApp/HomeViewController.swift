@@ -14,6 +14,7 @@ class HomeViewController: Menu, UITableViewDelegate, UITableViewDataSource {
     var itemStore : [[OrderItem]] = []
     var sections = ["12.04.2018", "11.04.2018", "10.04.2018"]
     var items : [OrderItem] = []
+    var loginData = LoginJSONStructure()
     
     @IBOutlet weak var orderTableView: UITableView!
     @IBOutlet weak var menuBarButtonItem: UIBarButtonItem!
@@ -32,7 +33,7 @@ class HomeViewController: Menu, UITableViewDelegate, UITableViewDataSource {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        print(loginData.status!)
     }
     
     override func viewDidLoad() {
