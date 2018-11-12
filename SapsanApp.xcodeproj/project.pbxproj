@@ -11,6 +11,7 @@
 		C420AEC921948E8500E292E3 /* HTTPConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = C420AEC821948E8500E292E3 /* HTTPConnector.swift */; };
 		C420AECB21949A5200E292E3 /* LoginJSONStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = C420AECA21949A5200E292E3 /* LoginJSONStructure.swift */; };
 		C420AECF2196E28700E292E3 /* shortOrders.swift in Sources */ = {isa = PBXBuildFile; fileRef = C420AECE2196E28700E292E3 /* shortOrders.swift */; };
+		C45B5C32219999A2001714A8 /* LoginErrorStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45B5C31219999A2001714A8 /* LoginErrorStructure.swift */; };
 		C4C4A06821871CAC0026AA37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C4A06721871CAC0026AA37 /* AppDelegate.swift */; };
 		C4C4A06D21871CAC0026AA37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4C4A06B21871CAC0026AA37 /* Main.storyboard */; };
 		C4C4A07021871CAC0026AA37 /* SapsanApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C4C4A06E21871CAC0026AA37 /* SapsanApp.xcdatamodeld */; };
@@ -40,6 +41,7 @@
 		C420AEC821948E8500E292E3 /* HTTPConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPConnector.swift; sourceTree = "<group>"; };
 		C420AECA21949A5200E292E3 /* LoginJSONStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginJSONStructure.swift; sourceTree = "<group>"; };
 		C420AECE2196E28700E292E3 /* shortOrders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = shortOrders.swift; path = /Users/savely/Desktop/Projects/SapsanApp/SapsanApp/shortOrders.swift; sourceTree = "<absolute>"; };
+		C45B5C31219999A2001714A8 /* LoginErrorStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginErrorStructure.swift; sourceTree = "<group>"; };
 		C4C4A06421871CAC0026AA37 /* SapsanApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SapsanApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4C4A06721871CAC0026AA37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4C4A06C21871CAC0026AA37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				C4DBABA721897AEB00A6BF05 /* OrderItem.swift */,
 				C4C4A07121871CAF0026AA37 /* Assets.xcassets */,
 				C420AEC821948E8500E292E3 /* HTTPConnector.swift */,
+				C45B5C31219999A2001714A8 /* LoginErrorStructure.swift */,
 				C420AECA21949A5200E292E3 /* LoginJSONStructure.swift */,
 				C420AECE2196E28700E292E3 /* shortOrders.swift */,
 				C4C4A07321871CAF0026AA37 /* LaunchScreen.storyboard */,
@@ -279,6 +282,7 @@
 				C4C4A07F2187278D0026AA37 /* LoginViewController.swift in Sources */,
 				C4DB32A1218D980100636C1C /* Menu.swift in Sources */,
 				C4C4A087218728620026AA37 /* RecoverPasswordViewController.swift in Sources */,
+				C45B5C32219999A2001714A8 /* LoginErrorStructure.swift in Sources */,
 				C420AECB21949A5200E292E3 /* LoginJSONStructure.swift in Sources */,
 				C4C4A06821871CAC0026AA37 /* AppDelegate.swift in Sources */,
 				C4C4A083218727C10026AA37 /* HomeViewController.swift in Sources */,

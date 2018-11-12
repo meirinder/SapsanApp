@@ -44,7 +44,7 @@ class StartViewController: UIViewController {
             let nav = segue.destination as! UINavigationController
             let desVC = nav.topViewController as! HomeViewController
             desVC.outLoginData = self.loginData
-            var controller = storyboard!.instantiateViewController(withIdentifier: "MenuVC") as! MenuViewController
+            let controller = storyboard!.instantiateViewController(withIdentifier: "MenuVC") as! MenuViewController
             controller.setLoginData(data: self.loginData)
 
         }
@@ -55,7 +55,12 @@ class StartViewController: UIViewController {
         if loginData.status == "OK"{
             self.performSegue(withIdentifier: "enterSegue", sender: self)
         }else{
-            print("Incorrect login or password")
+            let ac = UIAlertController(title: "Ошибка", message: "Неверный логин или пароль", preferredStyle: UIAlertController.Style.alert)
+            let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
+                print("OK!")
+            }
+            ac.addAction(okAction)
+            self.present(ac, animated: true)
         }
     }
   

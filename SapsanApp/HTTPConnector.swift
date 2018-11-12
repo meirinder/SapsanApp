@@ -45,7 +45,9 @@ class HTTPConnector: NSObject {
                 completion(loginJSON)
             }catch let error {
                 print(error)
+                completion(loginJSON)
             }
+            
         }
         task.resume()
     }
