@@ -11,6 +11,7 @@ import UIKit
 class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
 
 
+    @IBOutlet weak var dispatcherPhoneLabel: UILabel!
     @IBOutlet weak var chooseCompanyButton: UIButton!
     @IBOutlet weak var menuTableView: UITableView!
     @IBOutlet weak var dropDownMenuTableView: UITableView!
@@ -20,7 +21,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     let titles = ["Заказы","Транзакции","Поддержка"]
-    var companies = ["1","2"]
+    var companies = [String]()
     static var txtColors = [UIColor.green, UIColor.white, UIColor.white]
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,6 +42,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         dropDownMenuTableView.isHidden = true
         companies.append(MenuViewController.loginData.userCompanies[0].name!)
         chooseCompanyButton.setTitle(MenuViewController.loginData.userCompanies[0].name, for: .normal)
+        dispatcherPhoneLabel.text = "+7"+MenuViewController.loginData.dispatcherPhone!
+        
     }
     
 

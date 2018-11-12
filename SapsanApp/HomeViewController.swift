@@ -32,34 +32,8 @@ class HomeViewController: Menu, UITableViewDelegate, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //  ---------------------  test values
-//        let item1 = OrderItem(cleanPrice: "100",fullPrice: "200",status: "Выполнено",
-//                              timeStart: "12:30",timeEnd: "13:90",fromAdress: "Железнодорожная 72",toAdress: "Титова 10")
-//        let item2 = OrderItem(cleanPrice: "1040",fullPrice: "2030",status: "Выполнено",
-//                              timeStart: "16:30",timeEnd: "13:00",fromAdress: "Косолавая 7",toAdress: "Линейная 10")
-//        let item3 = OrderItem(cleanPrice: "110",fullPrice: "280",status: "Выполнено",
-//                              timeStart: "12:30",timeEnd: "13:00",fromAdress: "Пархоменко 72",toAdress: "Киевская 130")
-//        let item4 = OrderItem(cleanPrice: "150",fullPrice: "220",status: "Выполнено",
-//                              timeStart: "12:34",timeEnd: "13:00",fromAdress: "Трудовая 32",toAdress: "Фрунзе 101")
-//        let item5 = OrderItem(cleanPrice: "600",fullPrice: "700",status: "Выполнено",
-//                              timeStart: "12:30",timeEnd: "13:80",fromAdress: "Сельхозная 111",toAdress: "Титова 130")
         
         
-        
-        
-    //    itemStore[0].append(item1)
-//
-//        for item in items{
-//            itemStore[0].append(item)
-//        }
-
-        
-//        itemStore[0].append(item2)
-//        itemStore[1].append(item3)
-//        itemStore[2].append(item4)
-//        itemStore[2].append(item5)
-
-        //-------------------------
         if HomeViewController.loginData.status == nil{
             HomeViewController.loginData = outLoginData
         }

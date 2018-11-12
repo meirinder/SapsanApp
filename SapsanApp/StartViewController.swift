@@ -65,10 +65,11 @@ class StartViewController: UIViewController {
         let httpConnector = HTTPConnector()
         httpConnector.login(phone: phoneTextField.text!, password: passwordTextField.text!){ outLoginData in
             self.loginData = outLoginData
+            DispatchQueue.main.async{
+                self.logIn()
+            }
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() +  .seconds(1), execute: {
-            self.logIn()
-        })
+        
         
         
     }

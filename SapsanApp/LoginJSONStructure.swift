@@ -16,6 +16,7 @@ struct UserCompanies : Decodable {
 
 
 struct LoginJSONStructure : Decodable {
+    var dispatcherPhone : String?
     var status : String?
     var key  : String?
     var userCompanies = [UserCompanies]()
