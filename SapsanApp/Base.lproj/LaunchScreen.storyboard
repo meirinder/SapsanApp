@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,24 +17,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sapsan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dnA-JZ-aDN">
-                                <rect key="frame" x="108" y="200" width="159" height="60"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_bg" translatesAutoresizingMaskIntoConstraints="NO" id="SAS-P3-kYU">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oq4-fF-wSS">
+                                <rect key="frame" x="22.5" y="243.5" width="330" height="180"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="aao-yf-kVq">
+                                        <rect key="frame" x="15" y="15" width="300" height="150"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.65178189212328763" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="aao-yf-kVq" firstAttribute="leading" secondItem="oq4-fF-wSS" secondAttribute="leading" constant="15" id="5nY-5g-C5u"/>
+                                    <constraint firstAttribute="height" constant="180" id="Fv4-Xp-gkg"/>
+                                    <constraint firstAttribute="trailing" secondItem="aao-yf-kVq" secondAttribute="trailing" constant="15" id="P4z-Bd-2hi"/>
+                                    <constraint firstAttribute="bottom" secondItem="aao-yf-kVq" secondAttribute="bottom" constant="15" id="Psq-iw-caS"/>
+                                    <constraint firstItem="aao-yf-kVq" firstAttribute="top" secondItem="oq4-fF-wSS" secondAttribute="top" constant="15" id="fXc-o7-pWR"/>
+                                    <constraint firstAttribute="width" constant="330" id="nlA-Zq-Nuy"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="dnA-JZ-aDN" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="W4R-Ku-jzU"/>
-                            <constraint firstItem="dnA-JZ-aDN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="180" id="avQ-eX-frX"/>
+                            <constraint firstItem="oq4-fF-wSS" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="3HS-vK-9Ks"/>
+                            <constraint firstItem="SAS-P3-kYU" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="8YZ-bA-8vE"/>
+                            <constraint firstItem="SAS-P3-kYU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ACl-LD-0xD"/>
+                            <constraint firstItem="SAS-P3-kYU" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="jZl-G4-4Gu"/>
+                            <constraint firstItem="oq4-fF-wSS" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="rPc-PL-FaW"/>
+                            <constraint firstItem="SAS-P3-kYU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uqB-3N-3SX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="login_bg" width="1920" height="1080"/>
+        <image name="logo" width="1182" height="600"/>
+    </resources>
 </document>

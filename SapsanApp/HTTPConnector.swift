@@ -57,7 +57,7 @@ class HTTPConnector: NSObject {
         var OrdersJSON = OrderStructure()
         
         
-        let body = "class=response&method=add_short_orders&idCompany=" + idCompany + "&" + "idUser=" + idUser
+        let body = "class=app_orders_helper&method=add_short_orders&idCompany=" + idCompany + "&" + "idUser=" + idUser
         let dataOfBody = body.data(using: String.Encoding.utf8)
         let loginURL = URL(string:"http://app.sapsan.cloud/api/client/"+APIVERSION+"/orders.php")!
         var reqest = URLRequest(url: loginURL )

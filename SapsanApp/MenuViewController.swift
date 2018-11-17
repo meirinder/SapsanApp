@@ -10,19 +10,22 @@ import UIKit
 
 class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
 
-
-    @IBOutlet weak var dispatcherPhoneLabel: UILabel!
+    @IBOutlet weak var dispatcherPhoneButton: UIButton!
+    
     @IBOutlet weak var chooseCompanyButton: UIButton!
     @IBOutlet weak var menuTableView: UITableView!
     @IBOutlet weak var dropDownMenuTableView: UITableView!
     
+    @IBOutlet var test: UIView!
     static var loginData = LoginJSONStructure()
 
+   
     
     
     let titles = ["Заказы","Транзакции","Поддержка"]
     var companies = [String]()
-    static var txtColors = [UIColor.green, UIColor.white, UIColor.white]
+    static var txtColors = [UIColor(rgb: 0x1D2880), UIColor.white, UIColor.white]
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -31,8 +34,6 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.menuTableView.backgroundView = imageView
         imageView.contentMode = .scaleAspectFill
 
-
-        
     }
     
     override func viewDidLoad() {
@@ -40,10 +41,16 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         menuTableView.delegate = self
         menuTableView.dataSource = self
         dropDownMenuTableView.isHidden = true
-        companies.append(MenuViewController.loginData.userCompanies[0].name!)
-        chooseCompanyButton.setTitle(MenuViewController.loginData.userCompanies[0].name, for: .normal)
-        dispatcherPhoneLabel.text = "+7"+MenuViewController.loginData.dispatcherPhone!
-        
+        for company in MenuViewController.loginData.userCompanies{
+            companies.append(company.companyName!)
+        }
+        chooseCompanyButton.setTitle(MenuViewController.loginData.userCompanies[0].companyName, for: .normal)
+        dispatcherPhoneButton.setTitle("+7"+MenuViewController.loginData.dispatcherPhone!, for: .normal)
+    }
+    
+    @IBAction func makeDispatcherPhoneCall(_ sender: Any) {
+        let url: NSURL = URL(string: "tel://\(String(describing: "+7"+MenuViewController.loginData.dispatcherPhone!))")! as NSURL
+        UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
     }
     
 
@@ -111,7 +118,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 self.navigationController?.pushViewController(detVC!, animated: true)
                 
                 
-                MenuViewController.txtColors[0] = UIColor.green
+                
+                MenuViewController.txtColors[0] = UIColor(rgb: 0x1D2880)
                 MenuViewController.txtColors[1] = UIColor.white
                 MenuViewController.txtColors[2] = UIColor.white
                 menuTableView.reloadData()
@@ -123,7 +131,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 self.navigationController?.pushViewController(detVC!, animated: true)
                 
                 MenuViewController.txtColors[0] = UIColor.white
-                MenuViewController.txtColors[1] = UIColor.green
+                MenuViewController.txtColors[1] = UIColor(rgb: 0x1D2880)
                 MenuViewController.txtColors[2] = UIColor.white
                 menuTableView.reloadData()
                 //performSegue(withIdentifier: "transactionSegue", sender: self)
@@ -134,7 +142,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 
                 MenuViewController.txtColors[0] = UIColor.white
                 MenuViewController.txtColors[1] = UIColor.white
-                MenuViewController.txtColors[2] = UIColor.green
+                MenuViewController.txtColors[2] = UIColor(rgb: 0x1D2880)
                 menuTableView.reloadData()
                 
                 //performSegue(withIdentifier: "supportSegue", sender: self)
@@ -153,3 +161,4 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
 }
+

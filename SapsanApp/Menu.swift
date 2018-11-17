@@ -50,8 +50,10 @@ class Menu: UIViewController {
     
     func showMenu() {
         UIView.animate(withDuration: 0.3){
-            self.menuVC.view.frame = CGRect(x: 0, y: 60, width: UIScreen.main.bounds.size.width,
-                                            height: UIScreen.main.bounds.size.height)
+            self.menuVC.view.frame = CGRect(x: 0,
+                                            y: UIScreen.main.bounds.minY ,
+                                            width: UIScreen.main.bounds.size.width,
+                                            height: UIScreen.main.bounds.size.height-30)
             self.addChild(self.menuVC)
             self.view.addSubview(self.menuVC.view)
             AppDelegate.isMenuVC = false
@@ -60,7 +62,8 @@ class Menu: UIViewController {
     
     func hideMenu() {
         UIView.animate(withDuration: 0.3, animations: {
-            self.menuVC.view.frame = CGRect(x: -UIScreen.main.bounds.size.width, y: 60,
+            self.menuVC.view.frame = CGRect(x: -UIScreen.main.bounds.size.width,
+                                            y: UIScreen.main.bounds.minY,
                                             width: UIScreen.main.bounds.size.width,
                                             height: UIScreen.main.bounds.size.height)
             

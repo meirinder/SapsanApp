@@ -113,8 +113,8 @@ class HomeViewController: Menu, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = orderTableView.dequeueReusableCell(withIdentifier: "OrderCell") as! OrderTableViewCell
-        cell.cleanPriceLabel.text = itemStore[indexPath.section][indexPath.row].cleanPrice
-        cell.fullPriceLabel.text = itemStore[indexPath.section][indexPath.row].fullPrice
+        cell.cleanPriceLabel.text = itemStore[indexPath.section][indexPath.row].cleanPrice + " ₽"
+        cell.fullPriceLabel.text = itemStore[indexPath.section][indexPath.row].fullPrice + " ₽"
         cell.statusLabel.text = itemStore[indexPath.section][indexPath.row].status
         cell.timeStartLabel.text = itemStore[indexPath.section][indexPath.row].timeStart
         cell.timeEndLabel.text = itemStore[indexPath.section][indexPath.row].timeEnd

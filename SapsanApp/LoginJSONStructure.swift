@@ -12,6 +12,7 @@ struct UserCompanies : Decodable {
     var idUser : String?
     var idCompany : String?
     var name : String?
+    var companyName: String?
 }
 
 

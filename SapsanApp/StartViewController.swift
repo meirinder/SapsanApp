@@ -13,6 +13,7 @@ class StartViewController: UIViewController {
 
     
     
+    @IBOutlet weak var rootStackView: UIStackView!
     
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -22,14 +23,27 @@ class StartViewController: UIViewController {
     
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
+    private lazy var backgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.alpha = 0.68
+        view.layer.cornerRadius = 10.0
+        return view
+    }()
+    private func pinBackground(_ view: UIView, to stackView: UIStackView) {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        stackView.insertSubview(view, at: 0)
+        view.pin(to: stackView)
+    }
+    
     var loginData = LoginJSONStructure()
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addTapGestureToHideKeyboard()
-        
-        
+ 
+        pinBackground(backgroundView, to: rootStackView)
         
         NotificationCenter.default.addObserver(self, selector: #selector(StartViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
@@ -40,6 +54,7 @@ class StartViewController: UIViewController {
     
    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+         view.endEditing(true)
         if segue.identifier == "enterSegue"{
             let nav = segue.destination as! UINavigationController
             let desVC = nav.topViewController as! HomeViewController
@@ -55,6 +70,11 @@ class StartViewController: UIViewController {
         if loginData.status == "OK"{
             self.performSegue(withIdentifier: "enterSegue", sender: self)
         }else{
+            if self.view.frame.origin.y < 0{
+                print(self.view.frame.origin.y)
+                print("Hide")
+                self.view.frame.origin.y = 0
+            }
             let ac = UIAlertController(title: "Ошибка", message: "Неверный логин или пароль", preferredStyle: UIAlertController.Style.alert)
             let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
                 print("OK!")
@@ -65,7 +85,7 @@ class StartViewController: UIViewController {
     }
   
     
-    @IBAction func signIn(_ sender: Any) {   // Input button Processing
+    @IBAction func signIn(_ sender: Any) {   
        
         let httpConnector = HTTPConnector()
         httpConnector.login(phone: phoneTextField.text!, password: passwordTextField.text!){ outLoginData in
@@ -90,17 +110,32 @@ extension UIViewController {
     
     @objc func keyboardWillShow(notification:NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0{
+            if self.view.frame.origin.y >= 0{
+                print(self.view.frame.origin.y)
+                print("Show")
                 self.view.frame.origin.y -= keyboardSize.height/2
             }
         }
     }
     
     @objc func keyboardWillHide(notification:NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y != 0{
-                self.view.frame.origin.y += keyboardSize.height/2
+        if let _ = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y < 0{
+                print(self.view.frame.origin.y)
+                print("Hide")
+                self.view.frame.origin.y = 0
             }
         }
+    }
+}
+
+public extension UIView {
+    public func pin(to view: UIView) {
+        NSLayoutConstraint.activate([
+            leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            topAnchor.constraint(equalTo: view.topAnchor),
+            bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            ])
     }
 }
