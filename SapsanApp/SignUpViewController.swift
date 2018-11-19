@@ -16,6 +16,8 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+
         let url = "https://sapsan.cloud?app=ios"
         let myUrl = URL(string: url)
         let request = URLRequest(url: myUrl!)

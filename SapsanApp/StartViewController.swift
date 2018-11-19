@@ -23,27 +23,49 @@ class StartViewController: UIViewController {
     
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
-    private lazy var backgroundView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        view.alpha = 0.68
-        view.layer.cornerRadius = 10.0
-        return view
-    }()
-    private func pinBackground(_ view: UIView, to stackView: UIStackView) {
-        view.translatesAutoresizingMaskIntoConstraints = false
-        stackView.insertSubview(view, at: 0)
-        view.pin(to: stackView)
-    }
     
     var loginData = LoginJSONStructure()
-
+    
+    let phoneTextFieldBorder = CALayer()
+    let passTextFieldBorder = CALayer()
+    
+    let font = UIFont(name: "Roboto-Bold", size: 12)
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+         self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addTapGestureToHideKeyboard()
+        
+        
+        enterButton.titleLabel?.font = font
+        
+        let width = CGFloat(1.0)
+        
+        
+        phoneTextFieldBorder.borderColor = UIColor.darkGray.cgColor
+        phoneTextFieldBorder.frame = CGRect(x: 0, y: phoneTextField.frame.size.height - width, width: phoneTextField.frame.size.width, height: phoneTextField.frame.size.height)
+        
+        phoneTextFieldBorder.borderWidth = width
+        
+        phoneTextField.layer.addSublayer(phoneTextFieldBorder)
+        phoneTextField.layer.masksToBounds = true
+        
+        
+        
+        passTextFieldBorder.borderColor = UIColor.darkGray.cgColor
+        passTextFieldBorder.frame = CGRect(x: 0, y: passwordTextField.frame.size.height - width, width: passwordTextField.frame.size.width, height: passwordTextField.frame.size.height)
+        
+        passTextFieldBorder.borderWidth = width
+       
+        passwordTextField.layer.addSublayer(passTextFieldBorder)
+        passwordTextField.layer.masksToBounds = true
  
-        pinBackground(backgroundView, to: rootStackView)
         
         NotificationCenter.default.addObserver(self, selector: #selector(StartViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
@@ -85,8 +107,27 @@ class StartViewController: UIViewController {
     }
   
     
-    @IBAction func signIn(_ sender: Any) {   
-       
+    
+    
+    @IBAction func startEditingTextField(_ sender: UITextField) {
+        if sender == phoneTextField{
+            phoneTextFieldBorder.borderColor = UIColor(rgb: 0x1D2880).cgColor
+        } else if sender == passwordTextField{
+            passTextFieldBorder.borderColor = UIColor(rgb:0x1D2880).cgColor
+        }
+    }
+    
+    @IBAction func endEditingTextField(_ sender: UITextField) {
+        if sender == phoneTextField{
+            phoneTextFieldBorder.borderColor = UIColor.darkGray.cgColor
+        } else if sender == passwordTextField{
+            passTextFieldBorder.borderColor = UIColor.darkGray.cgColor
+        }
+    }
+    
+    
+    @IBAction func signIn(_ sender: UIButton) {
+        print(sender.titleLabel?.font)
         let httpConnector = HTTPConnector()
         httpConnector.login(phone: phoneTextField.text!, password: passwordTextField.text!){ outLoginData in
             self.loginData = outLoginData
@@ -129,13 +170,3 @@ extension UIViewController {
     }
 }
 
-public extension UIView {
-    public func pin(to view: UIView) {
-        NSLayoutConstraint.activate([
-            leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            topAnchor.constraint(equalTo: view.topAnchor),
-            bottomAnchor.constraint(equalTo: view.bottomAnchor)
-            ])
-    }
-}
