@@ -53,7 +53,7 @@ class Menu: UIViewController {
             self.menuVC.view.frame = CGRect(x: 0,
                                             y: UIScreen.main.bounds.minY ,
                                             width: UIScreen.main.bounds.size.width,
-                                            height: UIScreen.main.bounds.size.height-30)
+                                            height: UIScreen.main.bounds.size.height)
             self.addChild(self.menuVC)
             self.view.addSubview(self.menuVC.view)
             AppDelegate.isMenuVC = false

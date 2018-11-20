@@ -29,15 +29,27 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let backgroundImage = UIImage(named: "login_bg.jpg")
-        let imageView = UIImageView(image: backgroundImage)
-        self.menuTableView.backgroundView = imageView
-        imageView.contentMode = .scaleAspectFill
+      
 
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        
+        
+        
+        
+        
+        let backgroundImage = UIImage(named: "login_bg.jpg")
+        
+        let imageView = UIImageView(image: backgroundImage)
+        imageView.contentMode = .scaleAspectFill
+        imageView.alpha = 0.5
+        self.menuTableView.backgroundView = imageView
+        
+        
+        
         menuTableView.delegate = self
         menuTableView.dataSource = self
         dropDownMenuTableView.isHidden = true

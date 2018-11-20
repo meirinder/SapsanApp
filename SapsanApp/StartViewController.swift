@@ -29,7 +29,7 @@ class StartViewController: UIViewController {
     let phoneTextFieldBorder = CALayer()
     let passTextFieldBorder = CALayer()
     
-    let font = UIFont(name: "Roboto-Bold", size: 12)
+
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,8 +43,9 @@ class StartViewController: UIViewController {
         addTapGestureToHideKeyboard()
         
         
-        enterButton.titleLabel?.font = font
+
         
+        print(enterButton.titleLabel?.font)
         let width = CGFloat(1.0)
         
         

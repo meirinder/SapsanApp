@@ -195,7 +195,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_bg" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YXN-Ds-Lsh">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="new_login_bg" translatesAutoresizingMaskIntoConstraints="NO" id="YXN-Ds-Lsh">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ia2-vd-LSc">
@@ -261,7 +261,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_bg" translatesAutoresizingMaskIntoConstraints="NO" id="lJo-MN-ul5">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="new_login_bg" translatesAutoresizingMaskIntoConstraints="NO" id="lJo-MN-ul5">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
                             <view alpha="0.65000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="03c-eu-QNV">
@@ -381,9 +381,9 @@
                                     </tableView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4bD-AN-5rN">
                                         <rect key="frame" x="0.0" y="200" width="305" height="272"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="461" id="UOc-mE-voL"/>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="500" id="UOc-mE-voL"/>
                                         </constraints>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MenuCell" id="R7U-BR-HmH" customClass="MenuTableViewCell" customModule="SapsanApp" customModuleProvider="target">
@@ -1040,11 +1040,12 @@
         <image name="login_bg" width="1920" height="1080"/>
         <image name="logo" width="1182" height="600"/>
         <image name="menu" width="26" height="26"/>
+        <image name="new_login_bg" width="614" height="1080"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cWc-oE-ReT"/>
         <segue reference="Z1N-tv-hPs"/>
-        <segue reference="yb7-Xu-FDx"/>
-        <segue reference="7ay-V4-7U8"/>
+        <segue reference="mxf-31-ECn"/>
+        <segue reference="NRf-gh-FxK"/>
     </inferredMetricsTieBreakers>
 </document>
