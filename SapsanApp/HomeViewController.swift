@@ -20,7 +20,7 @@ class HomeViewController: Menu, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var orderTableView: UITableView!
     @IBOutlet weak var menuBarButtonItem: UIBarButtonItem!
-    
+   
  
     
     
@@ -30,9 +30,27 @@ class HomeViewController: Menu, UITableViewDelegate, UITableViewDataSource {
         
     }
     
+    @objc func refresh(sender: Any) {
+        // Code to refresh table view
+        print("1212121");
+    }
+    
+    
+    lazy var refresher: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshOrderTable), for: .valueChanged)
+       // refreshControl.attributedTitle. = "Обновление заказов..."
+        
+        return refreshControl
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        orderTableView.refreshControl = refresher
+        
+
         
         if HomeViewController.loginData.status == nil{
             HomeViewController.loginData = outLoginData
@@ -44,10 +62,18 @@ class HomeViewController: Menu, UITableViewDelegate, UITableViewDataSource {
         orderTableView.dataSource = self
     }
     
+    
+    @objc func refreshOrderTable(){
+        updateOrderTable()
+        refresher.endRefreshing()
+    }
+    
+    
     func updateOrderTable() {
         httpConnector.getOrders(idCompany: HomeViewController.loginData.userCompanies[0].idCompany!, idUser: HomeViewController.loginData.userCompanies[0].idUser!, key: HomeViewController.loginData.key!){ outOrders in
             self.orders = outOrders
             self.sections = self.getDates(orders: self.orders)
+            self.itemStore.removeAll()
             for _ in self.sections {
                 self.itemStore.append([])
             }

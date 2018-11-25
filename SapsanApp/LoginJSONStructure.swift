@@ -15,11 +15,18 @@ struct UserCompanies : Decodable {
     var companyName: String?
 }
 
+struct Support_info: Decodable{
+    var name: String?
+    var email: String?
+    var phone: String?
+}
+
 
 struct LoginJSONStructure : Decodable {
     var dispatcherPhone : String?
     var status : String?
     var key  : String?
     var userCompanies = [UserCompanies]()
+    var support_info: Support_info?
 }
 

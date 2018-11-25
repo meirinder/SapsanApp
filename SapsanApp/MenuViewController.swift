@@ -18,8 +18,9 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet var test: UIView!
     static var loginData = LoginJSONStructure()
-
-   
+    @IBOutlet weak var userNameLabel: UILabel!
+    
+       @IBOutlet weak var backgroundImageView: UIImageView!
     
     
     let titles = ["Заказы","Транзакции","Поддержка"]
@@ -32,14 +33,11 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
       
 
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        
-        
-        
-        
         
         let backgroundImage = UIImage(named: "login_bg.jpg")
         
@@ -47,8 +45,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         imageView.contentMode = .scaleAspectFill
         imageView.alpha = 0.5
         self.menuTableView.backgroundView = imageView
-        
-        
+        //self.backgroundImageView = imageView
         
         menuTableView.delegate = self
         menuTableView.dataSource = self
@@ -57,7 +54,9 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             companies.append(company.companyName!)
         }
         chooseCompanyButton.setTitle(MenuViewController.loginData.userCompanies[0].companyName, for: .normal)
-        dispatcherPhoneButton.setTitle("+7"+MenuViewController.loginData.dispatcherPhone!, for: .normal)
+        userNameLabel.text = MenuViewController.loginData.userCompanies[0].name
+        
+        dispatcherPhoneButton.setTitle("+7 ("+formatPhone(), for: .normal)
     }
     
     @IBAction func makeDispatcherPhoneCall(_ sender: Any) {
@@ -65,6 +64,19 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
     }
     
+    
+    func formatPhone() -> String {
+        var phoneNumber = MenuViewController.loginData.dispatcherPhone!
+        var startThree = phoneNumber.dropLast(7)
+        startThree += ") "
+        var nextThree = phoneNumber.dropLast(4)
+        nextThree = nextThree.dropFirst(3)
+        nextThree += "-"
+        var nextTwo = phoneNumber.dropLast(2)
+        nextTwo = nextTwo.dropFirst(6)
+        nextTwo += "-"
+        return String(startThree+nextThree+nextTwo+phoneNumber.dropFirst(8))
+    }
 
     func setLoginData(data: LoginJSONStructure) {
         MenuViewController.loginData = data
@@ -150,6 +162,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 break
             case 2:
                 let detVC = self.storyboard?.instantiateViewController(withIdentifier: "SupportViewController")
+                (detVC as! SupportViewController).outLoginData  = MenuViewController.loginData
                 self.navigationController?.pushViewController(detVC!, animated: true)
                 
                 MenuViewController.txtColors[0] = UIColor.white
