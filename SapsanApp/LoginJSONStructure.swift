@@ -8,21 +8,21 @@
 
 import Foundation
 
-struct UserCompanies : Decodable {
+struct UserCompanies : Codable {
     var idUser : String?
     var idCompany : String?
     var name : String?
     var companyName: String?
 }
 
-struct Support_info: Decodable{
+struct Support_info: Codable{
     var name: String?
     var email: String?
     var phone: String?
 }
 
 
-struct LoginJSONStructure : Decodable {
+struct LoginJSONStructure :  Codable {
     var dispatcherPhone : String?
     var status : String?
     var key  : String?

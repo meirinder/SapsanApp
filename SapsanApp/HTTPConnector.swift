@@ -53,46 +53,6 @@ class HTTPConnector: NSObject {
     }
     
     
-//    func getSupportInfo(idUser : String, key : String,completion: @escaping (OrderStructure) -> ()){
-//        var supJson = SupJSON()
-//        let body = "class=app_company_user&method=add_support_info&idUser=" + idUser
-//        let dataOfBody = body.data(using: String.Encoding.utf8)
-//        let loginURL = URL(string:"http://app.sapsan.cloud/api/client/"+APIVERSION+"/user.php")!
-//        var reqest = URLRequest(url: loginURL )
-//        reqest.httpMethod = "POST"
-//        reqest.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-//        reqest.setValue(key, forHTTPHeaderField: "Mobile-Key")
-//        reqest.httpBody = dataOfBody
-//
-//
-//        let task = URLSession.shared.dataTask(with: reqest){data,response,error in
-//            guard let data = data, error == nil else {
-//                print("error=\(String(describing: error))")
-//                return
-//            }
-//            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
-//                print("statusCode should be 200, but is \(httpStatus.statusCode)")
-//                print("response = \(String(describing: response))")
-//            }
-//            let responseString = String(data: data, encoding: .utf8)
-//            print("responseString = \(String(describing: responseString))")
-//
-//            do{
-//                OrdersJSON = try JSONDecoder().decode(OrderStructure.self, from: data)
-//
-//
-//                // print(OrdersJSON.status!)
-//                completion(OrdersJSON)
-//            }catch let error {
-//                print(error)
-//            }
-//        }
-//        task.resume()
-//
-//    }
-    
-    
-    
     
     
     func getOrders(idCompany : String, idUser : String, key : String,completion: @escaping (OrderStructure) -> ()){
@@ -124,8 +84,7 @@ class HTTPConnector: NSObject {
             do{
                 OrdersJSON = try JSONDecoder().decode(OrderStructure.self, from: data)
                 
-                
-               // print(OrdersJSON.status!)
+            
                 completion(OrdersJSON)
             }catch let error {
                 print(error)
@@ -136,7 +95,45 @@ class HTTPConnector: NSObject {
      //   return OrdersJSON
     }
     
-    
+    func getTransactions(idCompany : String, idUser : String, key : String,completion: @escaping (ShortTransactions) -> ()){
+        var transactionJSON = ShortTransactions()
+        
+        
+        let body = "class=app_company_user&method=add_short_transactions&idCompany=" + idCompany + "&" + "idUser=" + idUser
+        let dataOfBody = body.data(using: String.Encoding.utf8)
+        let loginURL = URL(string:"http://app.citycourier.pro/api/client/"+APIVERSION+"/user.php")!
+        var reqest = URLRequest(url: loginURL )
+        reqest.httpMethod = "POST"
+        reqest.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        reqest.setValue(key, forHTTPHeaderField: "Mobile-Key")
+        reqest.httpBody = dataOfBody
+        
+        
+        let task = URLSession.shared.dataTask(with: reqest){data,response,error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                return
+            }
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print("response = \(String(describing: response))")
+            }
+            let responseString = String(data: data, encoding: .utf8)
+            print("responseString = \(String(describing: responseString))")
+            
+            do{
+                transactionJSON = try JSONDecoder().decode(ShortTransactions.self, from: data)
+                
+                
+                completion(transactionJSON)
+            }catch let error {
+                print(error)
+            }
+        }
+        task.resume()
+        
+        //   return OrdersJSON
+    }
     
     
     

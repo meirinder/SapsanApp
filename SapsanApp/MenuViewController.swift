@@ -25,7 +25,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     let titles = ["Заказы","Транзакции","Поддержка"]
     var companies = [String]()
-    static var txtColors = [UIColor(rgb: 0x1D2880), UIColor.white, UIColor.white]
+    static var txtColors = [UIColor(rgb: 0x1D2880), UIColor.black, UIColor.black]
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,7 +44,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let imageView = UIImageView(image: backgroundImage)
         imageView.contentMode = .scaleAspectFill
         imageView.alpha = 0.5
-        self.menuTableView.backgroundView = imageView
+       // self.menuTableView.backgroundView = imageView
         //self.backgroundImageView = imageView
         
         menuTableView.delegate = self
@@ -144,8 +144,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 
                 
                 MenuViewController.txtColors[0] = UIColor(rgb: 0x1D2880)
-                MenuViewController.txtColors[1] = UIColor.white
-                MenuViewController.txtColors[2] = UIColor.white
+                MenuViewController.txtColors[1] = UIColor.black
+                MenuViewController.txtColors[2] = UIColor.black
                 menuTableView.reloadData()
                 
                 //performSegue(withIdentifier: "orderSegue", sender: self)
@@ -154,9 +154,9 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 let detVC = self.storyboard?.instantiateViewController(withIdentifier: "TransactionViewController")
                 self.navigationController?.pushViewController(detVC!, animated: true)
                 
-                MenuViewController.txtColors[0] = UIColor.white
+                MenuViewController.txtColors[0] = UIColor.black
                 MenuViewController.txtColors[1] = UIColor(rgb: 0x1D2880)
-                MenuViewController.txtColors[2] = UIColor.white
+                MenuViewController.txtColors[2] = UIColor.black
                 menuTableView.reloadData()
                 //performSegue(withIdentifier: "transactionSegue", sender: self)
                 break
@@ -165,8 +165,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 (detVC as! SupportViewController).outLoginData  = MenuViewController.loginData
                 self.navigationController?.pushViewController(detVC!, animated: true)
                 
-                MenuViewController.txtColors[0] = UIColor.white
-                MenuViewController.txtColors[1] = UIColor.white
+                MenuViewController.txtColors[0] = UIColor.black
+                MenuViewController.txtColors[1] = UIColor.black
                 MenuViewController.txtColors[2] = UIColor(rgb: 0x1D2880)
                 menuTableView.reloadData()
                 
@@ -183,6 +183,11 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = .clear
         
+    }
+    
+    
+    @IBAction func exit(_ sender: UIButton) {
+        UserDefaults.standard.removeObject(forKey: "loginData")
     }
     
     

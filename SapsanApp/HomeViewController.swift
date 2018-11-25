@@ -30,11 +30,6 @@ class HomeViewController: Menu, UITableViewDelegate, UITableViewDataSource {
         
     }
     
-    @objc func refresh(sender: Any) {
-        // Code to refresh table view
-        print("1212121");
-    }
-    
     
     lazy var refresher: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -72,6 +67,19 @@ class HomeViewController: Menu, UITableViewDelegate, UITableViewDataSource {
     func updateOrderTable() {
         httpConnector.getOrders(idCompany: HomeViewController.loginData.userCompanies[0].idCompany!, idUser: HomeViewController.loginData.userCompanies[0].idUser!, key: HomeViewController.loginData.key!){ outOrders in
             self.orders = outOrders
+            if self.orders.status == "NO_ACCESS"{
+                DispatchQueue.main.async {
+                    
+                    let ac = UIAlertController(title: "Ошибка", message: "Кто-то другой зашел под вашим логином", preferredStyle: UIAlertController.Style.alert)
+                    let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
+                        UserDefaults.standard.removeObject(forKey: "loginData")
+                        self.performSegue(withIdentifier: "exitSegue", sender: self)
+                        print("OK!")
+                    }
+                    ac.addAction(okAction)
+                    self.present(ac, animated: true)
+                }
+            }
             self.sections = self.getDates(orders: self.orders)
             self.itemStore.removeAll()
             for _ in self.sections {

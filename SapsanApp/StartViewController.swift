@@ -38,14 +38,33 @@ class StartViewController: UIViewController {
     }
     
     
+    func checkUserDefaults(){
+       // UserDefaults.standard.removeObject(forKey: "loginData")
+        
+        if let logData = UserDefaults.standard.object(forKey: "loginData") as? Data {
+            let decoder = JSONDecoder()
+            if let loadedData = try? decoder.decode(LoginJSONStructure.self, from: logData) {
+                print("i have a key")
+                loginData = loadedData
+                if loginData.status == "OK"{
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "enterSegue", sender: self)
+                    }
+                }
+            }
+        }
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addTapGestureToHideKeyboard()
         
         
-
         
-        print(enterButton.titleLabel?.font)
+        
+        
+        
         let width = CGFloat(1.0)
         
         
@@ -71,6 +90,8 @@ class StartViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(StartViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(StartViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        checkUserDefaults()
     }
     
     
@@ -91,6 +112,11 @@ class StartViewController: UIViewController {
     
     func logIn()  {
         if loginData.status == "OK"{
+            let encoder = JSONEncoder()
+            if let encoded = try? encoder.encode(loginData) {
+                let defaults = UserDefaults.standard
+                defaults.set(encoded, forKey: "loginData")
+            }
             self.performSegue(withIdentifier: "enterSegue", sender: self)
         }else{
             if self.view.frame.origin.y < 0{
@@ -127,18 +153,20 @@ class StartViewController: UIViewController {
     }
     
     
-    @IBAction func signIn(_ sender: UIButton) {
-        print(sender.titleLabel?.font)
+    func log(phone: String, password: String) {
         let httpConnector = HTTPConnector()
-        httpConnector.login(phone: phoneTextField.text!, password: passwordTextField.text!){ outLoginData in
+        httpConnector.login(phone: phone, password: password){ outLoginData in
             self.loginData = outLoginData
             DispatchQueue.main.async{
                 self.logIn()
             }
         }
-        
-        
-        
+    }
+    
+    
+    @IBAction func signIn(_ sender: UIButton) {
+        //print(sender.titleLabel?.font)
+        log(phone: phoneTextField.text!, password: passwordTextField.text!)
     }
     
 
