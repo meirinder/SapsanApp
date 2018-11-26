@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_bg" translatesAutoresizingMaskIntoConstraints="NO" id="SAS-P3-kYU">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oq4-fF-wSS">
                                 <rect key="frame" x="22.5" y="243.5" width="330" height="180"/>
@@ -42,8 +42,8 @@
                         <constraints>
                             <constraint firstItem="oq4-fF-wSS" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="3HS-vK-9Ks"/>
                             <constraint firstItem="SAS-P3-kYU" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="8YZ-bA-8vE"/>
-                            <constraint firstItem="SAS-P3-kYU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ACl-LD-0xD"/>
-                            <constraint firstItem="SAS-P3-kYU" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="jZl-G4-4Gu"/>
+                            <constraint firstItem="SAS-P3-kYU" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="ACl-LD-0xD"/>
+                            <constraint firstItem="SAS-P3-kYU" firstAttribute="bottom" secondItem="Ze5-6b-2t3" secondAttribute="bottom" id="jZl-G4-4Gu"/>
                             <constraint firstItem="oq4-fF-wSS" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="rPc-PL-FaW"/>
                             <constraint firstItem="SAS-P3-kYU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uqB-3N-3SX"/>
                         </constraints>

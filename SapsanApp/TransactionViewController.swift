@@ -120,7 +120,7 @@ class TransactionViewController: Menu, UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = transactionTableView.dequeueReusableCell(withIdentifier: "transactionCell") as! TransactionTableViewCell
-        cell.statusLabel.text = itemStore[indexPath.section][indexPath.row].sum
+        cell.statusLabel.text = itemStore[indexPath.section][indexPath.row].sum  + " ₽"
         cell.commentLabel.text = itemStore[indexPath.section][indexPath.row].type
         if itemStore[indexPath.section][indexPath.row].sumColor == "#ff00C851" {
             cell.statusLabel.backgroundColor = UIColor(rgb: 0x00C851)

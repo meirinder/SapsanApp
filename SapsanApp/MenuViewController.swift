@@ -44,8 +44,6 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let imageView = UIImageView(image: backgroundImage)
         imageView.contentMode = .scaleAspectFill
         imageView.alpha = 0.5
-       // self.menuTableView.backgroundView = imageView
-        //self.backgroundImageView = imageView
         
         menuTableView.delegate = self
         menuTableView.dataSource = self
@@ -53,8 +51,9 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         for company in MenuViewController.loginData.userCompanies{
             companies.append(company.companyName!)
         }
-        chooseCompanyButton.setTitle(MenuViewController.loginData.userCompanies[0].companyName, for: .normal)
-        userNameLabel.text = MenuViewController.loginData.userCompanies[0].name
+        let companyName = "  " + MenuViewController.loginData.userCompanies[0].companyName! + "  "
+        chooseCompanyButton.setTitle(companyName, for: .normal)
+        userNameLabel.text = "  " + MenuViewController.loginData.userCompanies[0].name! + "  "
         
         dispatcherPhoneButton.setTitle("+7 ("+formatPhone(), for: .normal)
     }
@@ -176,7 +175,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         if tableView == self.dropDownMenuTableView{
             animate(toggle: false)
-            chooseCompanyButton.setTitle(companies[indexPath.row], for: .normal)
+            chooseCompanyButton.setTitle("  " + companies[indexPath.row] + "  ", for: .normal)
         }
 
     }
@@ -190,6 +189,9 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         UserDefaults.standard.removeObject(forKey: "loginData")
     }
     
+    @IBAction func balanceAction(_ sender: UIButton) {
+        
+    }
     
     @IBAction func startEditingTextField(_ sender: UITextField) {
     }

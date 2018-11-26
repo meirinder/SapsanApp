@@ -32,7 +32,7 @@ class SupportViewController: Menu {
             SupportViewController.loginData = outLoginData
         }
         
-        nameLabel.text = SupportViewController.loginData.support_info?.name
+        nameLabel.text = " " + (SupportViewController.loginData.support_info?.name!)!
         emailLabel.text = SupportViewController.loginData.support_info?.email
         phoneLabel.text = "+7 (" + formatPhone()
         
