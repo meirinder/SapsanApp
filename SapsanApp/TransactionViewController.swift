@@ -43,7 +43,7 @@ class TransactionViewController: Menu, UITableViewDelegate, UITableViewDataSourc
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        TransactionViewController.loginData = HomeViewController.loginData
+        TransactionViewController.loginData = OrdersViewController.loginData
         
         transactionTableView.refreshControl = refresher
         

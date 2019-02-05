@@ -16,8 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     static var isMenuVC = true
 
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        UIFont.familyNames.forEach({ familyName in
+            let fontNames = UIFont.fontNames(forFamilyName: familyName)
+            print(familyName, fontNames)
+        })
+        
         return true
     }
 

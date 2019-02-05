@@ -11,10 +11,13 @@ import UIKit
 class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
 
     @IBOutlet weak var dispatcherPhoneButton: UIButton!
-    
+    static var currentCompany = 0
     @IBOutlet weak var chooseCompanyButton: UIButton!
     @IBOutlet weak var menuTableView: UITableView!
     @IBOutlet weak var dropDownMenuTableView: UITableView!
+    
+    var httpConnector = HTTPConnector()
+    
     
     @IBOutlet var test: UIView!
     static var loginData = LoginJSONStructure()
@@ -39,11 +42,10 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
     
         
-        let backgroundImage = UIImage(named: "login_bg.jpg")
-        
-        let imageView = UIImageView(image: backgroundImage)
-        imageView.contentMode = .scaleAspectFill
-        imageView.alpha = 0.5
+//        let backgroundImage = UIImage(named: "login_bg.jpg")
+//        let imageView = UIImageView(image: backgroundImage)
+//        imageView.contentMode = .scaleAspectFill
+//        imageView.alpha = 0.5
         
         menuTableView.delegate = self
         menuTableView.dataSource = self
@@ -51,9 +53,10 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         for company in MenuViewController.loginData.userCompanies{
             companies.append(company.companyName!)
         }
-        let companyName = "  " + MenuViewController.loginData.userCompanies[0].companyName! + "  "
+        
+        let companyName = "  " + MenuViewController.loginData.userCompanies[MenuViewController.currentCompany].companyName! + "  "
         chooseCompanyButton.setTitle(companyName, for: .normal)
-        userNameLabel.text = "  " + MenuViewController.loginData.userCompanies[0].name! + "  "
+        userNameLabel.text = "  " + MenuViewController.loginData.userCompanies[MenuViewController.currentCompany].name! + "  "
         
         dispatcherPhoneButton.setTitle("+7 ("+formatPhone(), for: .normal)
     }
@@ -65,7 +68,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     func formatPhone() -> String {
-        var phoneNumber = MenuViewController.loginData.dispatcherPhone!
+        let phoneNumber = MenuViewController.loginData.dispatcherPhone!
         var startThree = phoneNumber.dropLast(7)
         startThree += ") "
         var nextThree = phoneNumber.dropLast(4)
@@ -140,8 +143,6 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 let detVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController")
                 self.navigationController?.pushViewController(detVC!, animated: true)
                 
-                
-                
                 MenuViewController.txtColors[0] = UIColor(rgb: 0x1D2880)
                 MenuViewController.txtColors[1] = UIColor.black
                 MenuViewController.txtColors[2] = UIColor.black
@@ -176,6 +177,14 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if tableView == self.dropDownMenuTableView{
             animate(toggle: false)
             chooseCompanyButton.setTitle("  " + companies[indexPath.row] + "  ", for: .normal)
+            
+            httpConnector.changeUser(idCompany: MenuViewController.loginData.userCompanies[MenuViewController.currentCompany].idCompany!, idUser: MenuViewController.loginData.userCompanies[MenuViewController.currentCompany].idUser!, newIdUser: MenuViewController.loginData.userCompanies[indexPath.row].idCompany!, key: MenuViewController.loginData.key!){
+                outData in
+                
+                
+            }
+            
+            MenuViewController.currentCompany = indexPath.row
         }
 
     }
@@ -190,12 +199,11 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @IBAction func balanceAction(_ sender: UIButton) {
-        
+        let detVC = self.storyboard?.instantiateViewController(withIdentifier: "BalanceViewController")
+        self.navigationController?.pushViewController(detVC!, animated: true)
     }
     
-    @IBAction func startEditingTextField(_ sender: UITextField) {
-    }
-    
+ 
     
 }
 

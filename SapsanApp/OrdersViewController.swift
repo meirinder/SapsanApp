@@ -9,7 +9,7 @@
 
 import UIKit
 
-class HomeViewController: Menu, UITableViewDelegate, UITableViewDataSource {
+class OrdersViewController: Menu, UITableViewDelegate, UITableViewDataSource {
     
     var itemStore : [[OrderItem]] = []
     var sections = [String]()
@@ -26,7 +26,7 @@ class HomeViewController: Menu, UITableViewDelegate, UITableViewDataSource {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print(HomeViewController.loginData.status!)
+        print(OrdersViewController.loginData.status!)
         
     }
     
@@ -47,8 +47,8 @@ class HomeViewController: Menu, UITableViewDelegate, UITableViewDataSource {
         
 
         
-        if HomeViewController.loginData.status == nil{
-            HomeViewController.loginData = outLoginData
+        if OrdersViewController.loginData.status == nil{
+            OrdersViewController.loginData = outLoginData
         }
         updateOrderTable()
         
@@ -65,7 +65,7 @@ class HomeViewController: Menu, UITableViewDelegate, UITableViewDataSource {
     
     
     func updateOrderTable() {
-        httpConnector.getOrders(idCompany: HomeViewController.loginData.userCompanies[0].idCompany!, idUser: HomeViewController.loginData.userCompanies[0].idUser!, key: HomeViewController.loginData.key!){ outOrders in
+        httpConnector.getOrders(idCompany: OrdersViewController.loginData.userCompanies[MenuViewController.currentCompany].idCompany!, idUser: OrdersViewController.loginData.userCompanies[MenuViewController.currentCompany].idUser!, key: OrdersViewController.loginData.key!){ outOrders in
             self.orders = outOrders
             if self.orders.status == "NO_ACCESS"{
                 DispatchQueue.main.async {

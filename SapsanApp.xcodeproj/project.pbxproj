@@ -8,9 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		250E85FD947A728C34AEB60A /* Pods_SapsanApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9D77A9B273E9BDE534BB2C /* Pods_SapsanApp.framework */; };
+		C412A72621ABECD600708873 /* BalanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C412A72521ABECD600708873 /* BalanceViewController.swift */; };
+		C412A72821ABF70D00708873 /* ChangeUserJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C412A72721ABF70D00708873 /* ChangeUserJSON.swift */; };
 		C420AEC921948E8500E292E3 /* HTTPConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = C420AEC821948E8500E292E3 /* HTTPConnector.swift */; };
 		C420AECB21949A5200E292E3 /* LoginJSONStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = C420AECA21949A5200E292E3 /* LoginJSONStructure.swift */; };
 		C420AECF2196E28700E292E3 /* shortOrders.swift in Sources */ = {isa = PBXBuildFile; fileRef = C420AECE2196E28700E292E3 /* shortOrders.swift */; };
+		C4288C1921C282C3002C69B9 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4288C0D21C282C2002C69B9 /* Roboto-Thin.ttf */; };
+		C4288C1A21C282C3002C69B9 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4288C0E21C282C2002C69B9 /* Roboto-Light.ttf */; };
+		C4288C1B21C282C3002C69B9 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4288C0F21C282C2002C69B9 /* Roboto-LightItalic.ttf */; };
+		C4288C1C21C282C3002C69B9 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4288C1021C282C2002C69B9 /* Roboto-Bold.ttf */; };
+		C4288C1D21C282C3002C69B9 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4288C1121C282C3002C69B9 /* Roboto-Regular.ttf */; };
+		C4288C1E21C282C3002C69B9 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4288C1221C282C3002C69B9 /* Roboto-Medium.ttf */; };
+		C4288C1F21C282C3002C69B9 /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4288C1321C282C3002C69B9 /* Roboto-BoldItalic.ttf */; };
+		C4288C2021C282C3002C69B9 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4288C1421C282C3002C69B9 /* Roboto-BlackItalic.ttf */; };
+		C4288C2121C282C3002C69B9 /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4288C1521C282C3002C69B9 /* Roboto-MediumItalic.ttf */; };
+		C4288C2221C282C3002C69B9 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4288C1621C282C3002C69B9 /* Roboto-Black.ttf */; };
+		C4288C2321C282C4002C69B9 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4288C1721C282C3002C69B9 /* Roboto-Italic.ttf */; };
+		C4288C2421C282C4002C69B9 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4288C1821C282C3002C69B9 /* Roboto-ThinItalic.ttf */; };
 		C44559AF21AABF8600018EA7 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44559AE21AABF8600018EA7 /* TransactionTableViewCell.swift */; };
 		C44559B121AAC0EB00018EA7 /* ShortTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44559B021AAC0EB00018EA7 /* ShortTransaction.swift */; };
 		C44559B321AAC2A500018EA7 /* TransactionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44559B221AAC2A500018EA7 /* TransactionItem.swift */; };
@@ -22,7 +36,7 @@
 		C4C4A07521871CAF0026AA37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4C4A07321871CAF0026AA37 /* LaunchScreen.storyboard */; };
 		C4C4A07D218727830026AA37 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C4A07C218727830026AA37 /* StartViewController.swift */; };
 		C4C4A07F2187278D0026AA37 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C4A07E2187278D0026AA37 /* LoginViewController.swift */; };
-		C4C4A083218727C10026AA37 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C4A082218727C10026AA37 /* HomeViewController.swift */; };
+		C4C4A083218727C10026AA37 /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C4A082218727C10026AA37 /* OrdersViewController.swift */; };
 		C4C4A0852187280D0026AA37 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C4A0842187280D0026AA37 /* SignUpViewController.swift */; };
 		C4C4A087218728620026AA37 /* RecoverPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C4A086218728620026AA37 /* RecoverPasswordViewController.swift */; };
 		C4DB32A1218D980100636C1C /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DB32A0218D980100636C1C /* Menu.swift */; };
@@ -33,15 +47,37 @@
 		C4DBABA621897A9800A6BF05 /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DBABA521897A9800A6BF05 /* OrderTableViewCell.swift */; };
 		C4DBABA821897AEB00A6BF05 /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DBABA721897AEB00A6BF05 /* OrderItem.swift */; };
 		C4DBABAB218D8C5000A6BF05 /* roboto in Resources */ = {isa = PBXBuildFile; fileRef = C4DBABAA218D8C5000A6BF05 /* roboto */; };
+		C4F3F19E2209CCDC00E64489 /* StartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F3F19D2209CCDC00E64489 /* StartViewModel.swift */; };
+		C4F3F1A02209CCF500E64489 /* RecoverPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F3F19F2209CCF500E64489 /* RecoverPasswordViewModel.swift */; };
+		C4F3F1A22209CD2400E64489 /* SingUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F3F1A12209CD2400E64489 /* SingUpViewModel.swift */; };
+		C4F3F1A42209CD5200E64489 /* OrdersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F3F1A32209CD5200E64489 /* OrdersViewModel.swift */; };
+		C4F3F1A62209CD5F00E64489 /* SupportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F3F1A52209CD5F00E64489 /* SupportViewModel.swift */; };
+		C4F3F1A82209CD6900E64489 /* BalanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F3F1A72209CD6900E64489 /* BalanceViewModel.swift */; };
+		C4F3F1AA2209CD7600E64489 /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F3F1A92209CD7600E64489 /* TransactionViewModel.swift */; };
+		C4F3F1AC2209CD8400E64489 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F3F1AB2209CD8400E64489 /* MenuViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1DDDB39D75A6923FD7394567 /* Pods-SapsanApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SapsanApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SapsanApp/Pods-SapsanApp.debug.xcconfig"; sourceTree = "<group>"; };
 		4BB4B5068D8AF2C1C705AF9D /* Pods-SapsanApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SapsanApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-SapsanApp/Pods-SapsanApp.release.xcconfig"; sourceTree = "<group>"; };
 		8B9D77A9B273E9BDE534BB2C /* Pods_SapsanApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SapsanApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C412A72521ABECD600708873 /* BalanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceViewController.swift; sourceTree = "<group>"; };
+		C412A72721ABF70D00708873 /* ChangeUserJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUserJSON.swift; sourceTree = "<group>"; };
 		C420AEC821948E8500E292E3 /* HTTPConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPConnector.swift; sourceTree = "<group>"; };
 		C420AECA21949A5200E292E3 /* LoginJSONStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginJSONStructure.swift; sourceTree = "<group>"; };
 		C420AECE2196E28700E292E3 /* shortOrders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = shortOrders.swift; path = /Users/savely/Desktop/Projects/SapsanApp/SapsanApp/shortOrders.swift; sourceTree = "<absolute>"; };
+		C4288C0D21C282C2002C69B9 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Thin.ttf"; path = "SapsanApp/roboto/Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		C4288C0E21C282C2002C69B9 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Light.ttf"; path = "SapsanApp/roboto/Roboto-Light.ttf"; sourceTree = "<group>"; };
+		C4288C0F21C282C2002C69B9 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-LightItalic.ttf"; path = "SapsanApp/roboto/Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
+		C4288C1021C282C2002C69B9 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Bold.ttf"; path = "SapsanApp/roboto/Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		C4288C1121C282C3002C69B9 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "SapsanApp/roboto/Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		C4288C1221C282C3002C69B9 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Medium.ttf"; path = "SapsanApp/roboto/Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		C4288C1321C282C3002C69B9 /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-BoldItalic.ttf"; path = "SapsanApp/roboto/Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
+		C4288C1421C282C3002C69B9 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-BlackItalic.ttf"; path = "SapsanApp/roboto/Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
+		C4288C1521C282C3002C69B9 /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-MediumItalic.ttf"; path = "SapsanApp/roboto/Roboto-MediumItalic.ttf"; sourceTree = "<group>"; };
+		C4288C1621C282C3002C69B9 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Black.ttf"; path = "SapsanApp/roboto/Roboto-Black.ttf"; sourceTree = "<group>"; };
+		C4288C1721C282C3002C69B9 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Italic.ttf"; path = "SapsanApp/roboto/Roboto-Italic.ttf"; sourceTree = "<group>"; };
+		C4288C1821C282C3002C69B9 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-ThinItalic.ttf"; path = "SapsanApp/roboto/Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
 		C44559AE21AABF8600018EA7 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
 		C44559B021AAC0EB00018EA7 /* ShortTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortTransaction.swift; sourceTree = "<group>"; };
 		C44559B221AAC2A500018EA7 /* TransactionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionItem.swift; sourceTree = "<group>"; };
@@ -55,7 +91,7 @@
 		C4C4A07621871CAF0026AA37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4C4A07C218727830026AA37 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		C4C4A07E2187278D0026AA37 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		C4C4A082218727C10026AA37 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		C4C4A082218727C10026AA37 /* OrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
 		C4C4A0842187280D0026AA37 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		C4C4A086218728620026AA37 /* RecoverPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewController.swift; sourceTree = "<group>"; };
 		C4DB32A0218D980100636C1C /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
@@ -66,6 +102,14 @@
 		C4DBABA521897A9800A6BF05 /* OrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewCell.swift; sourceTree = "<group>"; };
 		C4DBABA721897AEB00A6BF05 /* OrderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
 		C4DBABAA218D8C5000A6BF05 /* roboto */ = {isa = PBXFileReference; lastKnownFileType = folder; path = roboto; sourceTree = "<group>"; };
+		C4F3F19D2209CCDC00E64489 /* StartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewModel.swift; sourceTree = "<group>"; };
+		C4F3F19F2209CCF500E64489 /* RecoverPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewModel.swift; sourceTree = "<group>"; };
+		C4F3F1A12209CD2400E64489 /* SingUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingUpViewModel.swift; sourceTree = "<group>"; };
+		C4F3F1A32209CD5200E64489 /* OrdersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewModel.swift; sourceTree = "<group>"; };
+		C4F3F1A52209CD5F00E64489 /* SupportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportViewModel.swift; sourceTree = "<group>"; };
+		C4F3F1A72209CD6900E64489 /* BalanceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceViewModel.swift; sourceTree = "<group>"; };
+		C4F3F1A92209CD7600E64489 /* TransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewModel.swift; sourceTree = "<group>"; };
+		C4F3F1AB2209CD8400E64489 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,9 +132,29 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C4288C2521C282F2002C69B9 /* roboto */ = {
+			isa = PBXGroup;
+			children = (
+				C4288C1621C282C3002C69B9 /* Roboto-Black.ttf */,
+				C4288C1421C282C3002C69B9 /* Roboto-BlackItalic.ttf */,
+				C4288C1021C282C2002C69B9 /* Roboto-Bold.ttf */,
+				C4288C1321C282C3002C69B9 /* Roboto-BoldItalic.ttf */,
+				C4288C1721C282C3002C69B9 /* Roboto-Italic.ttf */,
+				C4288C0E21C282C2002C69B9 /* Roboto-Light.ttf */,
+				C4288C0F21C282C2002C69B9 /* Roboto-LightItalic.ttf */,
+				C4288C1221C282C3002C69B9 /* Roboto-Medium.ttf */,
+				C4288C1521C282C3002C69B9 /* Roboto-MediumItalic.ttf */,
+				C4288C1121C282C3002C69B9 /* Roboto-Regular.ttf */,
+				C4288C0D21C282C2002C69B9 /* Roboto-Thin.ttf */,
+				C4288C1821C282C3002C69B9 /* Roboto-ThinItalic.ttf */,
+			);
+			name = roboto;
+			sourceTree = "<group>";
+		};
 		C4C4A05B21871CAC0026AA37 = {
 			isa = PBXGroup;
 			children = (
+				C4288C2521C282F2002C69B9 /* roboto */,
 				C4C4A06621871CAC0026AA37 /* SapsanApp */,
 				C4C4A06521871CAC0026AA37 /* Products */,
 				D65492943D87A483029CBF72 /* Pods */,
@@ -109,34 +173,76 @@
 		C4C4A06621871CAC0026AA37 /* SapsanApp */ = {
 			isa = PBXGroup;
 			children = (
-				C4C4A06721871CAC0026AA37 /* AppDelegate.swift */,
-				C4DB32A0218D980100636C1C /* Menu.swift */,
-				C4C4A07C218727830026AA37 /* StartViewController.swift */,
-				C4C4A0842187280D0026AA37 /* SignUpViewController.swift */,
-				C4C4A082218727C10026AA37 /* HomeViewController.swift */,
-				C4DB32A2218D998A00636C1C /* SupportViewController.swift */,
-				C4DBABA321884B7200A6BF05 /* TransactionViewController.swift */,
-				C44559AE21AABF8600018EA7 /* TransactionTableViewCell.swift */,
-				C4DBABA121883B2400A6BF05 /* MenuViewController.swift */,
-				C4DBAB9F21883B1300A6BF05 /* MenuTableViewCell.swift */,
-				C4DBABA521897A9800A6BF05 /* OrderTableViewCell.swift */,
 				C4C4A06B21871CAC0026AA37 /* Main.storyboard */,
-				C44559B221AAC2A500018EA7 /* TransactionItem.swift */,
-				C4DBABA721897AEB00A6BF05 /* OrderItem.swift */,
-				C4C4A07E2187278D0026AA37 /* LoginViewController.swift */,
-				C4C4A086218728620026AA37 /* RecoverPasswordViewController.swift */,
+				C4C4A06721871CAC0026AA37 /* AppDelegate.swift */,
+				C4F3F1982209C5BC00E64489 /* ViewControllers */,
+				C4F3F19C2209CCB700E64489 /* ViewModels */,
+				C4F3F19A2209C5F600E64489 /* Model */,
 				C4C4A07121871CAF0026AA37 /* Assets.xcassets */,
 				C420AEC821948E8500E292E3 /* HTTPConnector.swift */,
-				C45B5C31219999A2001714A8 /* LoginErrorStructure.swift */,
-				C420AECA21949A5200E292E3 /* LoginJSONStructure.swift */,
-				C44559B021AAC0EB00018EA7 /* ShortTransaction.swift */,
-				C420AECE2196E28700E292E3 /* shortOrders.swift */,
 				C4C4A07321871CAF0026AA37 /* LaunchScreen.storyboard */,
 				C4C4A07621871CAF0026AA37 /* Info.plist */,
 				C4C4A06E21871CAC0026AA37 /* SapsanApp.xcdatamodeld */,
 				C4DBABAA218D8C5000A6BF05 /* roboto */,
 			);
 			path = SapsanApp;
+			sourceTree = "<group>";
+		};
+		C4F3F1982209C5BC00E64489 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C4DB32A0218D980100636C1C /* Menu.swift */,
+				C4C4A07C218727830026AA37 /* StartViewController.swift */,
+				C4C4A0842187280D0026AA37 /* SignUpViewController.swift */,
+				C4C4A082218727C10026AA37 /* OrdersViewController.swift */,
+				C4DB32A2218D998A00636C1C /* SupportViewController.swift */,
+				C412A72521ABECD600708873 /* BalanceViewController.swift */,
+				C4DBABA321884B7200A6BF05 /* TransactionViewController.swift */,
+				C4DBABA121883B2400A6BF05 /* MenuViewController.swift */,
+				C4C4A07E2187278D0026AA37 /* LoginViewController.swift */,
+				C4C4A086218728620026AA37 /* RecoverPasswordViewController.swift */,
+				C4F3F1992209C5D200E64489 /* Cells */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C4F3F1992209C5D200E64489 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				C4DBAB9F21883B1300A6BF05 /* MenuTableViewCell.swift */,
+				C4DBABA521897A9800A6BF05 /* OrderTableViewCell.swift */,
+				C44559AE21AABF8600018EA7 /* TransactionTableViewCell.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		C4F3F19A2209C5F600E64489 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C44559B221AAC2A500018EA7 /* TransactionItem.swift */,
+				C4DBABA721897AEB00A6BF05 /* OrderItem.swift */,
+				C412A72721ABF70D00708873 /* ChangeUserJSON.swift */,
+				C45B5C31219999A2001714A8 /* LoginErrorStructure.swift */,
+				C420AECA21949A5200E292E3 /* LoginJSONStructure.swift */,
+				C44559B021AAC0EB00018EA7 /* ShortTransaction.swift */,
+				C420AECE2196E28700E292E3 /* shortOrders.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		C4F3F19C2209CCB700E64489 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				C4F3F19D2209CCDC00E64489 /* StartViewModel.swift */,
+				C4F3F19F2209CCF500E64489 /* RecoverPasswordViewModel.swift */,
+				C4F3F1A12209CD2400E64489 /* SingUpViewModel.swift */,
+				C4F3F1A32209CD5200E64489 /* OrdersViewModel.swift */,
+				C4F3F1A52209CD5F00E64489 /* SupportViewModel.swift */,
+				C4F3F1A72209CD6900E64489 /* BalanceViewModel.swift */,
+				C4F3F1A92209CD7600E64489 /* TransactionViewModel.swift */,
+				C4F3F1AB2209CD8400E64489 /* MenuViewModel.swift */,
+			);
+			name = ViewModels;
 			sourceTree = "<group>";
 		};
 		D65492943D87A483029CBF72 /* Pods */ = {
@@ -208,6 +314,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4288C1921C282C3002C69B9 /* Roboto-Thin.ttf in Resources */,
+				C4288C1A21C282C3002C69B9 /* Roboto-Light.ttf in Resources */,
+				C4288C1B21C282C3002C69B9 /* Roboto-LightItalic.ttf in Resources */,
+				C4288C1C21C282C3002C69B9 /* Roboto-Bold.ttf in Resources */,
+				C4288C1D21C282C3002C69B9 /* Roboto-Regular.ttf in Resources */,
+				C4288C1E21C282C3002C69B9 /* Roboto-Medium.ttf in Resources */,
+				C4288C1F21C282C3002C69B9 /* Roboto-BoldItalic.ttf in Resources */,
+				C4288C2021C282C3002C69B9 /* Roboto-BlackItalic.ttf in Resources */,
+				C4288C2121C282C3002C69B9 /* Roboto-MediumItalic.ttf in Resources */,
+				C4288C2221C282C3002C69B9 /* Roboto-Black.ttf in Resources */,
+				C4288C2321C282C4002C69B9 /* Roboto-Italic.ttf in Resources */,
+				C4288C2421C282C4002C69B9 /* Roboto-ThinItalic.ttf in Resources */,
 				C4C4A07521871CAF0026AA37 /* LaunchScreen.storyboard in Resources */,
 				C4C4A07221871CAF0026AA37 /* Assets.xcassets in Resources */,
 				C4C4A06D21871CAC0026AA37 /* Main.storyboard in Resources */,
@@ -270,14 +388,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4C4A0852187280D0026AA37 /* SignUpViewController.swift in Sources */,
+				C4F3F19E2209CCDC00E64489 /* StartViewModel.swift in Sources */,
 				C4C4A07021871CAC0026AA37 /* SapsanApp.xcdatamodeld in Sources */,
 				C4DBABA021883B1300A6BF05 /* MenuTableViewCell.swift in Sources */,
+				C4F3F1AC2209CD8400E64489 /* MenuViewModel.swift in Sources */,
+				C412A72821ABF70D00708873 /* ChangeUserJSON.swift in Sources */,
+				C4F3F1A02209CCF500E64489 /* RecoverPasswordViewModel.swift in Sources */,
 				C4C4A07D218727830026AA37 /* StartViewController.swift in Sources */,
+				C4F3F1A42209CD5200E64489 /* OrdersViewModel.swift in Sources */,
 				C4DBABA221883B2400A6BF05 /* MenuViewController.swift in Sources */,
+				C4F3F1A82209CD6900E64489 /* BalanceViewModel.swift in Sources */,
 				C44559AF21AABF8600018EA7 /* TransactionTableViewCell.swift in Sources */,
 				C420AEC921948E8500E292E3 /* HTTPConnector.swift in Sources */,
 				C4DBABA821897AEB00A6BF05 /* OrderItem.swift in Sources */,
 				C4DB32A3218D998A00636C1C /* SupportViewController.swift in Sources */,
+				C4F3F1A22209CD2400E64489 /* SingUpViewModel.swift in Sources */,
+				C412A72621ABECD600708873 /* BalanceViewController.swift in Sources */,
 				C420AECF2196E28700E292E3 /* shortOrders.swift in Sources */,
 				C44559B321AAC2A500018EA7 /* TransactionItem.swift in Sources */,
 				C4DBABA621897A9800A6BF05 /* OrderTableViewCell.swift in Sources */,
@@ -285,11 +411,13 @@
 				C4C4A07F2187278D0026AA37 /* LoginViewController.swift in Sources */,
 				C4DB32A1218D980100636C1C /* Menu.swift in Sources */,
 				C4C4A087218728620026AA37 /* RecoverPasswordViewController.swift in Sources */,
+				C4F3F1A62209CD5F00E64489 /* SupportViewModel.swift in Sources */,
 				C45B5C32219999A2001714A8 /* LoginErrorStructure.swift in Sources */,
 				C44559B121AAC0EB00018EA7 /* ShortTransaction.swift in Sources */,
 				C420AECB21949A5200E292E3 /* LoginJSONStructure.swift in Sources */,
 				C4C4A06821871CAC0026AA37 /* AppDelegate.swift in Sources */,
-				C4C4A083218727C10026AA37 /* HomeViewController.swift in Sources */,
+				C4C4A083218727C10026AA37 /* OrdersViewController.swift in Sources */,
+				C4F3F1AA2209CD7600E64489 /* TransactionViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

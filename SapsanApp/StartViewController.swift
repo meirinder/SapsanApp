@@ -101,7 +101,7 @@ class StartViewController: UIViewController {
          view.endEditing(true)
         if segue.identifier == "enterSegue"{
             let nav = segue.destination as! UINavigationController
-            let desVC = nav.topViewController as! HomeViewController
+            let desVC = nav.topViewController as! OrdersViewController
             desVC.outLoginData = self.loginData
             let controller = storyboard!.instantiateViewController(withIdentifier: "MenuVC") as! MenuViewController
             controller.setLoginData(data: self.loginData)
