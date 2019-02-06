@@ -9,28 +9,29 @@
 
 import UIKit
 
-class OrdersViewController: Menu, UITableViewDelegate, UITableViewDataSource {
+class OrdersViewController: Menu, UITableViewDataSource, UITableViewDelegate {
+
+//    var itemStore : [[OrderItem]] = []
     
-    var itemStore : [[OrderItem]] = []
-    var sections = [String]()
-    static var loginData = LoginJSONStructure()
-    var outLoginData =  LoginJSONStructure()
-    var orders = OrderStructure()
-    let httpConnector = HTTPConnector()
-    
+    var ordersViewModel: OrdersViewModel?{
+        didSet {
+            ordersViewModel?.getOrders()
+        }
+    }
+
     @IBOutlet weak var orderTableView: UITableView!
     @IBOutlet weak var menuBarButtonItem: UIBarButtonItem!
-   
- 
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print(OrdersViewController.loginData.status!)
-        
-    }
-    
-    
+
+
+
+
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        print(OrdersViewController.loginData.status!)
+//
+//    }
+
+
     lazy var refresher: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshOrderTable), for: .valueChanged)
@@ -38,90 +39,38 @@ class OrdersViewController: Menu, UITableViewDelegate, UITableViewDataSource {
         
         return refreshControl
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
         orderTableView.refreshControl = refresher
         
-
-        
-        if OrdersViewController.loginData.status == nil{
-            OrdersViewController.loginData = outLoginData
-        }
-        updateOrderTable()
-        
-        
         orderTableView.delegate = self
         orderTableView.dataSource = self
     }
-    
-    
+
+
     @objc func refreshOrderTable(){
-        updateOrderTable()
+        ordersViewModel?.getOrders()
         refresher.endRefreshing()
     }
-    
-    
-    func updateOrderTable() {
-        httpConnector.getOrders(idCompany: OrdersViewController.loginData.userCompanies[MenuViewController.currentCompany].idCompany!, idUser: OrdersViewController.loginData.userCompanies[MenuViewController.currentCompany].idUser!, key: OrdersViewController.loginData.key!){ outOrders in
-            self.orders = outOrders
-            if self.orders.status == "NO_ACCESS"{
-                DispatchQueue.main.async {
-                    
-                    let ac = UIAlertController(title: "Ошибка", message: "Кто-то другой зашел под вашим логином", preferredStyle: UIAlertController.Style.alert)
-                    let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
-                        UserDefaults.standard.removeObject(forKey: "loginData")
-                        self.performSegue(withIdentifier: "exitSegue", sender: self)
-                        print("OK!")
-                    }
-                    ac.addAction(okAction)
-                    self.present(ac, animated: true)
-                }
-            }
-            self.sections = self.getDates(orders: self.orders)
-            self.itemStore.removeAll()
-            for _ in self.sections {
-                self.itemStore.append([])
-            }
-            self.fillItemStore(orders: self.orders)
-            DispatchQueue.main.async{
-                self.orderTableView.reloadData()
-            }
-        }
-    }
-    
-    func getDates(orders : OrderStructure) -> [String] {
+
+
+   
+
+    func getDates(orders : OrdersData) -> [String] {
         var tmp = [String]()
-        for shortOrder in orders.shortOrders {
-            tmp.append(shortOrder.date!)
+        if let shortOrders = orders.shortOrders{
+            for shortOrder in shortOrders {
+                tmp.append(shortOrder.date!)
+            }
         }
-        
         return tmp.removeDuplicates()
     }
+
     
-    func findNeededDate(date : String)-> Int{
-        var res = 0;
-        for section in  sections {
-            if date == section{
-                return res
-            }
-            res += 1
-        }
-        return -1
-    }
-    
-    func fillItemStore(orders : OrderStructure){
-        for shortOrder in orders.shortOrders {
-            let item = OrderItem(cleanPrice: shortOrder.companyMoney! ,fullPrice: shortOrder.deliveryMoney!,status: shortOrder.statusText!,timeStart:shortOrder.takeTime!,timeEnd: shortOrder.deliveryTime!,fromAdress: shortOrder.addressFrom!,toAdress: shortOrder.addressTo!,statusColor: shortOrder.statusColor!)
-        
-            itemStore[findNeededDate(date: shortOrder.date!)].append(item)
-        }
-    }
-    
-    
-    
+
     @IBAction func menuBarButtonItem(_ sender: Any) {
         if AppDelegate.isMenuVC{
             showMenu()
@@ -130,37 +79,37 @@ class OrdersViewController: Menu, UITableViewDelegate, UITableViewDataSource {
         }
         
     }
-    
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?{
         
-        return sections[section]
+        return ordersViewModel?.titleForHeader(index: section) ?? ""
     }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        return ordersViewModel?.sectionsCount() ?? 0
     }
-    
-    
+
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemStore[section].count
+        return ordersViewModel?.ordersInSectionCount(index: section) ?? 0
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = orderTableView.dequeueReusableCell(withIdentifier: "OrderCell") as! OrderTableViewCell
-        cell.cleanPriceLabel.text = itemStore[indexPath.section][indexPath.row].cleanPrice + " ₽"
-        cell.fullPriceLabel.text = itemStore[indexPath.section][indexPath.row].fullPrice + " ₽"
-        cell.statusLabel.text = itemStore[indexPath.section][indexPath.row].status
-        cell.timeStartLabel.text = itemStore[indexPath.section][indexPath.row].timeStart
-        cell.timeEndLabel.text = itemStore[indexPath.section][indexPath.row].timeEnd
-        cell.fromAdressLabel.text = itemStore[indexPath.section][indexPath.row].fromAdress
-        cell.toAdressLabel.text = itemStore[indexPath.section][indexPath.row].toAdress
-        if itemStore[indexPath.section][indexPath.row].statusColor == "#ff44aa44" {
+        cell.cleanPriceLabel.text = ordersViewModel?.cleanPrice(section: indexPath.section, index: indexPath.row)
+        cell.fullPriceLabel.text = ordersViewModel?.fullPrice(section: indexPath.section, index: indexPath.row)
+        cell.statusLabel.text = ordersViewModel?.status(section: indexPath.section, index: indexPath.row)
+        cell.timeStartLabel.text = ordersViewModel?.timeStart(section: indexPath.section, index: indexPath.row)
+        cell.timeEndLabel.text = ordersViewModel?.timeEnd(section: indexPath.section, index: indexPath.row)
+        cell.fromAdressLabel.text = ordersViewModel?.fromAddress(section: indexPath.section, index: indexPath.row)
+        cell.toAdressLabel.text = ordersViewModel?.toAddress(section: indexPath.section, index: indexPath.row)
+        if ordersViewModel?.statusColor(section: indexPath.section, index: indexPath.row) == "#ff44aa44" {
             cell.statusLabel.backgroundColor = UIColor(rgb: 0x44aa44)
         }
         
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return  100
     }
@@ -179,6 +128,8 @@ extension Array where Element:Equatable {
         return result
     }
 }
+
+
 extension UIColor {
     convenience init(rgb: UInt) {
         self.init(
@@ -188,4 +139,16 @@ extension UIColor {
             alpha: CGFloat(1.0)
         )
     }
+}
+
+extension OrdersViewController: ReloadTableViewDelegate {
+    func reloadTableView() {
+        DispatchQueue.main.async {
+            self.orderTableView.reloadData()
+        }
+    }
+}
+
+protocol ReloadTableViewDelegate: class {
+    func reloadTableView()
 }

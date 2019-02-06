@@ -11,23 +11,18 @@ import AKMaskField
 
 class StartViewController: UIViewController {
 
+    @IBOutlet weak private var rootStackView: UIStackView!
+    @IBOutlet weak private var phoneTextField: UITextField!
+    @IBOutlet weak private var passwordTextField: UITextField!
+    @IBOutlet weak private var enterButton: UIButton!
+    @IBOutlet weak private var recoverPasswoedButton: UIButton!
+    @IBOutlet weak private var signUpButton: UIButton!
     
+    var startViewModel = StartViewModel()
     
-    @IBOutlet weak var rootStackView: UIStackView!
-    
-    @IBOutlet weak var phoneTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var enterButton: UIButton!
-    @IBOutlet weak var recoverPasswoedButton: UIButton!
-    @IBOutlet weak var signUpButton: UIButton!
-    
-    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
-    
-    
-    var loginData = LoginJSONStructure()
-    
-    let phoneTextFieldBorder = CALayer()
-    let passTextFieldBorder = CALayer()
+ 
+    private let phoneTextFieldBorder = CALayer()
+    private let passTextFieldBorder = CALayer()
     
 
     
@@ -37,104 +32,34 @@ class StartViewController: UIViewController {
          self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    
-    func checkUserDefaults(){
-       // UserDefaults.standard.removeObject(forKey: "loginData")
-        
-        if let logData = UserDefaults.standard.object(forKey: "loginData") as? Data {
-            let decoder = JSONDecoder()
-            if let loadedData = try? decoder.decode(LoginJSONStructure.self, from: logData) {
-                print("i have a key")
-                loginData = loadedData
-                if loginData.status == "OK"{
-                    DispatchQueue.main.async {
-                        self.performSegue(withIdentifier: "enterSegue", sender: self)
-                    }
-                }
-            }
-        }
-        
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        startViewModel.delegate = self
         addTapGestureToHideKeyboard()
-        
-        
-        
-        
-        
-        
-        let width = CGFloat(1.0)
-        
-        
-        phoneTextFieldBorder.borderColor = UIColor.darkGray.cgColor
-        phoneTextFieldBorder.frame = CGRect(x: 0, y: phoneTextField.frame.size.height - width, width: phoneTextField.frame.size.width, height: phoneTextField.frame.size.height)
-        
-        phoneTextFieldBorder.borderWidth = width
-        
-        phoneTextField.layer.addSublayer(phoneTextFieldBorder)
-        phoneTextField.layer.masksToBounds = true
-        
-        
-        
-        passTextFieldBorder.borderColor = UIColor.darkGray.cgColor
-        passTextFieldBorder.frame = CGRect(x: 0, y: passwordTextField.frame.size.height - width, width: passwordTextField.frame.size.width, height: passwordTextField.frame.size.height)
-        
-        passTextFieldBorder.borderWidth = width
-       
-        passwordTextField.layer.addSublayer(passTextFieldBorder)
-        passwordTextField.layer.masksToBounds = true
- 
-        
+        setTextFieldBorders()
         NotificationCenter.default.addObserver(self, selector: #selector(StartViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(StartViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        checkUserDefaults()
+        if startViewModel.checkUserDefaults() {
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "enterSegue", sender: self)
+            }
+        }
     }
     
     
     
    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         view.endEditing(true)
+        view.endEditing(true)
         if segue.identifier == "enterSegue"{
             let nav = segue.destination as! UINavigationController
             let desVC = nav.topViewController as! OrdersViewController
-            desVC.outLoginData = self.loginData
-            let controller = storyboard!.instantiateViewController(withIdentifier: "MenuVC") as! MenuViewController
-            controller.setLoginData(data: self.loginData)
-
+            desVC.ordersViewModel = startViewModel.buildOrdersViewModel()
+            desVC.ordersViewModel?.delegate = desVC
         }
     }
-    
-    
-    func logIn()  {
-        if loginData.status == "OK"{
-            let encoder = JSONEncoder()
-            if let encoded = try? encoder.encode(loginData) {
-                let defaults = UserDefaults.standard
-                defaults.set(encoded, forKey: "loginData")
-            }
-            self.performSegue(withIdentifier: "enterSegue", sender: self)
-        }else{
-            if self.view.frame.origin.y < 0{
-                print(self.view.frame.origin.y)
-                print("Hide")
-                self.view.frame.origin.y = 0
-            }
-            let ac = UIAlertController(title: "Ошибка", message: "Неверный логин или пароль", preferredStyle: UIAlertController.Style.alert)
-            let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
-                print("OK!")
-            }
-            ac.addAction(okAction)
-            self.present(ac, animated: true)
-        }
-    }
-  
-    
-    
     
     @IBAction func startEditingTextField(_ sender: UITextField) {
         if sender == phoneTextField{
@@ -154,25 +79,40 @@ class StartViewController: UIViewController {
     
     
     func log(phone: String, password: String) {
-        let httpConnector = HTTPConnector()
-        httpConnector.login(phone: phone, password: password){ outLoginData in
-            self.loginData = outLoginData
-            DispatchQueue.main.async{
-                self.logIn()
+        if password.isEmpty {
+            DispatchQueue.main.async {
+                AlertBuilder.simpleAlert(title: "Ошибка", message: "Пустое поле логина или пароля", controller: self)
             }
         }
+        startViewModel.enter(phoneText: phone, passText: password)
     }
     
     
     @IBAction func signIn(_ sender: UIButton) {
-        //print(sender.titleLabel?.font)
-        log(phone: phoneTextField.text!, password: passwordTextField.text!)
+         log(phone: phoneTextField.text!, password: passwordTextField.text!)
     }
     
 
 }
 
+extension StartViewController {
+    func setTextFieldBorders() {
+        let width = CGFloat(1.0)
+        phoneTextFieldBorder.borderColor = UIColor.darkGray.cgColor
+        phoneTextFieldBorder.frame = CGRect(x: 0, y: phoneTextField.frame.size.height - width, width: phoneTextField.frame.size.width, height: phoneTextField.frame.size.height)
+        phoneTextFieldBorder.borderWidth = width
+        phoneTextField.layer.addSublayer(phoneTextFieldBorder)
+        phoneTextField.layer.masksToBounds = true
+        passTextFieldBorder.borderColor = UIColor.darkGray.cgColor
+        passTextFieldBorder.frame = CGRect(x: 0, y: passwordTextField.frame.size.height - width, width: passwordTextField.frame.size.width, height: passwordTextField.frame.size.height)
+        passTextFieldBorder.borderWidth = width
+        passwordTextField.layer.addSublayer(passTextFieldBorder)
+        passwordTextField.layer.masksToBounds = true
+    }
+}
+
 extension UIViewController {
+    
     func addTapGestureToHideKeyboard() {
         let tapGesture = UITapGestureRecognizer(target: view, action: #selector(view.endEditing))
         view.addGestureRecognizer(tapGesture)
@@ -199,3 +139,21 @@ extension UIViewController {
     }
 }
 
+extension StartViewController: UnlockAppDelegate{
+    func loginApp() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "enterSegue", sender: self)
+        }
+    }
+    
+    func failure(text: String) {
+        DispatchQueue.main.async {
+            AlertBuilder.simpleAlert(title: "Ошибка", message: text, controller: self)
+        }
+    }
+}
+
+protocol UnlockAppDelegate: class {
+    func loginApp()
+    func failure(text: String)
+}
