@@ -52,6 +52,7 @@
 		C4F3F20A2209D69000E64489 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4F3F1FA2209D55400E64489 /* Roboto-Thin.ttf */; };
 		C4F3F20B2209D69000E64489 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4F3F1FB2209D55400E64489 /* Roboto-ThinItalic.ttf */; };
 		C4F3F20F220B0A8600E64489 /* AlertBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F3F20E220B0A8600E64489 /* AlertBuilder.swift */; };
+		C4F3F213220C67D100E64489 /* TransactionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F3F212220C67D000E64489 /* TransactionData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +105,7 @@
 		C4F3F1FD2209D55400E64489 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-LightItalic.ttf"; path = "../../../../.Trash/Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
 		C4F3F1FE2209D56200E64489 /* Apache License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Apache License.txt"; path = "../../../../.Trash/roboto/Apache License.txt"; sourceTree = "<group>"; };
 		C4F3F20E220B0A8600E64489 /* AlertBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBuilder.swift; sourceTree = "<group>"; };
+		C4F3F212220C67D000E64489 /* TransactionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +196,7 @@
 			children = (
 				C4F3F1B02209D04800E64489 /* OrdersData.swift */,
 				C4F3F1B32209D09100E64489 /* LoginData.swift */,
+				C4F3F212220C67D000E64489 /* TransactionData.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				C4DBABA221883B2400A6BF05 /* MenuViewController.swift in Sources */,
 				C4F3F1A82209CD6900E64489 /* BalanceViewModel.swift in Sources */,
 				C44559AF21AABF8600018EA7 /* TransactionTableViewCell.swift in Sources */,
+				C4F3F213220C67D100E64489 /* TransactionData.swift in Sources */,
 				C420AEC921948E8500E292E3 /* HTTPConnector.swift in Sources */,
 				C4DB32A3218D998A00636C1C /* SupportViewController.swift in Sources */,
 				C4F3F20F220B0A8600E64489 /* AlertBuilder.swift in Sources */,

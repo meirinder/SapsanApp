@@ -43,9 +43,7 @@ class OrdersViewController: Menu, UITableViewDataSource, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         orderTableView.refreshControl = refresher
-        
         orderTableView.delegate = self
         orderTableView.dataSource = self
     }
@@ -103,9 +101,11 @@ class OrdersViewController: Menu, UITableViewDataSource, UITableViewDelegate {
         cell.timeEndLabel.text = ordersViewModel?.timeEnd(section: indexPath.section, index: indexPath.row)
         cell.fromAdressLabel.text = ordersViewModel?.fromAddress(section: indexPath.section, index: indexPath.row)
         cell.toAdressLabel.text = ordersViewModel?.toAddress(section: indexPath.section, index: indexPath.row)
-        if ordersViewModel?.statusColor(section: indexPath.section, index: indexPath.row) == "#ff44aa44" {
-            cell.statusLabel.backgroundColor = UIColor(rgb: 0x44aa44)
-        }
+        cell.statusLabel.backgroundColor = ordersViewModel?.statusColor(section: indexPath.section, index: indexPath.row)
+ 
+        
+        
+
         
         return cell
     }

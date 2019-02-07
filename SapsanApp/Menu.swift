@@ -11,8 +11,10 @@ import UIKit
 class Menu: UIViewController {
 
     
-       var menuVC :MenuViewController!
-    
+    var menuVC: MenuViewController!
+    static var menuViewModel: MenuViewModel!
+    static var viewControllers: [UIViewController]!
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -24,6 +26,9 @@ class Menu: UIViewController {
         super.viewDidLoad()
 
         menuVC =  (self.storyboard?.instantiateViewController(withIdentifier: "MenuVC") as! MenuViewController)
+        menuVC.loginData = Menu.menuViewModel.loginData
+//        MenuViewController.viewControllers = Menu.viewControllers
+        menuVC.menuDelgate = self
         
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.handleSwipe))
         swipeRight.direction = .right

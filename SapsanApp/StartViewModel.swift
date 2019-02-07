@@ -22,9 +22,16 @@ class StartViewModel: NSObject {
         return data
     }
     
-    func checkUserDefaults() -> Bool {
-         
-        return false
+    func checkUserDefaults() {
+        if UserDefaults.standard.object(forKey: "key") != nil {
+            enter(phoneText: UserDefaults.standard.object(forKey: "phoneText") as? String ?? "",
+                  passText: UserDefaults.standard.object(forKey: "passText") as? String ?? "")
+        }
+     }
+    
+    func buildMenuViewModel() -> MenuViewModel {
+        let menuViewModel = MenuViewModel(loginData: data)
+        return menuViewModel
     }
     
     func buildOrdersViewModel() -> OrdersViewModel {
@@ -40,6 +47,8 @@ class StartViewModel: NSObject {
                     return
                 }
                 self.data = logData
+                UserDefaults.standard.set(phoneText, forKey: "phoneText")
+                UserDefaults.standard.set(passText, forKey: "passText")
                 UserDefaults.standard.set(logData.userCompanies?.first?.idCompany, forKey: "idCompany")
                 UserDefaults.standard.set(logData.userCompanies?.first?.idUser, forKey: "idUser")
                 UserDefaults.standard.set(logData.key, forKey: "key")

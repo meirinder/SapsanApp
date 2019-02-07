@@ -48,9 +48,11 @@ class OrdersViewModel: NSObject {
         return (itemStore[section][index].deliveryMoney ?? "error") + " ₽"
     }
     
-    func statusColor(section: Int, index: Int) -> String {
-        return itemStore[section][index].statusColor ?? ""
-    }
+    func statusColor(section: Int, index: Int) -> UIColor {
+        var color = itemStore[section][index].statusColor?.dropFirst(3) ?? "ffffff"
+        color = "#" + color
+        return UIColor(hexString: String(color))
+     }
     
     func status(section: Int, index: Int) -> String {
         return itemStore[section][index].statusText ?? "error"
@@ -73,7 +75,7 @@ class OrdersViewModel: NSObject {
     }
     
     func ordersInSectionCount(index: Int) -> Int {
-        return itemStore[index].count ?? 0
+        return itemStore[index].count 
     }
     
     func sectionsCount() -> Int {

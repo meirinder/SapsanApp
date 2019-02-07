@@ -23,7 +23,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oq4-fF-wSS">
                                 <rect key="frame" x="22.5" y="243.5" width="330" height="180"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="aao-yf-kVq">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_no_text" translatesAutoresizingMaskIntoConstraints="NO" id="aao-yf-kVq">
                                         <rect key="frame" x="15" y="15" width="300" height="150"/>
                                     </imageView>
                                 </subviews>
@@ -57,6 +57,6 @@
     </scenes>
     <resources>
         <image name="login_bg" width="1920" height="1080"/>
-        <image name="logo" width="1182" height="600"/>
+        <image name="logo_no_text" width="800" height="338"/>
     </resources>
 </document>

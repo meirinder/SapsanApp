@@ -10,4 +10,10 @@ import UIKit
 
 class MenuViewModel: NSObject {
 
+    var loginData: LoginData
+    
+    init(loginData: LoginData) {
+        self.loginData = loginData
+    }
+    
 }

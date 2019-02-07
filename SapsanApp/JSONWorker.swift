@@ -10,6 +10,61 @@ import UIKit
 
 class JSONWorker: NSObject {
     
+    
+    static func parseTransactions(data: Data) -> TransactionData {
+        let transactionsData = TransactionData()
+        let jsonResult  = try? JSONSerialization.jsonObject(with: data, options: [])
+        if let dictionary = jsonResult as? [String: Any] {
+            if let status = dictionary["status"] as? String {
+                transactionsData.status = status
+            }
+            if let balance = dictionary["balance"] as? String {
+                transactionsData.balance = balance
+            }
+            transactionsData.shortTransactions = parseShortTransactions(dictionary: dictionary)
+        }
+        return transactionsData
+    }
+    
+    static private func parseShortTransactions(dictionary: [String: Any]) -> [ShortTransaction] {
+        var shortTransactions = [ShortTransaction]()
+        if let transactions = dictionary["shortTransactions"] as? [Any] {
+            for i in 0..<transactions.count {
+                let localTransaction = ShortTransaction()
+                if let transaction = transactions[i] as? [String: Any] {
+                    if let id = transaction["id"] as? String {
+                        localTransaction.id = id
+                    }
+                    if let sum = transaction["sum"] as? String {
+                        localTransaction.sum = sum
+                    }
+                    if let type = transaction["type"] as? String {
+                        localTransaction.type = type
+                    }
+                    if let balanceAfter = transaction["balanceAfter"] as? String {
+                        localTransaction.balanceAfter = balanceAfter
+                    }
+                    if let sumColor = transaction["sumColor"] as? String {
+                        localTransaction.sumColor = sumColor
+                    }
+                    if let orderId = transaction["orderId"] as? String {
+                        localTransaction.orderId = orderId
+                    }
+                    if let comment = transaction["comment"] as? String {
+                        localTransaction.comment = comment
+                    }
+                    if let date = transaction["date"] as? String {
+                        localTransaction.date = date
+                    }
+                    
+                }
+                shortTransactions.append(localTransaction)
+            }
+        }
+        
+        return shortTransactions
+    }
+    
     static func parseOrders(data: Data) -> OrdersData {
         let ordersData = OrdersData()
         let jsonResult  = try? JSONSerialization.jsonObject(with: data, options: [])
@@ -105,6 +160,7 @@ class JSONWorker: NSObject {
         return ordersHeader
     }
     
+     
     static func parseLoginData(data: Data) -> LoginData? {
         let jsonResult  = try? JSONSerialization.jsonObject(with: data, options: [])
         if let dictionary = jsonResult as? [String: Any] {
@@ -114,8 +170,7 @@ class JSONWorker: NSObject {
                 loginData.errorText = checkErrorInLogin(dictionary: dictionary).text
                 return loginData
             }
-            //            loginDelegate?.successAction()
-            return setLoginProperties(dictionarie: dictionary)
+             return setLoginProperties(dictionarie: dictionary)
         }
         return nil
     }

@@ -41,11 +41,7 @@ class StartViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(StartViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        if startViewModel.checkUserDefaults() {
-            DispatchQueue.main.async {
-                self.performSegue(withIdentifier: "enterSegue", sender: self)
-            }
-        }
+        startViewModel.checkUserDefaults()
     }
     
     
@@ -58,6 +54,15 @@ class StartViewController: UIViewController {
             let desVC = nav.topViewController as! OrdersViewController
             desVC.ordersViewModel = startViewModel.buildOrdersViewModel()
             desVC.ordersViewModel?.delegate = desVC
+            Menu.viewControllers = [UIViewController]()
+            Menu.viewControllers.append(desVC)
+            let transactVC = self.storyboard?.instantiateViewController(withIdentifier: "TransactionViewController") as! TransactionViewController
+            transactVC.transactionViewModel = TransactionViewModel()
+            transactVC.transactionViewModel.delegate = transactVC 
+            Menu.viewControllers.append(transactVC)
+            
+//            Menu.viewControllers.append((self.storyboard?.instantiateViewController(withIdentifier: "SupportViewController"))!)
+            Menu.menuViewModel = startViewModel.buildMenuViewModel()
         }
     }
     

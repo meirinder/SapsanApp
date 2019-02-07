@@ -1,135 +1,123 @@
-////
-////  TransactionViewController.swift
-////  SapsanApp
-////
-////  Created by Savely on 30.10.2018.
-////  Copyright © 2018 Sapsan. All rights reserved.
-////
 //
-//import UIKit
+//  TransactionViewController.swift
+//  SapsanApp
 //
-class TransactionViewController: Menu  {} //datasource, delegate table view
+//  Created by Savely on 30.10.2018.
+//  Copyright © 2018 Sapsan. All rights reserved.
 //
-////    var itemStore: [[TransactionItem]] = []
-////    var sections = [String]()
-////    static var loginData = LoginJSONStructure()
-////   // var outLoginData =  LoginJSONStructure()
-////    var transactions = ShortTransactions()
-////    let httpConnector = HTTPConnector()
-//    
-//    
-//    
-//    @IBOutlet weak var transactionTableView: UITableView!
-//    
-//    @IBOutlet weak var menuBarButtonItem: UIBarButtonItem!
-//    
-//    lazy var refresher: UIRefreshControl = {
-//        let refreshControl = UIRefreshControl()
-//        refreshControl.addTarget(self, action: #selector(refreshTransactionTable), for: .valueChanged)
-//        // refreshControl.attributedTitle. = "Обновление заказов..."
-//        
-//        return refreshControl
-//    }()
-//    
-//    @objc func refreshTransactionTable(){
+
+import UIKit
+ 
+class TransactionViewController: Menu, ReloadTableViewDelegate {
+    
+    
+
+ 
+    var transactionViewModel: TransactionViewModel!
+    
+    
+    @IBOutlet weak var transactionTableView: UITableView!
+    
+    @IBOutlet weak var menuBarButtonItem: UIBarButtonItem!
+    
+    lazy var refresher: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshTransactionTable), for: .valueChanged)
+        // refreshControl.attributedTitle. = "Обновление заказов..."
+        
+        return refreshControl
+    }()
+    
+    @objc func refreshTransactionTable(){
 //        updateTransactionTable()
-//        refresher.endRefreshing()
-//    }
-//    
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//    }
-//    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        
-//        TransactionViewController.loginData = OrdersViewController.loginData
-//        
-//        transactionTableView.refreshControl = refresher
-//        
-//        updateTransactionTable()
-//
-//
-//        
-//        
-//    }
-//    
-////    func  updateTransactionTable(){
-////        httpConnector.getTransactions(idCompany: TransactionViewController.loginData.userCompanies[0].idCompany!, idUser: TransactionViewController.loginData.userCompanies[0].idUser!, key: TransactionViewController.loginData.key!){ outTransactions in
-////            self.transactions = outTransactions
-////            self.sections = self.getDates(transactions: self.transactions)
-////            self.itemStore.removeAll()
-////            for _ in self.sections {
-////                self.itemStore.append([])
-////            }
-////            self.fillItemStore()
-////            DispatchQueue.main.async{
-////                self.transactionTableView.reloadData()
-////            }
-////        }
-////    }
-//    
-////    func fillItemStore(){
-////        for shortTransaction in transactions.shortTransactions {
-////            let item = TransactionItem(sum: shortTransaction.sum!, sumColor: shortTransaction.sumColor!, type: shortTransaction.type ?? "", comment: "")
-////
-////            itemStore[findNeededDate(date: shortTransaction.date!)].append(item)
-////        }
-////    }
-////
-////    func findNeededDate(date : String)-> Int{
-////        var res = 0;
-////        for section in  sections {
-////            if date == section{
-////                return res
-////            }
-////            res += 1
-////        }
-////        return -1
-//    }
-//    
-////    func getDates(transactions : ShortTransactions) -> [String] {
-////        var tmp = [String]()
-////        for shortTransaction in transactions.shortTransactions {
-////            tmp.append(shortTransaction.date!)
-////        }
-////        
-////        return tmp.removeDuplicates()
-////    }
-//    @IBAction func menuBarButtonItem(_ sender: Any) {
-//        if AppDelegate.isMenuVC{
-//            showMenu()
-//        }else{
-//            hideMenu()
-//        }
-//
-//    }
-//    
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?{
-//        
-//        return sections[section]
-//    }
-//
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return sections.count
-//    }
-//    
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return itemStore[section].count
-//    }
-//    
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = transactionTableView.dequeueReusableCell(withIdentifier: "transactionCell") as! TransactionTableViewCell
-//        cell.statusLabel.text = itemStore[indexPath.section][indexPath.row].sum  + " ₽"
-//        cell.commentLabel.text = itemStore[indexPath.section][indexPath.row].type
-//        if itemStore[indexPath.section][indexPath.row].sumColor == "#ff00C851" {
-//            cell.statusLabel.backgroundColor = UIColor(rgb: 0x00C851)
-//        }
-//        if itemStore[indexPath.section][indexPath.row].sumColor == "#ffff4444" {
-//            cell.statusLabel.backgroundColor = UIColor(rgb: 0xff4444)
-//        }
-//        
-//        return cell
-//    }
-//
-//}
+        refresher.endRefreshing()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        transactionViewModel.getTransactions()
+        transactionTableView.refreshControl = refresher
+        transactionTableView.delegate = self
+        transactionTableView.dataSource = self
+//        updateTransactionTable
+    }
+    
+    func reloadTableView() {
+        DispatchQueue.main.async {
+            self.transactionTableView.reloadData()
+        }
+    }
+
+    @IBAction func menuBarButtonItem(_ sender: Any) {
+        if AppDelegate.isMenuVC{
+            showMenu()
+        }else{
+            hideMenu()
+        }
+
+    }
+}
+
+extension TransactionViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?{
+        
+        return transactionViewModel.titleForHeader(index: section)
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return transactionViewModel.sectionsCount()
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return transactionViewModel.transactionsInSectionCount(index: section)
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = transactionTableView.dequeueReusableCell(withIdentifier: "transactionCell") as! TransactionTableViewCell
+        cell.statusLabel.text = transactionViewModel.sum(section: indexPath.section, index: indexPath.row)
+        cell.commentLabel.text = transactionViewModel.type(section: indexPath.section, index: indexPath.row)
+        cell.statusLabel.backgroundColor = transactionViewModel.sumColor(section: indexPath.section, index: indexPath.row)
+        return cell
+    }
+}
+
+extension UIColor {
+    convenience init(hexString:String) {
+        let scanner = Scanner(string: hexString)
+        
+        if (hexString.hasPrefix("#")) {
+            scanner.scanLocation = 1
+        }
+        
+        var color:UInt32 = 0
+        scanner.scanHexInt32(&color)
+        
+        let mask = 0x000000FF
+        let r = Int(color >> 16) & mask
+        let g = Int(color >> 8) & mask
+        let b = Int(color) & mask
+        
+        let red   = CGFloat(r) / 255.0
+        let green = CGFloat(g) / 255.0
+        let blue  = CGFloat(b) / 255.0
+        
+        self.init(red:red, green:green, blue:blue, alpha:1)
+    }
+    
+    func toHexString() -> String {
+        var r:CGFloat = 0
+        var g:CGFloat = 0
+        var b:CGFloat = 0
+        var a:CGFloat = 0
+        
+        getRed(&r, green: &g, blue: &b, alpha: &a)
+        
+        let rgb:Int = (Int)(r*255)<<16 | (Int)(g*255)<<8 | (Int)(b*255)<<0
+        
+        return NSString(format:"#%06x", rgb) as String
+    }
+}
