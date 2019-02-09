@@ -24,6 +24,7 @@ class StartViewModel: NSObject {
     
     func checkUserDefaults() {
         if UserDefaults.standard.object(forKey: "key") != nil {
+//            delegate?.loginApp()
             enter(phoneText: UserDefaults.standard.object(forKey: "phoneText") as? String ?? "",
                   passText: UserDefaults.standard.object(forKey: "passText") as? String ?? "")
         }

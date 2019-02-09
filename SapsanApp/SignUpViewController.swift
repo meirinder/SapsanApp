@@ -13,19 +13,25 @@ class SignUpViewController: UIViewController {
 
     @IBOutlet weak var wk: WKWebView!
 
+     var link = "https://sapsan.cloud?app=ios"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(false, animated: false)
 
-        let url = "https://sapsan.cloud?app=ios"
-        let myUrl = URL(string: url)
-        let request = URLRequest(url: myUrl!)
-        
-        wk.load(request)
+       
+        reloadView()
         // Do any additional setup after loading the view.
     }
     
+    func reloadView() {
+        DispatchQueue.main.async {
+            let url = URL(string: self.link)
+            let request = URLRequest(url: url!)
+            
+            self.wk.load(request)
+        }
+    }
 
     /*
     // MARK: - Navigation

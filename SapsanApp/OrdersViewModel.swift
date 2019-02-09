@@ -38,7 +38,9 @@ class OrdersViewModel: NSObject {
         }
     }
     
-    
+    func ordersCount() -> Int {
+        return ordersData.shortOrders?.count ?? 0
+    }
     
     func cleanPrice(section: Int, index: Int) -> String {
         return (itemStore[section][index].companyMoney ?? "error") + " ₽"
@@ -86,13 +88,26 @@ class OrdersViewModel: NSObject {
         return sections[index]
     }
     
-    func getOrders() {
+    func getOrders(first: Int, count: Int) {
         NetWorker.getOrders(idCompany: (UserDefaults.standard.object(forKey: "idCompany") as? String) ?? "",
                             idUser: (UserDefaults.standard.object(forKey: "idUser") as? String) ?? "",
-                            key: (UserDefaults.standard.object(forKey: "key") as? String) ?? "") { outData in
-                                self.ordersData = JSONWorker.parseOrders(data: outData)
-                                self.delegate?.reloadTableView()
-        }
+                            key: (UserDefaults.standard.object(forKey: "key") as? String) ?? "", first: first, count: count) { outData in
+                                let localOrders = JSONWorker.parseOrders(data: outData)
+                                if first == 0 {
+                                    self.ordersData = localOrders
+                                } else {
+                                    self.ordersData.balance = localOrders.balance
+                                    if let localShortOrders = localOrders.shortOrders {
+                                        for order in localShortOrders {
+                                            self.ordersData.shortOrders?.append(order)
+                                        }
+                                    }
+                                }
+                                self.fillItemStore()
+                                if (localOrders.shortOrders?.count ?? 0) > 0 {
+                                    self.delegate?.reloadTableView()
+                                }
+         }
     }
     
 //    func findNeededDate(date : String)-> Int{

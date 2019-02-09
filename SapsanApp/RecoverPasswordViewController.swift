@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import AKMaskField
 
 class RecoverPasswordViewController: UIViewController  {
 
     
+    @IBOutlet weak var recoveryTextField: AKMaskField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +22,12 @@ class RecoverPasswordViewController: UIViewController  {
     }
     
     
-
+    @IBAction func recoveryAction(_ sender: UIButton) {
+        NetWorker.recoveryPass(phone: recoveryTextField.text ?? "errorText" ){ outData in
+            
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

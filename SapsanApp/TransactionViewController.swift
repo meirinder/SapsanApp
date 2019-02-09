@@ -23,15 +23,14 @@ class TransactionViewController: Menu, ReloadTableViewDelegate {
     lazy var refresher: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshTransactionTable), for: .valueChanged)
-        // refreshControl.attributedTitle. = "Обновление заказов..."
-        
+        refreshControl.attributedTitle = NSAttributedString(string: "Обновление Транзакций...")
+        refreshControl.layer.zPosition = -1
         return refreshControl
     }()
     
     @objc func refreshTransactionTable(){
-//        updateTransactionTable()
-        refresher.endRefreshing()
-    }
+        transactionViewModel.getTransactions(first: 0, count: 20)
+     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -39,7 +38,7 @@ class TransactionViewController: Menu, ReloadTableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        transactionViewModel.getTransactions()
+        transactionViewModel.getTransactions(first: 0, count: 20)
         transactionTableView.refreshControl = refresher
         transactionTableView.delegate = self
         transactionTableView.dataSource = self
@@ -48,6 +47,9 @@ class TransactionViewController: Menu, ReloadTableViewDelegate {
     
     func reloadTableView() {
         DispatchQueue.main.async {
+            if self.refresher.isRefreshing {
+                self.refresher.endRefreshing()
+            }
             if let tb = self.transactionTableView {
                  tb.reloadData()
             }
@@ -79,6 +81,9 @@ extension TransactionViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if ((indexPath.section == transactionViewModel.sectionsCount() - 1) && (indexPath.row ==  transactionViewModel.transactionsInSectionCount(index: transactionViewModel.sectionsCount() - 1) - 1)) {
+            transactionViewModel.getTransactions(first: transactionViewModel.transactionsCount(), count: 20)
+        }
         let cell = transactionTableView.dequeueReusableCell(withIdentifier: "transactionCell") as! TransactionTableViewCell
         cell.statusLabel.text = transactionViewModel.sum(section: indexPath.section, index: indexPath.row)
         cell.commentLabel.text = transactionViewModel.type(section: indexPath.section, index: indexPath.row)

@@ -15,7 +15,7 @@ class OrdersViewController: Menu, UITableViewDataSource, UITableViewDelegate {
     
     var ordersViewModel: OrdersViewModel?{
         didSet {
-            ordersViewModel?.getOrders()
+            ordersViewModel?.getOrders(first: 0, count: 20)
         }
     }
 
@@ -35,8 +35,8 @@ class OrdersViewController: Menu, UITableViewDataSource, UITableViewDelegate {
     lazy var refresher: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshOrderTable), for: .valueChanged)
-       // refreshControl.attributedTitle. = "Обновление заказов..."
-        
+        refreshControl.attributedTitle = NSAttributedString(string: "Обновление заказов...")
+        refreshControl.layer.zPosition = -1
         return refreshControl
     }()
 
@@ -50,8 +50,7 @@ class OrdersViewController: Menu, UITableViewDataSource, UITableViewDelegate {
 
 
     @objc func refreshOrderTable(){
-        ordersViewModel?.getOrders()
-        refresher.endRefreshing()
+        ordersViewModel?.getOrders(first: 0, count: 20)
     }
 
 
@@ -93,6 +92,9 @@ class OrdersViewController: Menu, UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if ((indexPath.section == ordersViewModel?.sectionsCount() ?? 0 - 1) && (indexPath.row == ordersViewModel?.ordersInSectionCount(index: ordersViewModel?.sectionsCount() ?? 0 - 1) ?? 0 - 1)) {
+            ordersViewModel?.getOrders(first: ordersViewModel?.ordersCount() ?? 0, count: 20)
+        }
         let cell = orderTableView.dequeueReusableCell(withIdentifier: "OrderCell") as! OrderTableViewCell
         cell.cleanPriceLabel.text = ordersViewModel?.cleanPrice(section: indexPath.section, index: indexPath.row)
         cell.fullPriceLabel.text = ordersViewModel?.fullPrice(section: indexPath.section, index: indexPath.row)
@@ -144,6 +146,9 @@ extension UIColor {
 extension OrdersViewController: ReloadTableViewDelegate {
     func reloadTableView() {
         DispatchQueue.main.async {
+            if self.refresher.isRefreshing {
+                self.refresher.endRefreshing()
+            }
             if let tableView = self.orderTableView {
                 tableView.reloadData()
             }

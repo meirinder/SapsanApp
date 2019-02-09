@@ -13,11 +13,28 @@ class SupportViewController: Menu {
     
     @IBOutlet weak var menuBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var phoneLabel: UILabel!
     
+    
+    @IBOutlet weak var phoneButton: UIButton!
+    @IBOutlet weak var emailButton: UIButton!
     var supportViewModel: SupportViewModel!
 
+    
+    @IBAction func phoneAction(_ sender: UIButton) {
+        let url: NSURL = URL(string: "tel://\(String(describing: "+7" + supportViewModel.phone()))")! as NSURL
+        UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+    }
+    
+    @IBAction func emailAction(_ sender: UIButton) {
+        let address = supportViewModel.email()
+        if let url = URL(string: "mailto:\(address)") {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
+    }
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,9 +52,9 @@ class SupportViewController: Menu {
         supportViewModel.getInfo()
         
         nameLabel.text = " " + supportViewModel.name()
-        emailLabel.text = supportViewModel.email()
-        phoneLabel.text = "+7 (" + formatPhone()
-    }
+        emailButton.setTitle(supportViewModel.email(), for: .normal)
+        phoneButton.setTitle("+7 (" + formatPhone(), for: .normal)
+     }
     
     func formatPhone() -> String {
         let phoneNumber = supportViewModel.phone()

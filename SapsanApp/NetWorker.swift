@@ -75,9 +75,9 @@ class NetWorker {
         task.resume()
     }
     
-    static func getOrders(idCompany : String, idUser : String, key : String,completion: @escaping (Data) -> ()){
+    static func getOrders(idCompany : String, idUser : String, key : String,  first: Int, count: Int, completion: @escaping (Data) -> ()){
         
-        let body = "class=orders_helper&method=add_short_orders&idCompany=" + idCompany + "&" + "idUser=" + idUser
+        let body = "class=orders_helper&method=add_short_orders&idCompany=" + idCompany + "&" + "idUser=" + idUser + "&offset=" + "\(first)" + "&count=" + "\(count)"
         let dataOfBody = body.data(using: String.Encoding.utf8)
         let loginURL = URL(string:"http://app.citycourier.pro/api/client/"+APIVERSION+"/orders.php")!
         var reqest = URLRequest(url: loginURL )
@@ -107,9 +107,9 @@ class NetWorker {
         //   return OrdersJSON
     }
     
-    static func getTransactions(idCompany : String, idUser : String, key : String,completion: @escaping (Data) -> ()){
+    static func getTransactions(idCompany : String, idUser : String, key : String, first: Int, count: Int, completion: @escaping (Data) -> ()){
         
-        let body = "class=company_user&method=add_short_transactions&idCompany=" + idCompany + "&" + "idUser=" + idUser
+        let body = "class=company_user&method=add_short_transactions&idCompany=" + idCompany + "&" + "idUser=" + idUser + "&offset=" + "\(first)" + "&count=" + "\(count)"
         let dataOfBody = body.data(using: String.Encoding.utf8)
         let loginURL = URL(string:"http://app.citycourier.pro/api/client/"+APIVERSION+"/user.php")!
         var reqest = URLRequest(url: loginURL )
@@ -138,7 +138,65 @@ class NetWorker {
         
         //   return OrdersJSON
     }
+    
+    static func recoveryPass(phone: String, completion: @escaping (Data) -> ()) {
+        let body = "class=access&method=restore_password&phone=" + phone.formatPhoneNumber()
+        let dataOfBody = body.data(using: String.Encoding.utf8)
+        let loginURL = URL(string:"http://app.citycourier.pro/api/client/"+APIVERSION+"/login.php")!
+        var reqest = URLRequest(url: loginURL )
+        reqest.httpMethod = "POST"
+        reqest.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        reqest.setValue("iOS", forHTTPHeaderField: "App-OS")
+        reqest.httpBody = dataOfBody
+        
+        
+        let task = URLSession.shared.dataTask(with: reqest){data,response,error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                return
+            }
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print("response = \(String(describing: response))")
+            }
+            completion(data)
+                                    let responseString = String(data: data, encoding: .utf8)
+                                    print("responseString = \(String(describing: responseString))")
+            
+        }
+        task.resume()
+    }
+    
 
+    static func signUp(completion: @escaping (Data) -> ()) {
+        
+        let body = "class=access&method=get_sign_up_link"
+        let dataOfBody = body.data(using: String.Encoding.utf8)
+        let loginURL = URL(string:"http://app.citycourier.pro/api/client/"+APIVERSION+"/login.php")!
+        var reqest = URLRequest(url: loginURL )
+        reqest.httpMethod = "POST"
+        reqest.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        reqest.setValue("iOS", forHTTPHeaderField: "App-OS")
+        reqest.httpBody = dataOfBody
+        
+        
+        let task = URLSession.shared.dataTask(with: reqest){data,response,error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                return
+            }
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print("response = \(String(describing: response))")
+            }
+            completion(data)
+            //                        let responseString = String(data: data, encoding: .utf8)
+            //                        print("responseString = \(String(describing: responseString))")
+            
+        }
+        task.resume()
+    }
+    
 }
 
 

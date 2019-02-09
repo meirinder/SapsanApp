@@ -177,6 +177,21 @@ class JSONWorker: NSObject {
         return nil
     }
     
+    static func parseSignUp(data: Data) -> String {
+        var resString = ""
+        let jsonResult  = try? JSONSerialization.jsonObject(with: data, options: [])
+        if let dictionary = jsonResult as? [String: Any] {
+            if let status = dictionary["status"] as? String {
+                if status == "OK" {
+                    if let str = dictionary["signUpLink"] as? String {
+                        resString = str
+                    }
+                }
+            }
+        }
+        return resString
+    }
+    
     private static func setLoginProperties(dictionarie: [String: Any]) -> LoginData {
         let loginData = LoginData()
         if let status = dictionarie["status"] as? String {

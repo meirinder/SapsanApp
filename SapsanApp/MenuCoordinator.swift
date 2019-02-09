@@ -50,11 +50,11 @@ class MenuCoordinator: EventHadlerDelegate {
         switch event {
         case .changeUser:
             if let orderVC = self.navController.topViewController as? OrdersViewController {
-                orderVC.ordersViewModel?.getOrders()
+                orderVC.ordersViewModel?.getOrders(first: 0, count: 20)
             }
             
             if let transactionVC = self.navController.topViewController as? TransactionViewController {
-                transactionVC.transactionViewModel?.getTransactions()
+                transactionVC.transactionViewModel?.getTransactions(first: 0, count: 20)
             }
             break
         case .balance:
