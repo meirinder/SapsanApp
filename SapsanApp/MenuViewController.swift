@@ -12,11 +12,15 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBOutlet weak var dispatcherPhoneButton: UIButton!
     static var currentCompany = 0
+    static var currentMenu = 0
     @IBOutlet weak var chooseCompanyButton: UIButton!
     @IBOutlet weak var menuTableView: UITableView!
     @IBOutlet weak var dropDownMenuTableView: UITableView!
+    @IBOutlet weak var balanceButton: UIButton!
+    
 //    static var viewControllers: [UIViewController]!
     var menuDelgate: Menu!
+    weak var delegate: EventHadlerDelegate?
     
     var loginData: LoginData!
 //    var httpConnector = HTTPConnector()
@@ -34,24 +38,44 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     var companies = [String]()
     static var txtColors = [UIColor(rgb: 0x1D2880), UIColor.black, UIColor.black]
 
+   
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-      
 
+        self.setBalance()
+        switch MenuViewController.currentMenu {
+        case 0:
+            MenuViewController.txtColors[0] = UIColor(rgb: 0x1D2880)
+            MenuViewController.txtColors[1] = UIColor.black
+            MenuViewController.txtColors[2] = UIColor.black
+            break
+        case 1:
+            MenuViewController.txtColors[0] = UIColor.black
+            MenuViewController.txtColors[1] = UIColor(rgb: 0x1D2880)
+            MenuViewController.txtColors[2] = UIColor.black
+            break
+        case 2:
+            MenuViewController.txtColors[0] = UIColor.black
+            MenuViewController.txtColors[1] = UIColor.black
+            MenuViewController.txtColors[2] = UIColor(rgb: 0x1D2880)
+            break
+        default:
+            break
+        }
+        let companyName = "  " + (loginData.userCompanies?[MenuViewController.currentCompany].companyName!)! + "  "
+        chooseCompanyButton.setTitle(companyName, for: .normal)
+        menuTableView.reloadData()
     }
+    
+    
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-//        let backgroundImage = UIImage(named: "login_bg.jpg")
-//        let imageView = UIImageView(image: backgroundImage)
-//        imageView.contentMode = .scaleAspectFill
-//        imageView.alpha = 0.5
-        
+        self.setBalance()
+
+
         menuTableView.delegate = self
         menuTableView.dataSource = self
         dropDownMenuTableView.isHidden = true
@@ -59,8 +83,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             companies.append(company.companyName!)
         }
         
-        let companyName = "  " + (loginData.userCompanies?[MenuViewController.currentCompany].companyName!)! + "  "
-        chooseCompanyButton.setTitle(companyName, for: .normal)
+        
         userNameLabel.text = "  " +  (loginData.userCompanies?[MenuViewController.currentCompany].name!)! + "  "
         
         dispatcherPhoneButton.setTitle("+7 ("+formatPhone(), for: .normal)
@@ -134,61 +157,35 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == self.menuTableView {
-//            self.navigationController?.popToRootViewController(animated: false)
-//            self.navigationController?.popViewController(animated: false)
             switch indexPath.row {
             case 0:
-                MenuViewController.txtColors[0] = UIColor(rgb: 0x1D2880)
-                MenuViewController.txtColors[1] = UIColor.black
-                MenuViewController.txtColors[2] = UIColor.black
-                menuTableView.reloadData()
                 
-                let detVC = Menu.viewControllers[0]//= self.storyboard?.instantiateViewController(withIdentifier: "OrdersViewController")
-                if navigationController?.topViewController?.isEqual(detVC) ?? true {
+                if MenuViewController.currentMenu == 0 {
                     menuDelgate.hideMenu()
-                }else {
-                     self.navigationController?.
-                     self.navigationController?.pushViewController(detVC, animated: false)
+                } else {
+                    delegate?.handleEvent(event: .orders)
                 }
                 
-              
-                
-                //performSegue(withIdentifier: "orderSegue", sender: self)
+                MenuViewController.currentMenu = 0
                 break
             case 1:
-                MenuViewController.txtColors[0] = UIColor.black
-                MenuViewController.txtColors[1] = UIColor(rgb: 0x1D2880)
-                MenuViewController.txtColors[2] = UIColor.black
-                menuTableView.reloadData()
-                
-                
-                let detVC = Menu.viewControllers[1]//= self.storyboard?.instantiateViewController(withIdentifier: "TransactionViewController")
-                if navigationController?.topViewController?.isEqual(detVC) ?? true {
+                if MenuViewController.currentMenu == 1 {
                     menuDelgate.hideMenu()
-                }else {
-                    self.navigationController?.pushViewController(detVC, animated: false)
+                } else {
+                    delegate?.handleEvent(event: .transactions)
+
                 }
-                
-                
-                //performSegue(withIdentifier: "transactionSegue", sender: self)
+                MenuViewController.currentMenu = 1
                 break
             case 2:
                 
-                MenuViewController.txtColors[0] = UIColor.black
-                MenuViewController.txtColors[1] = UIColor.black
-                MenuViewController.txtColors[2] = UIColor(rgb: 0x1D2880)
-                menuTableView.reloadData()
-                
-                let detVC = Menu.viewControllers[2]// = self.storyboard?.instantiateViewController(withIdentifier: "SupportViewController")
-//                (detVC as! SupportViewController).outLoginData  = MenuViewController.loginData
-                if navigationController?.topViewController?.isEqual(detVC) ?? true {
+                if MenuViewController.currentMenu == 2 {
                     menuDelgate.hideMenu()
-                }else {
-                     self.navigationController?.pushViewController(detVC, animated: true)
+                } else {
+                    delegate?.handleEvent(event: .support)
                 }
-   
                 
-                //performSegue(withIdentifier: "supportSegue", sender: self)
+                MenuViewController.currentMenu = 2
             default: break
             }
         }
@@ -204,10 +201,10 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
                 UserDefaults.standard.set(newData?.key, forKey: "key")
                 UserDefaults.standard.set(self.loginData.userCompanies?[indexPath.row].idCompany, forKey: "idCompany")
                 UserDefaults.standard.set(self.loginData.userCompanies?[indexPath.row].idUser, forKey: "idUser")
-                let ordercVC = Menu.viewControllers[0] as? OrdersViewController
-                ordercVC?.ordersViewModel?.getOrders()
-                let transactionVC = Menu.viewControllers[1] as? TransactionViewController
-                transactionVC?.transactionViewModel?.getTransactions()
+                UserDefaults.standard.set(newData?.balance, forKey: "balance")
+                self.setBalance()
+
+                self.delegate?.handleEvent(event: .changeUser)
             }
             
             MenuViewController.currentCompany = indexPath.row
@@ -225,10 +222,14 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     @IBAction func balanceAction(_ sender: UIButton) {
-        let detVC = self.storyboard?.instantiateViewController(withIdentifier: "BalanceViewController")
-        self.navigationController?.pushViewController(detVC!, animated: true)
+        delegate?.handleEvent(event: .balance)
     }
 
+    func setBalance() {
+        DispatchQueue.main.async {
+             self.balanceButton.setTitle(((UserDefaults.standard.object(forKey: "balance")) as! String), for: .normal)
+        }
+    }
     
 }
 

@@ -23,7 +23,8 @@ class StartViewController: UIViewController {
  
     private let phoneTextFieldBorder = CALayer()
     private let passTextFieldBorder = CALayer()
-    
+    private let navController = UINavigationController()
+    private var menuCoordinator: MenuCoordinator!
 
     
     
@@ -61,7 +62,10 @@ class StartViewController: UIViewController {
             transactVC.transactionViewModel.delegate = transactVC 
             Menu.viewControllers.append(transactVC)
             
-//            Menu.viewControllers.append((self.storyboard?.instantiateViewController(withIdentifier: "SupportViewController"))!)
+            let supportVC = self.storyboard?.instantiateViewController(withIdentifier: "SupportViewController") as! SupportViewController
+            supportVC.supportViewModel = SupportViewModel()
+            Menu.viewControllers.append(supportVC)
+            
             Menu.menuViewModel = startViewModel.buildMenuViewModel()
         }
     }
@@ -147,7 +151,10 @@ extension UIViewController {
 extension StartViewController: UnlockAppDelegate{
     func loginApp() {
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "enterSegue", sender: self)
+            self.menuCoordinator = MenuCoordinator(navController: self.navController, data: self.startViewModel.data)
+            self.navigationController?.present(self.navController, animated: false, completion: nil)
+            self.menuCoordinator.start()
+//            self.performSegue(withIdentifier: "enterSegue", sender: self)
         }
     }
     

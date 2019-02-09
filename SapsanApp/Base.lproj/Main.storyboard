@@ -391,7 +391,7 @@
                                             <constraint firstAttribute="height" constant="150" id="P1V-jq-u5Y"/>
                                         </constraints>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DropDownCell" textLabel="SOd-5X-BdN" style="IBUITableViewCellStyleDefault" id="j9M-R9-5r2">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DropDownCell" textLabel="SOd-5X-BdN" style="IBUITableViewCellStyleDefault" id="j9M-R9-5r2">
                                                 <rect key="frame" x="0.0" y="28" width="305" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="j9M-R9-5r2" id="B1T-2f-PXF">
@@ -476,7 +476,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="r4f-z2-w0z">
-                                                        <rect key="frame" x="0.0" y="40" width="112" height="32"/>
+                                                        <rect key="frame" x="0.0" y="40" width="144" height="32"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="feN-l0-5sG">
                                                                 <rect key="frame" x="0.0" y="0.0" width="62" height="32"/>
@@ -488,9 +488,12 @@
                                                                     <action selector="balanceAction:" destination="Pn2-az-G9W" eventType="touchUpInside" id="51a-8g-Tuf"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LIN-ea-cmU">
-                                                                <rect key="frame" x="64" y="0.0" width="48" height="32"/>
-                                                                <state key="normal" title="2100 р">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LIN-ea-cmU">
+                                                                <rect key="frame" x="64" y="0.0" width="80" height="32"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="80" id="8Zn-Lb-QHH"/>
+                                                                </constraints>
+                                                                <state key="normal" title="22222222">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
                                                                 <connections>
@@ -535,6 +538,7 @@
                         <viewLayoutGuide key="safeArea" id="w2h-GY-M5g"/>
                     </view>
                     <connections>
+                        <outlet property="balanceButton" destination="LIN-ea-cmU" id="hcJ-YG-fYB"/>
                         <outlet property="chooseCompanyButton" destination="bhI-r1-d9L" id="Cxr-W2-DJM"/>
                         <outlet property="dispatcherPhoneButton" destination="2za-1A-Qhd" id="kfZ-aZ-XTW"/>
                         <outlet property="dropDownMenuTableView" destination="cdr-MK-fHb" id="8KZ-tM-gLB"/>
@@ -1010,8 +1014,8 @@
         <image name="new_login_bg" width="614" height="1080"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cWc-oE-ReT"/>
+        <segue reference="BwS-5L-Twi"/>
         <segue reference="jcW-yx-E94"/>
-        <segue reference="yb7-Xu-FDx"/>
+        <segue reference="flm-at-75l"/>
     </inferredMetricsTieBreakers>
 </document>

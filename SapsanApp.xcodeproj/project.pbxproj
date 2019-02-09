@@ -53,6 +53,7 @@
 		C4F3F20B2209D69000E64489 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4F3F1FB2209D55400E64489 /* Roboto-ThinItalic.ttf */; };
 		C4F3F20F220B0A8600E64489 /* AlertBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F3F20E220B0A8600E64489 /* AlertBuilder.swift */; };
 		C4F3F213220C67D100E64489 /* TransactionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F3F212220C67D000E64489 /* TransactionData.swift */; };
+		C4F3F215220EC2DD00E64489 /* MenuCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F3F214220EC2DD00E64489 /* MenuCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +107,7 @@
 		C4F3F1FE2209D56200E64489 /* Apache License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Apache License.txt"; path = "../../../../.Trash/roboto/Apache License.txt"; sourceTree = "<group>"; };
 		C4F3F20E220B0A8600E64489 /* AlertBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBuilder.swift; sourceTree = "<group>"; };
 		C4F3F212220C67D000E64489 /* TransactionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionData.swift; sourceTree = "<group>"; };
+		C4F3F214220EC2DD00E64489 /* MenuCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 			children = (
 				C4C4A06B21871CAC0026AA37 /* Main.storyboard */,
 				C4C4A06721871CAC0026AA37 /* AppDelegate.swift */,
+				C4F3F214220EC2DD00E64489 /* MenuCoordinator.swift */,
 				C4F3F1982209C5BC00E64489 /* ViewControllers */,
 				C4F3F19C2209CCB700E64489 /* ViewModels */,
 				C4F3F19A2209C5F600E64489 /* Model */,
@@ -397,6 +400,7 @@
 				C4F3F1A02209CCF500E64489 /* RecoverPasswordViewModel.swift in Sources */,
 				C4C4A07D218727830026AA37 /* StartViewController.swift in Sources */,
 				C4F3F1A42209CD5200E64489 /* OrdersViewModel.swift in Sources */,
+				C4F3F215220EC2DD00E64489 /* MenuCoordinator.swift in Sources */,
 				C4DBABA221883B2400A6BF05 /* MenuViewController.swift in Sources */,
 				C4F3F1A82209CD6900E64489 /* BalanceViewModel.swift in Sources */,
 				C44559AF21AABF8600018EA7 /* TransactionTableViewCell.swift in Sources */,

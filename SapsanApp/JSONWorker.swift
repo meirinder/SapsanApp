@@ -20,6 +20,7 @@ class JSONWorker: NSObject {
             }
             if let balance = dictionary["balance"] as? String {
                 transactionsData.balance = balance
+                UserDefaults.standard.set(balance, forKey: "balance")
             }
             transactionsData.shortTransactions = parseShortTransactions(dictionary: dictionary)
         }
@@ -74,6 +75,7 @@ class JSONWorker: NSObject {
             }
             if let balance = dictionary["balance"] as? String {
                 ordersData.balance = balance
+                UserDefaults.standard.set(balance, forKey: "balance")
             }
             ordersData.ordersHeader = parseHeaderInfo(dictionarie: dictionary)
             ordersData.ratingCourier = parseCourierRating(dictioanrie: dictionary)
@@ -188,6 +190,7 @@ class JSONWorker: NSObject {
         }
         if let balance = dictionarie["balance"] as? String {
             loginData.balance = balance
+            UserDefaults.standard.set(balance, forKey: "balance")
         }
         loginData.supportInfo = parseLoginSupportInfo(dictionarie: dictionarie)
         loginData.userCompanies = parseLoginUserCompanies(dictionarie: dictionarie)

@@ -144,7 +144,9 @@ extension UIColor {
 extension OrdersViewController: ReloadTableViewDelegate {
     func reloadTableView() {
         DispatchQueue.main.async {
-            self.orderTableView.reloadData()
+            if let tableView = self.orderTableView {
+                tableView.reloadData()
+            }
         }
     }
 }

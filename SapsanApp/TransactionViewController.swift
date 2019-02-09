@@ -48,7 +48,9 @@ class TransactionViewController: Menu, ReloadTableViewDelegate {
     
     func reloadTableView() {
         DispatchQueue.main.async {
-            self.transactionTableView.reloadData()
+            if let tb = self.transactionTableView {
+                 tb.reloadData()
+            }
         }
     }
 

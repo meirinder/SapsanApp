@@ -11,6 +11,7 @@ import UIKit
 class Menu: UIViewController {
 
     
+    static var delegate: EventHadlerDelegate?
     var menuVC: MenuViewController!
     static var menuViewModel: MenuViewModel!
     static var viewControllers: [UIViewController]!
@@ -27,8 +28,12 @@ class Menu: UIViewController {
 
         menuVC =  (self.storyboard?.instantiateViewController(withIdentifier: "MenuVC") as! MenuViewController)
         menuVC.loginData = Menu.menuViewModel.loginData
+        menuVC.delegate = Menu.delegate
 //        MenuViewController.viewControllers = Menu.viewControllers
         menuVC.menuDelgate = self
+        
+        
+        self.addChild(self.menuVC)
         
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.handleSwipe))
         swipeRight.direction = .right
@@ -59,7 +64,7 @@ class Menu: UIViewController {
                                             y: UIScreen.main.bounds.minY ,
                                             width: UIScreen.main.bounds.size.width,
                                             height: UIScreen.main.bounds.size.height)
-            self.addChild(self.menuVC)
+           
             self.view.addSubview(self.menuVC.view)
             AppDelegate.isMenuVC = false
         }
