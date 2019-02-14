@@ -38,6 +38,30 @@ class OrdersViewModel: NSObject {
         }
     }
     
+    func orderId(section: Int, index: Int) -> String {
+        return itemStore[section][index].id ?? ""
+    }
+    
+    func headerBodyText() -> String {
+        return ordersData.ordersHeader?.body ?? "errorBody"
+    }
+    
+    func headerBGColor() -> UIColor {
+        var color = ordersData.ordersHeader?.bgColor?.dropFirst(3) ?? "ffffff"
+        color = "#" + color
+        return UIColor(hexString: String(color))
+    }
+    
+    func headerTextColor() -> UIColor {
+        var color = ordersData.ordersHeader?.textColor?.dropFirst(3) ?? "ffffff"
+        color = "#" + color
+        return UIColor(hexString: String(color))
+     }
+    
+    func headerText() -> String {
+        return ordersData.ordersHeader?.header ?? "errorHeader"
+    }
+    
     func ordersCount() -> Int {
         return ordersData.shortOrders?.count ?? 0
     }

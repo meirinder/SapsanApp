@@ -139,6 +139,40 @@ class NetWorker {
         //   return OrdersJSON
     }
     
+    
+    static func getFullOrders(idCompany : String, idUser : String, idOrder: String, key : String, completion: @escaping (Data) -> ()){
+        
+        let body = "method=add_full_order_info&class=orders_helper&idCompany=" + idCompany + "&" + "idUser=" + idUser + "&idOrder=" + idOrder
+        let dataOfBody = body.data(using: String.Encoding.utf8)
+        let loginURL = URL(string:"http://app.citycourier.pro/api/client/"+APIVERSION+"/orders.php")!
+        var reqest = URLRequest(url: loginURL )
+        reqest.httpMethod = "POST"
+        reqest.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        reqest.setValue(key, forHTTPHeaderField: "Mobile-Key")
+        reqest.setValue("iOS", forHTTPHeaderField: "App-OS")
+        reqest.httpBody = dataOfBody
+        
+        
+        let task = URLSession.shared.dataTask(with: reqest){data,response,error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                return
+            }
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print("response = \(String(describing: response))")
+            }
+            completion(data)
+                                    let responseString = String(data: data, encoding: .utf8)
+                                    print("responseString = \(String(describing: responseString))")
+            
+        }
+        task.resume()
+        
+        //   return OrdersJSON
+    }
+    
+    
     static func recoveryPass(phone: String, completion: @escaping (Data) -> ()) {
         let body = "class=access&method=restore_password&phone=" + phone.formatPhoneNumber()
         let dataOfBody = body.data(using: String.Encoding.utf8)

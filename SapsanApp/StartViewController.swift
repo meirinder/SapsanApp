@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import AKMaskField
+import AKMaskField 
 
 class StartViewController: UIViewController {
 
@@ -157,9 +157,9 @@ extension UIViewController {
 }
 
 extension StartViewController: UnlockAppDelegate{
-    func loginApp() {
+    func loginApp(data: LoginData) {
         DispatchQueue.main.async {
-            self.menuCoordinator = MenuCoordinator(navController: self.navController, data: self.startViewModel.data)
+            self.menuCoordinator = MenuCoordinator(navController: self.navController, data: data)
             self.navigationController?.present(self.navController, animated: false, completion: nil)
             self.menuCoordinator.start()
 //            self.performSegue(withIdentifier: "enterSegue", sender: self)
@@ -174,6 +174,6 @@ extension StartViewController: UnlockAppDelegate{
 }
 
 protocol UnlockAppDelegate: class {
-    func loginApp()
+    func loginApp(data: LoginData)
     func failure(text: String)
 }

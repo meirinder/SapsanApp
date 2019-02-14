@@ -11,8 +11,7 @@ import UIKit
 
 class OrdersViewController: Menu, UITableViewDataSource, UITableViewDelegate {
 
-//    var itemStore : [[OrderItem]] = []
-    
+ 
     var ordersViewModel: OrdersViewModel?{
         didSet {
             ordersViewModel?.getOrders(first: 0, count: 20)
@@ -21,15 +20,15 @@ class OrdersViewController: Menu, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var orderTableView: UITableView!
     @IBOutlet weak var menuBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var headerView: UIView!
+    
+    @IBOutlet weak var headerLabel: UILabel!
+    
+    @IBOutlet weak var detailsLabel: UILabel!
+    
+    
 
-
-
-
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        print(OrdersViewController.loginData.status!)
-//
-//    }
+ 
 
 
     lazy var refresher: UIRefreshControl = {
@@ -42,6 +41,7 @@ class OrdersViewController: Menu, UITableViewDataSource, UITableViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+ 
         
         orderTableView.refreshControl = refresher
         orderTableView.delegate = self
@@ -53,8 +53,27 @@ class OrdersViewController: Menu, UITableViewDataSource, UITableViewDelegate {
         ordersViewModel?.getOrders(first: 0, count: 20)
     }
 
-
+    private func setHeaderText() {
+        headerLabel.text = ordersViewModel?.headerText()
+        headerLabel.backgroundColor = ordersViewModel?.headerBGColor()
+        headerLabel.textColor = ordersViewModel?.headerTextColor()
+        detailsLabel.backgroundColor = ordersViewModel?.headerBGColor()
+        detailsLabel.textColor = ordersViewModel?.headerTextColor()
+        headerView.backgroundColor = ordersViewModel?.headerBGColor()
+    }
+    
+    @IBAction func infoAction(_ sender: UIButton) {
+        
+    }
    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "headerSegue" {
+            let vc = segue.destination as! HeaderDetailViewController
+            vc.headerText = ordersViewModel?.headerBodyText()
+            vc.headerBGColor = ordersViewModel?.headerBGColor()
+            vc.headerTextColor = ordersViewModel?.headerTextColor()
+        }
+    }
 
     func getDates(orders : OrdersData) -> [String] {
         var tmp = [String]()
@@ -85,8 +104,19 @@ class OrdersViewController: Menu, UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return ordersViewModel?.sectionsCount() ?? 0
     }
+    
 
-
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let size = headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        if headerView.frame.size.height != size.height {
+            headerView.frame.size.height = size.height
+            orderTableView.tableHeaderView = headerView
+            orderTableView.layoutIfNeeded()
+        }
+    }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ordersViewModel?.ordersInSectionCount(index: section) ?? 0
     }
@@ -105,12 +135,17 @@ class OrdersViewController: Menu, UITableViewDataSource, UITableViewDelegate {
         cell.toAdressLabel.text = ordersViewModel?.toAddress(section: indexPath.section, index: indexPath.row)
         cell.statusLabel.backgroundColor = ordersViewModel?.statusColor(section: indexPath.section, index: indexPath.row)
  
-        
-        
-
-        
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let fullorderViewModel = FullOrderViewModel(orderId: ordersViewModel?.orderId(section: indexPath.section, index: indexPath.row) ?? "")
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "FullOrderViewController") as? FullOrderViewController
+        vc?.fullOrderViewModel = fullorderViewModel
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
+    
+    
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return  100
@@ -146,6 +181,7 @@ extension UIColor {
 extension OrdersViewController: ReloadTableViewDelegate {
     func reloadTableView() {
         DispatchQueue.main.async {
+            self.setHeaderText() 
             if self.refresher.isRefreshing {
                 self.refresher.endRefreshing()
             }

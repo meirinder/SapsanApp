@@ -1,16 +1,26 @@
 PODS:
   - AKMaskField (2.0.3)
+  - Realm (3.13.1):
+    - Realm/Headers (= 3.13.1)
+  - Realm/Headers (3.13.1)
+  - RealmSwift (3.13.1):
+    - Realm (= 3.13.1)
 
 DEPENDENCIES:
   - AKMaskField
+  - RealmSwift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AKMaskField
+    - Realm
+    - RealmSwift
 
 SPEC CHECKSUMS:
   AKMaskField: b6d147524813e62cd3f15475fa2200ce7a3d2620
+  Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
+  RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
 
-PODFILE CHECKSUM: f20f02f12ad07a6eef325af04112e6074d7a9d71
+PODFILE CHECKSUM: 5cb40b014dc49e065080687dd531865c628e93bf
 
 COCOAPODS: 1.5.3

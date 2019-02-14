@@ -10,7 +10,15 @@
 		250E85FD947A728C34AEB60A /* Pods_SapsanApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9D77A9B273E9BDE534BB2C /* Pods_SapsanApp.framework */; };
 		C412A72621ABECD600708873 /* BalanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C412A72521ABECD600708873 /* BalanceViewController.swift */; };
 		C420AEC921948E8500E292E3 /* HTTPConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = C420AEC821948E8500E292E3 /* HTTPConnector.swift */; };
+		C422974B22126741003EB496 /* FullOrderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C422974A22126741003EB496 /* FullOrderData.swift */; };
+		C422974D221267A7003EB496 /* FullOrder.json in Resources */ = {isa = PBXBuildFile; fileRef = C422974C221267A7003EB496 /* FullOrder.json */; };
 		C44559AF21AABF8600018EA7 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44559AE21AABF8600018EA7 /* TransactionTableViewCell.swift */; };
+		C447B24E221526A1000520D1 /* FullOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C447B24D221526A1000520D1 /* FullOrderTableViewCell.swift */; };
+		C447B2502215278C000520D1 /* QuatroTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C447B24F2215278C000520D1 /* QuatroTableViewCell.swift */; };
+		C447B25222152792000520D1 /* DoubleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C447B25122152792000520D1 /* DoubleTableViewCell.swift */; };
+		C447B25422152798000520D1 /* MultiTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C447B25322152798000520D1 /* MultiTableViewCell.swift */; };
+		C447B256221527B8000520D1 /* FullOrderCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C447B255221527B8000520D1 /* FullOrderCellViewModel.swift */; };
+		C4590C0F22112AF00026C620 /* DataBaseWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4590C0E22112AF00026C620 /* DataBaseWorker.swift */; };
 		C4C4A06821871CAC0026AA37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C4A06721871CAC0026AA37 /* AppDelegate.swift */; };
 		C4C4A06D21871CAC0026AA37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4C4A06B21871CAC0026AA37 /* Main.storyboard */; };
 		C4C4A07221871CAF0026AA37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4C4A07121871CAF0026AA37 /* Assets.xcassets */; };
@@ -20,6 +28,9 @@
 		C4C4A083218727C10026AA37 /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C4A082218727C10026AA37 /* OrdersViewController.swift */; };
 		C4C4A0852187280D0026AA37 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C4A0842187280D0026AA37 /* SignUpViewController.swift */; };
 		C4C4A087218728620026AA37 /* RecoverPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C4A086218728620026AA37 /* RecoverPasswordViewController.swift */; };
+		C4DADA71220FF7DC0025F5F2 /* HeaderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DADA70220FF7DC0025F5F2 /* HeaderDetailViewController.swift */; };
+		C4DADA73221013280025F5F2 /* FullOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DADA72221013280025F5F2 /* FullOrderViewController.swift */; };
+		C4DADA75221013370025F5F2 /* FullOrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DADA74221013370025F5F2 /* FullOrderViewModel.swift */; };
 		C4DB32A1218D980100636C1C /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DB32A0218D980100636C1C /* Menu.swift */; };
 		C4DB32A3218D998A00636C1C /* SupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DB32A2218D998A00636C1C /* SupportViewController.swift */; };
 		C4DBABA021883B1300A6BF05 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DBAB9F21883B1300A6BF05 /* MenuTableViewCell.swift */; };
@@ -62,7 +73,16 @@
 		8B9D77A9B273E9BDE534BB2C /* Pods_SapsanApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SapsanApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C412A72521ABECD600708873 /* BalanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceViewController.swift; sourceTree = "<group>"; };
 		C420AEC821948E8500E292E3 /* HTTPConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPConnector.swift; sourceTree = "<group>"; };
+		C42297452211A89B003EB496 /* SapsanApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SapsanApp.entitlements; sourceTree = "<group>"; };
+		C422974A22126741003EB496 /* FullOrderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullOrderData.swift; sourceTree = "<group>"; };
+		C422974C221267A7003EB496 /* FullOrder.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = FullOrder.json; path = ../../../../Downloads/FullOrder.json; sourceTree = "<group>"; };
 		C44559AE21AABF8600018EA7 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
+		C447B24D221526A1000520D1 /* FullOrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullOrderTableViewCell.swift; sourceTree = "<group>"; };
+		C447B24F2215278C000520D1 /* QuatroTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuatroTableViewCell.swift; sourceTree = "<group>"; };
+		C447B25122152792000520D1 /* DoubleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleTableViewCell.swift; sourceTree = "<group>"; };
+		C447B25322152798000520D1 /* MultiTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiTableViewCell.swift; sourceTree = "<group>"; };
+		C447B255221527B8000520D1 /* FullOrderCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullOrderCellViewModel.swift; sourceTree = "<group>"; };
+		C4590C0E22112AF00026C620 /* DataBaseWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseWorker.swift; sourceTree = "<group>"; };
 		C4C4A06421871CAC0026AA37 /* SapsanApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SapsanApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4C4A06721871CAC0026AA37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4C4A06C21871CAC0026AA37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -74,6 +94,9 @@
 		C4C4A082218727C10026AA37 /* OrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
 		C4C4A0842187280D0026AA37 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		C4C4A086218728620026AA37 /* RecoverPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewController.swift; sourceTree = "<group>"; };
+		C4DADA70220FF7DC0025F5F2 /* HeaderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderDetailViewController.swift; sourceTree = "<group>"; };
+		C4DADA72221013280025F5F2 /* FullOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullOrderViewController.swift; sourceTree = "<group>"; };
+		C4DADA74221013370025F5F2 /* FullOrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullOrderViewModel.swift; sourceTree = "<group>"; };
 		C4DB32A0218D980100636C1C /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		C4DB32A2218D998A00636C1C /* SupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportViewController.swift; sourceTree = "<group>"; };
 		C4DBAB9F21883B1300A6BF05 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
@@ -151,6 +174,7 @@
 		C4C4A06621871CAC0026AA37 /* SapsanApp */ = {
 			isa = PBXGroup;
 			children = (
+				C42297452211A89B003EB496 /* SapsanApp.entitlements */,
 				C4C4A06B21871CAC0026AA37 /* Main.storyboard */,
 				C4C4A06721871CAC0026AA37 /* AppDelegate.swift */,
 				C4F3F214220EC2DD00E64489 /* MenuCoordinator.swift */,
@@ -160,6 +184,7 @@
 				C4F3F1BC2209D4C800E64489 /* Services */,
 				C4C4A07121871CAF0026AA37 /* Assets.xcassets */,
 				C4C4A07321871CAF0026AA37 /* LaunchScreen.storyboard */,
+				C422974C221267A7003EB496 /* FullOrder.json */,
 				C4C4A07621871CAF0026AA37 /* Info.plist */,
 				C4F3F1F12209D52B00E64489 /* Roboto */,
 			);
@@ -174,7 +199,9 @@
 				C4C4A0842187280D0026AA37 /* SignUpViewController.swift */,
 				C4C4A082218727C10026AA37 /* OrdersViewController.swift */,
 				C4DB32A2218D998A00636C1C /* SupportViewController.swift */,
+				C4DADA70220FF7DC0025F5F2 /* HeaderDetailViewController.swift */,
 				C412A72521ABECD600708873 /* BalanceViewController.swift */,
+				C4DADA72221013280025F5F2 /* FullOrderViewController.swift */,
 				C4DBABA321884B7200A6BF05 /* TransactionViewController.swift */,
 				C4DBABA121883B2400A6BF05 /* MenuViewController.swift */,
 				C4C4A07E2187278D0026AA37 /* LoginViewController.swift */,
@@ -189,6 +216,10 @@
 			children = (
 				C4DBAB9F21883B1300A6BF05 /* MenuTableViewCell.swift */,
 				C4DBABA521897A9800A6BF05 /* OrderTableViewCell.swift */,
+				C447B24D221526A1000520D1 /* FullOrderTableViewCell.swift */,
+				C447B24F2215278C000520D1 /* QuatroTableViewCell.swift */,
+				C447B25122152792000520D1 /* DoubleTableViewCell.swift */,
+				C447B25322152798000520D1 /* MultiTableViewCell.swift */,
 				C44559AE21AABF8600018EA7 /* TransactionTableViewCell.swift */,
 			);
 			name = Cells;
@@ -198,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				C4F3F1B02209D04800E64489 /* OrdersData.swift */,
+				C422974A22126741003EB496 /* FullOrderData.swift */,
 				C4F3F1B32209D09100E64489 /* LoginData.swift */,
 				C4F3F212220C67D000E64489 /* TransactionData.swift */,
 			);
@@ -210,11 +242,13 @@
 				C4F3F19D2209CCDC00E64489 /* StartViewModel.swift */,
 				C4F3F19F2209CCF500E64489 /* RecoverPasswordViewModel.swift */,
 				C4F3F1A12209CD2400E64489 /* SingUpViewModel.swift */,
+				C4DADA74221013370025F5F2 /* FullOrderViewModel.swift */,
 				C4F3F1A32209CD5200E64489 /* OrdersViewModel.swift */,
 				C4F3F1A52209CD5F00E64489 /* SupportViewModel.swift */,
 				C4F3F1A72209CD6900E64489 /* BalanceViewModel.swift */,
 				C4F3F1A92209CD7600E64489 /* TransactionViewModel.swift */,
 				C4F3F1AB2209CD8400E64489 /* MenuViewModel.swift */,
+				C447B255221527B8000520D1 /* FullOrderCellViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -224,6 +258,7 @@
 			children = (
 				C4F3F1B72209D1CB00E64489 /* NetWorker.swift */,
 				C4F3F20E220B0A8600E64489 /* AlertBuilder.swift */,
+				C4590C0E22112AF00026C620 /* DataBaseWorker.swift */,
 				C420AEC821948E8500E292E3 /* HTTPConnector.swift */,
 				C4F3F1AE2209D00600E64489 /* JSONWorker.swift */,
 			);
@@ -294,6 +329,11 @@
 				TargetAttributes = {
 					C4C4A06321871CAC0026AA37 = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -329,6 +369,7 @@
 				C4F3F2032209D69000E64489 /* Roboto-BoldItalic.ttf in Resources */,
 				C4F3F2012209D69000E64489 /* Roboto-BlackItalic.ttf in Resources */,
 				C4F3F20A2209D69000E64489 /* Roboto-Thin.ttf in Resources */,
+				C422974D221267A7003EB496 /* FullOrder.json in Resources */,
 				C4F3F2092209D69000E64489 /* Roboto-Regular.ttf in Resources */,
 				C4F3F1FF2209D56200E64489 /* Apache License.txt in Resources */,
 				C4F3F2072209D69000E64489 /* Roboto-Medium.ttf in Resources */,
@@ -374,12 +415,16 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SapsanApp/Pods-SapsanApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AKMaskField/AKMaskField.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AKMaskField.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -394,15 +439,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4C4A0852187280D0026AA37 /* SignUpViewController.swift in Sources */,
+				C4DADA75221013370025F5F2 /* FullOrderViewModel.swift in Sources */,
 				C4F3F19E2209CCDC00E64489 /* StartViewModel.swift in Sources */,
+				C4DADA71220FF7DC0025F5F2 /* HeaderDetailViewController.swift in Sources */,
 				C4DBABA021883B1300A6BF05 /* MenuTableViewCell.swift in Sources */,
+				C447B24E221526A1000520D1 /* FullOrderTableViewCell.swift in Sources */,
 				C4F3F1AC2209CD8400E64489 /* MenuViewModel.swift in Sources */,
 				C4F3F1A02209CCF500E64489 /* RecoverPasswordViewModel.swift in Sources */,
+				C4DADA73221013280025F5F2 /* FullOrderViewController.swift in Sources */,
 				C4C4A07D218727830026AA37 /* StartViewController.swift in Sources */,
 				C4F3F1A42209CD5200E64489 /* OrdersViewModel.swift in Sources */,
 				C4F3F215220EC2DD00E64489 /* MenuCoordinator.swift in Sources */,
 				C4DBABA221883B2400A6BF05 /* MenuViewController.swift in Sources */,
 				C4F3F1A82209CD6900E64489 /* BalanceViewModel.swift in Sources */,
+				C447B25222152792000520D1 /* DoubleTableViewCell.swift in Sources */,
 				C44559AF21AABF8600018EA7 /* TransactionTableViewCell.swift in Sources */,
 				C4F3F213220C67D100E64489 /* TransactionData.swift in Sources */,
 				C420AEC921948E8500E292E3 /* HTTPConnector.swift in Sources */,
@@ -411,14 +461,19 @@
 				C4F3F1A22209CD2400E64489 /* SingUpViewModel.swift in Sources */,
 				C412A72621ABECD600708873 /* BalanceViewController.swift in Sources */,
 				C4F3F1B82209D1CB00E64489 /* NetWorker.swift in Sources */,
+				C447B2502215278C000520D1 /* QuatroTableViewCell.swift in Sources */,
 				C4F3F1B42209D09100E64489 /* LoginData.swift in Sources */,
 				C4DBABA621897A9800A6BF05 /* OrderTableViewCell.swift in Sources */,
+				C447B256221527B8000520D1 /* FullOrderCellViewModel.swift in Sources */,
 				C4DBABA421884B7200A6BF05 /* TransactionViewController.swift in Sources */,
 				C4C4A07F2187278D0026AA37 /* LoginViewController.swift in Sources */,
 				C4DB32A1218D980100636C1C /* Menu.swift in Sources */,
 				C4C4A087218728620026AA37 /* RecoverPasswordViewController.swift in Sources */,
 				C4F3F1A62209CD5F00E64489 /* SupportViewModel.swift in Sources */,
 				C4F3F1B12209D04800E64489 /* OrdersData.swift in Sources */,
+				C4590C0F22112AF00026C620 /* DataBaseWorker.swift in Sources */,
+				C447B25422152798000520D1 /* MultiTableViewCell.swift in Sources */,
+				C422974B22126741003EB496 /* FullOrderData.swift in Sources */,
 				C4C4A06821871CAC0026AA37 /* AppDelegate.swift in Sources */,
 				C4C4A083218727C10026AA37 /* OrdersViewController.swift in Sources */,
 				C4F3F1AA2209CD7600E64489 /* TransactionViewModel.swift in Sources */,
@@ -569,6 +624,7 @@
 			baseConfigurationReference = 1DDDB39D75A6923FD7394567 /* Pods-SapsanApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SapsanApp/SapsanApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J3ECZ9NK5T;
@@ -590,6 +646,7 @@
 			baseConfigurationReference = 4BB4B5068D8AF2C1C705AF9D /* Pods-SapsanApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SapsanApp/SapsanApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J3ECZ9NK5T;

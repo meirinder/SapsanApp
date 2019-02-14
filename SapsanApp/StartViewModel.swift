@@ -23,11 +23,16 @@ class StartViewModel: NSObject {
     }
     
     func checkUserDefaults() {
-        if UserDefaults.standard.object(forKey: "key") != nil {
-//            delegate?.loginApp()
-            enter(phoneText: UserDefaults.standard.object(forKey: "phoneText") as? String ?? "",
-                  passText: UserDefaults.standard.object(forKey: "passText") as? String ?? "")
-        }
+//        if UserDefaults.standard.object(forKey: "key") != nil {
+////            delegate?.loginApp()
+//            enter(phoneText: UserDefaults.standard.object(forKey: "phoneText") as? String ?? "",
+//                  passText: UserDefaults.standard.object(forKey: "passText") as? String ?? "")
+//        }
+
+        
+        let test = DataBaseWorker.loadLoginData()
+        
+        
      }
     
     func buildMenuViewModel() -> MenuViewModel {
@@ -53,7 +58,7 @@ class StartViewModel: NSObject {
                 UserDefaults.standard.set(logData.userCompanies?.first?.idCompany, forKey: "idCompany")
                 UserDefaults.standard.set(logData.userCompanies?.first?.idUser, forKey: "idUser")
                 UserDefaults.standard.set(logData.key, forKey: "key")
-                self.delegate?.loginApp()
+                self.delegate?.loginApp(data: logData)
             }
         }
     }
