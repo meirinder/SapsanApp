@@ -218,7 +218,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     @IBAction func exit(_ sender: UIButton) {
-        UserDefaults.standard.removeObject(forKey: "loginData")
+        UserDefaults.standard.removeObject(forKey: "key")
+        DataBaseWorker.deleteAll()
     }
 
     @IBAction func balanceAction(_ sender: UIButton) {

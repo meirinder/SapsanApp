@@ -37,16 +37,22 @@ class QuatroRow: Row {
     var botRightText: RowValue?
 }
 
+class CourierRow: Row {
+    var photoLink: RowValue?
+    var nameText: RowValue?
+    var phoneText: RowValue?
+}
+
 class DoubleRow: Row {
     var topText: RowValue?
     var botText: RowValue?
 }
 
 class MultiRow: Row {
-    var leftKeyText: String?
+    var leftKeyText: RowValue?
     var leftValueText: RowValue?
-    var rightKeyText: String?
-    var rightValue: RowValue?
+    var rightKeyText: RowValue?
+    var rightValueText: RowValue?
 }
 
 class RowValue {
@@ -60,6 +66,7 @@ class RowValue {
 
 enum RowType{
     case quatro
+    case courier
     case double
     case multi
     case none

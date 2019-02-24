@@ -90,7 +90,18 @@ class JSONWorker: NSObject {
                         break
                     case .multi:
                         let row = MultiRow()
-                        
+                        if let leftkey = localRow["left_key"] as? [String: Any] {
+                            row.leftKeyText = parseRowValue(dict: leftkey)
+                        }
+                        if let rightKey = localRow["right_key"] as? [String: Any] {
+                            row.rightKeyText = parseRowValue(dict: rightKey)
+                        }
+                        if let leftValue = localRow["left_value"] as? [String: Any] {
+                            row.leftValueText = parseRowValue(dict: leftValue)
+                        }
+                        if let rightValue = localRow["right_value"] as? [String: Any] {
+                            row.rightValueText = parseRowValue(dict: rightValue)
+                        }
                         row.type = rowType(dict: localRow)
                         rows.append(row)
                         break
@@ -111,11 +122,26 @@ class JSONWorker: NSObject {
                         row.type = rowType(dict: localRow)
                         rows.append(row)
                         break
+                    case .courier:
+                        let row = CourierRow()
+                        if let photoLink = localRow["photoLink"] as? [String: Any] {
+                            row.photoLink = parseRowValue(dict: photoLink)
+                        }
+                        if let nameText = localRow["nameText"] as? [String: Any] {
+                            row.nameText = parseRowValue(dict: nameText)
+                        }
+                        if let phoneText = localRow["phoneText"] as? [String: Any] {
+                            row.phoneText = parseRowValue(dict: phoneText)
+                        }
+                        row.type = rowType(dict: localRow)
+                        rows.append(row)
+                        break
                     case .none:
                         let row = Row()
                         row.type = rowType(dict: localRow)
                         rows.append(row)
                         break
+                    
                     }
                     
                 }
@@ -132,6 +158,12 @@ class JSONWorker: NSObject {
         if let content = dict["content"] as? String {
             rowValue.content = content
         }
+        if let bgColor = dict["bgColor"] as? String {
+            rowValue.bgColor = bgColor
+        }
+        if let color = dict["color"] as? String {
+            rowValue.color = color
+        }
         return rowValue
     }
     
@@ -144,6 +176,8 @@ class JSONWorker: NSObject {
                 return .double
             case "2x2_grid":
                 return .quatro
+            case "courier":
+                return .courier
             default:
                 return .none
             }
@@ -411,141 +445,7 @@ class JSONWorker: NSObject {
         }
         return (true,"OK")
     }
-    
-//    static func parseFullOrder(data: Data) -> FullOrderData {
-//        let fullData = FullOrderData()
-//        let jsonResult  = try? JSONSerialization.jsonObject(with: data, options: [])
-//        if let dictionary = jsonResult as? [String: Any] {
-//            if let balance = dictionary["balance"] as? String {
-//                fullData.balance = balance
-//            }
-//            if let status = dictionary["status"] as? String {
-//                fullData.status = status
-//            }
-//            fullData.fullOrderLayout = parseFullOrderLayout(dictionarie: dictionary)
-//        }
-//        return fullData
-//    }
-//
-//    static private func parseFullOrderLayout(dictionarie: [String: Any]) -> FullOrderLayout{
-//        let fullOrderLayout = FullOrderLayout()
-//        if let dictionary = dictionarie["fullOrderLayout"] as? [String: Any] {
-//            if let orderNumber = dictionary["orderNumber"] as? String {
-//                fullOrderLayout.orderNumber = orderNumber
-//            }
-//            if let orderId = dictionary["orderId"] as? String {
-//                fullOrderLayout.orderId = orderId
-//            }
-//            if let showDeleteButton = dictionary["showDeleteButton"] as? Bool {
-//                fullOrderLayout.showDeleteButton = showDeleteButton
-//            }
-//            if let deleteButtonText = dictionary["deleteButtonText"] as? String {
-//                fullOrderLayout.deleteButtonText = deleteButtonText
-//            }
-//
-//            fullOrderLayout.blocks = parseLayoutBlocks(dictionary: dictionary)
-//        }
-//        return fullOrderLayout
-//    }
-//
-//    static private func parseLayoutBlocks(dictionary: [String: Any]) -> [Block] {
-//        var blocks = [Block]()
-//        if let localBlocks = dictionary["blocks"] as? [Any] {
-//            for i in 0..<localBlocks.count {
-//                if let localBlock = localBlocks[i] as? [String: Any] {
-//                    let block = Block()
-//                    block.rows = parseLayoutRows(dictionary: localBlock)
-//                    blocks.append(block)
-//                }
-//            }
-//        }
-//        return blocks
-//    }
-//
-//    static private func parseLayoutRows(dictionary: [String: Any]) -> [Row] {
-//        var rows = [Row]()
-//        if let localRows = dictionary["rows"] as? [Any] {
-//            for i in 0..<localRows.count {
-//                if let localRow = localRows[i] as? [String: Any] {
-//                    let row = Row()
-//                    row.views = parseLayoutViews(dictionary: localRow)
-//                    rows.append(row)
-//                }
-//            }
-//        }
-//        return rows
-//    }
-//
-//    static private func parseLayoutViews(dictionary: [String: Any]) -> [View] {
-//        var views = [View]()
-//        if let localViews = dictionary["views"] as? [Any] {
-//            for i in 0..<localViews.count{
-//                if let localView = localViews[i] as? [String: Any] {
-//                    let view = View()
-//                    if let type = localView["type"] as? String {
-//                        view.type = type
-//                    }
-//                    if let content = localView["content"] as? String {
-//                        view.content = content
-//                    }
-//                    if let gravity = localView["gravity"] as? String {
-//                        view.gravity = gravity
-//                    }
-//                    if let color = localView["color"] as? String {
-//                        view.color = color
-//                    }
-//                    if let bgColor = localView["bgColor"] as? String {
-//                        view.bgColor = bgColor
-//                    }
-//                    if let weight = localView["weight"] as? Int {
-//                        view.weight = weight
-//                    }
-//                    if let isHTML = localView["isHTML"] as? Bool {
-//                        view.isHTML = isHTML
-//                    }
-//                    view.children = parseChildrens(dictionary: localView)
-//                    views.append(view)
-//                }
-//            }
-//        }
-//        return views
-//    }
-//
-//    private static func parseChildrens(dictionary: [String: Any]) -> [Children] {
-//        var childrens = [Children]()
-//
-//        if let localChildrens = dictionary["children"] as? [Any] {
-//            for i in 0..<localChildrens.count {
-//                if let localChildren = localChildrens[i] as? [String: Any] {
-//                    let children = Children()
-//                    if let type = localChildren["type"] as? String {
-//                        children.type = type
-//                    }
-//                    if let singleLine = localChildren["singleLine"] as? Bool {
-//                        children.singleLine = singleLine
-//                    }
-//                    if let isHTML = localChildren["isHTML"] as? Bool {
-//                        children.isHTML = isHTML
-//                    }
-//                    if let gravity = localChildren["gravity"] as? String {
-//                        children.gravity = gravity
-//                    }
-//                    if let orientation = localChildren["orientation"] as? String {
-//                        children.orientation = orientation
-//                    }
-//                    if let weight = localChildren["weight"] as? Int {
-//                        children.weight = weight
-//                    }
-//                    if let content = localChildren["content"] as? String {
-//                        children.content = content
-//                    }
-//                    childrens.append(children)
-//                }
-//            }
-//        }
-//
-//        return childrens
-//    }
+  
 }
 
 protocol LogInDelegate: class {

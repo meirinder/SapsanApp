@@ -25,6 +25,16 @@ class SupportViewController: Menu {
         UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
     }
     
+    @IBAction func instructionAction(_ sender: UIButton) {
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
+        
+        performSegue(withIdentifier: "webSegue", sender: self)
+    }
+    
+    @IBAction func writeSupportAction(_ sender: UIButton) {
+    }
+    
     @IBAction func emailAction(_ sender: UIButton) {
         let address = supportViewModel.email()
         if let url = URL(string: "mailto:\(address)") {

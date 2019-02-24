@@ -12,10 +12,31 @@ class FullOrderViewModel: NSObject {
 
     var delegate: FullOrderDelegate?
     var orderId: String
-    private var fullOrderData = FullOrderData()
+    private var fullOrderData = FullOrderData() {
+        didSet {
+            setViewModels()
+        }
+    }
+    private var viewModels = [[FullOrderCellViewModel]]()
     
     init(orderId: String) {
         self.orderId = orderId
+        super.init()
+    }
+    
+    func setViewModels() {
+        for i in 0..<blocksCount() {
+            var localViewModels = [FullOrderCellViewModel]()
+            for j in 0..<rowsCount(block: i) {
+                var result = FullOrderCellViewModel()
+                if let row = fullOrderData.fullOrderLayout?.blocks?[i].rows?[j]{
+                    result = FullOrderCellViewModel(dataModel: row)
+                }
+                localViewModels.append(result)
+            }
+            viewModels.append(localViewModels)
+        }
+        
     }
     
     func cellType(section: Int, index: Int) -> RowType {
@@ -26,11 +47,7 @@ class FullOrderViewModel: NSObject {
     }
     
     func buildViewModelForCell(section: Int, index: Int) -> FullOrderCellViewModel {
-        var result = FullOrderCellViewModel()
-        if let row = fullOrderData.fullOrderLayout?.blocks?[section].rows?[index]{
-            result = FullOrderCellViewModel(dataModel: row)
-        }
-        return result
+        return viewModels[section][index]
     }
     
     func blocksCount() -> Int {

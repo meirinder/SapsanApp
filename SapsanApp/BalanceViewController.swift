@@ -11,6 +11,7 @@ import UIKit
 class BalanceViewController: Menu {
 
     
+    @IBOutlet weak var balanceTextField: UITextField!
     
     @IBOutlet weak var menuBarButtonItem: UIBarButtonItem!
     
@@ -18,6 +19,8 @@ class BalanceViewController: Menu {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
+    
+    
     
     
     
@@ -35,6 +38,14 @@ class BalanceViewController: Menu {
             hideMenu()
         }
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "BalanceUpSegue" {
+            let vc = segue.destination as! SignUpViewController
+            let companyId = UserDefaults.standard.object(forKey: "idCompany") as! String
+            vc.link = "https://app.citycourier.pro/pay.php?id=\(companyId)&type=company&sum=\(balanceTextField.text ?? "0")"
+        }
     }
 
 }

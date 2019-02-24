@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		250E85FD947A728C34AEB60A /* Pods_SapsanApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9D77A9B273E9BDE534BB2C /* Pods_SapsanApp.framework */; };
 		C412A72621ABECD600708873 /* BalanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C412A72521ABECD600708873 /* BalanceViewController.swift */; };
-		C420AEC921948E8500E292E3 /* HTTPConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = C420AEC821948E8500E292E3 /* HTTPConnector.swift */; };
 		C422974B22126741003EB496 /* FullOrderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C422974A22126741003EB496 /* FullOrderData.swift */; };
 		C422974D221267A7003EB496 /* FullOrder.json in Resources */ = {isa = PBXBuildFile; fileRef = C422974C221267A7003EB496 /* FullOrder.json */; };
 		C44559AF21AABF8600018EA7 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44559AE21AABF8600018EA7 /* TransactionTableViewCell.swift */; };
@@ -19,6 +18,7 @@
 		C447B25422152798000520D1 /* MultiTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C447B25322152798000520D1 /* MultiTableViewCell.swift */; };
 		C447B256221527B8000520D1 /* FullOrderCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C447B255221527B8000520D1 /* FullOrderCellViewModel.swift */; };
 		C4590C0F22112AF00026C620 /* DataBaseWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4590C0E22112AF00026C620 /* DataBaseWorker.swift */; };
+		C495D26F22226AB600F8003E /* CourierTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C495D26E22226AB600F8003E /* CourierTableViewCell.swift */; };
 		C4C4A06821871CAC0026AA37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C4A06721871CAC0026AA37 /* AppDelegate.swift */; };
 		C4C4A06D21871CAC0026AA37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4C4A06B21871CAC0026AA37 /* Main.storyboard */; };
 		C4C4A07221871CAF0026AA37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4C4A07121871CAF0026AA37 /* Assets.xcassets */; };
@@ -72,7 +72,6 @@
 		4BB4B5068D8AF2C1C705AF9D /* Pods-SapsanApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SapsanApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-SapsanApp/Pods-SapsanApp.release.xcconfig"; sourceTree = "<group>"; };
 		8B9D77A9B273E9BDE534BB2C /* Pods_SapsanApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SapsanApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C412A72521ABECD600708873 /* BalanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceViewController.swift; sourceTree = "<group>"; };
-		C420AEC821948E8500E292E3 /* HTTPConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPConnector.swift; sourceTree = "<group>"; };
 		C42297452211A89B003EB496 /* SapsanApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SapsanApp.entitlements; sourceTree = "<group>"; };
 		C422974A22126741003EB496 /* FullOrderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullOrderData.swift; sourceTree = "<group>"; };
 		C422974C221267A7003EB496 /* FullOrder.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = FullOrder.json; path = ../../../../Downloads/FullOrder.json; sourceTree = "<group>"; };
@@ -83,6 +82,7 @@
 		C447B25322152798000520D1 /* MultiTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiTableViewCell.swift; sourceTree = "<group>"; };
 		C447B255221527B8000520D1 /* FullOrderCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullOrderCellViewModel.swift; sourceTree = "<group>"; };
 		C4590C0E22112AF00026C620 /* DataBaseWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseWorker.swift; sourceTree = "<group>"; };
+		C495D26E22226AB600F8003E /* CourierTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourierTableViewCell.swift; sourceTree = "<group>"; };
 		C4C4A06421871CAC0026AA37 /* SapsanApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SapsanApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4C4A06721871CAC0026AA37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4C4A06C21871CAC0026AA37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -220,6 +220,7 @@
 				C447B24F2215278C000520D1 /* QuatroTableViewCell.swift */,
 				C447B25122152792000520D1 /* DoubleTableViewCell.swift */,
 				C447B25322152798000520D1 /* MultiTableViewCell.swift */,
+				C495D26E22226AB600F8003E /* CourierTableViewCell.swift */,
 				C44559AE21AABF8600018EA7 /* TransactionTableViewCell.swift */,
 			);
 			name = Cells;
@@ -259,7 +260,6 @@
 				C4F3F1B72209D1CB00E64489 /* NetWorker.swift */,
 				C4F3F20E220B0A8600E64489 /* AlertBuilder.swift */,
 				C4590C0E22112AF00026C620 /* DataBaseWorker.swift */,
-				C420AEC821948E8500E292E3 /* HTTPConnector.swift */,
 				C4F3F1AE2209D00600E64489 /* JSONWorker.swift */,
 			);
 			name = Services;
@@ -455,7 +455,6 @@
 				C447B25222152792000520D1 /* DoubleTableViewCell.swift in Sources */,
 				C44559AF21AABF8600018EA7 /* TransactionTableViewCell.swift in Sources */,
 				C4F3F213220C67D100E64489 /* TransactionData.swift in Sources */,
-				C420AEC921948E8500E292E3 /* HTTPConnector.swift in Sources */,
 				C4DB32A3218D998A00636C1C /* SupportViewController.swift in Sources */,
 				C4F3F20F220B0A8600E64489 /* AlertBuilder.swift in Sources */,
 				C4F3F1A22209CD2400E64489 /* SingUpViewModel.swift in Sources */,
@@ -464,6 +463,7 @@
 				C447B2502215278C000520D1 /* QuatroTableViewCell.swift in Sources */,
 				C4F3F1B42209D09100E64489 /* LoginData.swift in Sources */,
 				C4DBABA621897A9800A6BF05 /* OrderTableViewCell.swift in Sources */,
+				C495D26F22226AB600F8003E /* CourierTableViewCell.swift in Sources */,
 				C447B256221527B8000520D1 /* FullOrderCellViewModel.swift in Sources */,
 				C4DBABA421884B7200A6BF05 /* TransactionViewController.swift in Sources */,
 				C4C4A07F2187278D0026AA37 /* LoginViewController.swift in Sources */,

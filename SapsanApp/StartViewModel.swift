@@ -23,14 +23,16 @@ class StartViewModel: NSObject {
     }
     
     func checkUserDefaults() {
-//        if UserDefaults.standard.object(forKey: "key") != nil {
-////            delegate?.loginApp()
+        if UserDefaults.standard.object(forKey: "key") != nil {
+            let data = DataBaseWorker.loadLoginData()
+            delegate?.loginApp(data: data)
+            
 //            enter(phoneText: UserDefaults.standard.object(forKey: "phoneText") as? String ?? "",
 //                  passText: UserDefaults.standard.object(forKey: "passText") as? String ?? "")
-//        }
+        }
 
         
-        let test = DataBaseWorker.loadLoginData()
+        
         
         
      }

@@ -57,13 +57,15 @@ extension FullOrderViewController: UITableViewDelegate, UITableViewDataSource {
         return fullOrderViewModel.rowsCount(block: section)
     }
     
+    
+    
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 16
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let view = UIView()
-        view.backgroundColor = .black
+        view.backgroundColor = .white
         return view
     }
     
@@ -72,19 +74,27 @@ extension FullOrderViewController: UITableViewDelegate, UITableViewDataSource {
         case .double:
             let cell = tableView.dequeueReusableCell(withIdentifier: "DoubleLayoutCell", for: indexPath) as! DoubleTableViewCell
             cell.fullOrderCellViewModel = fullOrderViewModel.buildViewModelForCell(section: indexPath.section, index: indexPath.row)
+            cell.setCell()
             return cell
         case .multi:
             let cell = tableView.dequeueReusableCell(withIdentifier: "MultiLayoutCell", for: indexPath) as! MultiTableViewCell
             cell.fullOrderCellViewModel = fullOrderViewModel.buildViewModelForCell(section: indexPath.section, index: indexPath.row)
+            cell.setCell()
             return cell
         case .quatro:
             let cell = tableView.dequeueReusableCell(withIdentifier: "QuatroLayoutCell", for: indexPath) as! QuatroTableViewCell
-
-            cell.fullOrderCellViewModel = fullOrderViewModel.buildViewModelForCell(section: indexPath.section, index: indexPath.row)
+             cell.fullOrderCellViewModel = fullOrderViewModel.buildViewModelForCell(section: indexPath.section, index: indexPath.row)
+            cell.setCell()
             return cell
         case .none:
             let cell = tableView.dequeueReusableCell(withIdentifier: "DoubleLayoutCell", for: indexPath) as! DoubleTableViewCell
             cell.fullOrderCellViewModel = fullOrderViewModel.buildViewModelForCell(section: indexPath.section, index: indexPath.row)
+            cell.setCell()
+            return cell
+        case .courier:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoLayoutCell", for: indexPath) as! CourierTableViewCell
+            cell.fullOrderCellViewModel = fullOrderViewModel.buildViewModelForCell(section: indexPath.section, index: indexPath.row)
+            cell.setCell()
             return cell
         }
        

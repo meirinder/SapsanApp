@@ -50,24 +50,6 @@ class StartViewController: UIViewController {
    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         view.endEditing(true)
-//        if segue.identifier == "enterSegue"{
-//            let nav = segue.destination as! UINavigationController
-//            let desVC = nav.topViewController as! OrdersViewController
-//            desVC.ordersViewModel = startViewModel.buildOrdersViewModel()
-//            desVC.ordersViewModel?.delegate = desVC
-//            Menu.viewControllers = [UIViewController]()
-//            Menu.viewControllers.append(desVC)
-//            let transactVC = self.storyboard?.instantiateViewController(withIdentifier: "TransactionViewController") as! TransactionViewController
-//            transactVC.transactionViewModel = TransactionViewModel()
-//            transactVC.transactionViewModel.delegate = transactVC
-//            Menu.viewControllers.append(transactVC)
-//
-//            let supportVC = self.storyboard?.instantiateViewController(withIdentifier: "SupportViewController") as! SupportViewController
-//            supportVC.supportViewModel = SupportViewModel()
-//            Menu.viewControllers.append(supportVC)
-//
-//            Menu.menuViewModel = startViewModel.buildMenuViewModel()
-//        }
         if segue.identifier == "signUpSegue" {
             let vc = segue.destination as! SignUpViewController
             NetWorker.signUp(){ outData in

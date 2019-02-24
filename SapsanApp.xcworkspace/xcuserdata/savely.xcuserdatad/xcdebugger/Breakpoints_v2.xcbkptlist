@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SapsanApp/DataBaseWorker.swift"
-            timestampString = "571555725.993943"
+            filePath = "SapsanApp/JSONWorker.swift"
+            timestampString = "572685381.536992"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "reConvertUserCompanies(userCompanies:)"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "parseRows(dictionary:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -21,6 +21,33 @@ class FullOrderCellViewModel {
         return resDict
     }
     
+    func multiDict() -> [String: RowValue] {
+        var resDict = [String: RowValue]()
+        let data = dataModel as? MultiRow
+        resDict["leftKey"] = data?.leftKeyText
+        resDict["leftValue"] = data?.leftValueText
+        resDict["rightKey"] = data?.rightKeyText
+        resDict["rightValue"] = data?.rightValueText
+        return resDict
+    }
+    
+    func courierDict() -> [String: RowValue] {
+        var resDict = [String: RowValue]()
+        let data = dataModel as? CourierRow
+        resDict["photoLink"] = data?.photoLink
+        resDict["nameText"] = data?.nameText
+        resDict["phoneText"] = data?.phoneText
+        return resDict
+    }
+    
+    func doubleDict() -> [String: RowValue] {
+        var resDict = [String: RowValue]()
+        let data = dataModel as? DoubleRow
+        resDict["top"] = data?.topText
+        resDict["bot"] = data?.botText
+        return resDict
+    }
+    
     
     init() {
         dataModel = Row()

@@ -11,7 +11,7 @@ import RealmSwift
 
 class DataBaseWorker: NSObject {
 
-    private static let realm = try? Realm()
+    private static var realm = try? Realm()
     
     static func deleteAll() {
         DispatchQueue.main.async {
@@ -32,7 +32,7 @@ class DataBaseWorker: NSObject {
     }
     
     static func loadLoginData() -> LoginData {
-        
+        realm = try? Realm()
         var outData = LoginData()
         if let inData = realm?.objects(LoginDataBaseModel.self).first {
             outData = reConvertLoginData(loginData: inData)
