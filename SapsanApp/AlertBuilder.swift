@@ -16,4 +16,20 @@ class AlertBuilder: NSObject {
          }))
         controller.present(alert, animated: true)
     }
+    
+    static func courierAlert(name: String, photoLink: String, controller: UIViewController) {
+        let alert = Bundle.main.loadNibNamed("CourierAlert", owner: self, options: nil)?.last as! CourierView
+        alert.nameLabel.text = name
+        alert.controller = controller
+        alert.setTextFieldBorders()
+        alert.photoImageView.downloaded(from: photoLink)
+        let windows = UIApplication.shared.windows
+        let lastWindow = windows.last
+        alert.frame = UIScreen.main.bounds
+        lastWindow?.addSubview(alert)
+    }
+    
+    
+    
+    
 }

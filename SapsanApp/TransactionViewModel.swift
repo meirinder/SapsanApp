@@ -26,6 +26,10 @@ class TransactionViewModel: NSObject {
         return itemStore[index].count
     }
     
+    func transactionAt(index: Int) -> ShortTransaction? {
+        return transactionData.shortTransactions?[index]
+    }
+    
     func sectionsCount() -> Int {
         return sections.count
     }

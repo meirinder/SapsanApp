@@ -26,10 +26,12 @@ class SignUpViewController: UIViewController {
     
     func reloadView() {
         DispatchQueue.main.async {
-            let url = URL(string: self.link)
-            let request = URLRequest(url: url!)
-            
-            self.wk.load(request)
+            if let url = URL(string: self.link) {
+                let request = URLRequest(url: url) 
+                self.wk.load(request)
+            } else {
+                AlertBuilder.simpleAlert(title: "Ошибка", message: "Что-то пошло не так, свяжитесь с менеджером", controller: self)
+            }
         }
     }
 

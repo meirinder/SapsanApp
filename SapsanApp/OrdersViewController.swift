@@ -42,11 +42,12 @@ class OrdersViewController: Menu, UITableViewDataSource, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
  
+        AlertBuilder.courierAlert(name: "Классный пацанчик", photoLink: "333", controller: self)
         
         orderTableView.refreshControl = refresher
         orderTableView.delegate = self
         orderTableView.dataSource = self
-    }
+     }
 
 
     @objc func refreshOrderTable(){
@@ -60,6 +61,7 @@ class OrdersViewController: Menu, UITableViewDataSource, UITableViewDelegate {
         detailsLabel.backgroundColor = ordersViewModel?.headerBGColor()
         detailsLabel.textColor = ordersViewModel?.headerTextColor()
         headerView.backgroundColor = ordersViewModel?.headerBGColor()
+        self.detailsLabel.text = "Подробности"
     }
     
     @IBAction func infoAction(_ sender: UIButton) {

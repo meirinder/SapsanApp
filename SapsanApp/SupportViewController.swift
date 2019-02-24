@@ -28,11 +28,17 @@ class SupportViewController: Menu {
     @IBAction func instructionAction(_ sender: UIButton) {
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
-        
-        performSegue(withIdentifier: "webSegue", sender: self)
+        NetWorker.instructionLink(completion: { outLink in
+            DispatchQueue.main.async {
+                vc.link = outLink
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        })
     }
     
     @IBAction func writeSupportAction(_ sender: UIButton) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "WriteSupportViewController") as! WriteSupportViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func emailAction(_ sender: UIButton) {

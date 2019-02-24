@@ -70,7 +70,7 @@ class NetWorker {
                 print("response = \(String(describing: response))")
             }
             completion(data)
-                        let responseString = String(data: data, encoding: .utf8)
+//                        let responseString = String(data: data, encoding: .utf8)
 //                        print("responseString = \(String(describing: responseString))")
             
         }

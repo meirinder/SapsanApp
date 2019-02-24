@@ -36,8 +36,9 @@ class StartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         startViewModel.delegate = self
-        addTapGestureToHideKeyboard()
+       
         setTextFieldBorders()
+         addTapGestureToHideKeyboard()
         NotificationCenter.default.addObserver(self, selector: #selector(StartViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(StartViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)

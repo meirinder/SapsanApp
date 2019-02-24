@@ -76,6 +76,17 @@ extension TransactionViewController: UITableViewDelegate, UITableViewDataSource 
         return transactionViewModel.sectionsCount()
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "TransactionDetailViewController") as! TransactionDetailViewController
+        if let trans = transactionViewModel.transactionAt(index: indexPath.row) {
+            vc.transactionDetailViewModel = TransactionDetailViewModel(transaction: trans )
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            AlertBuilder.simpleAlert(title: "Ошибка", message: "Что то пошло не так ", controller: self)
+        }
+        
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return transactionViewModel.transactionsInSectionCount(index: section)
     }

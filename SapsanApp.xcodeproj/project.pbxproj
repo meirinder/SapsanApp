@@ -11,6 +11,11 @@
 		C412A72621ABECD600708873 /* BalanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C412A72521ABECD600708873 /* BalanceViewController.swift */; };
 		C422974B22126741003EB496 /* FullOrderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C422974A22126741003EB496 /* FullOrderData.swift */; };
 		C422974D221267A7003EB496 /* FullOrder.json in Resources */ = {isa = PBXBuildFile; fileRef = C422974C221267A7003EB496 /* FullOrder.json */; };
+		C42F8025222285D900AAF553 /* TransactionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42F8024222285D900AAF553 /* TransactionDetailViewController.swift */; };
+		C42F8027222286EB00AAF553 /* TransactionDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42F8026222286EB00AAF553 /* TransactionDetailViewModel.swift */; };
+		C42F802A22228D3F00AAF553 /* WriteSupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42F802922228D3F00AAF553 /* WriteSupportViewController.swift */; };
+		C42F802C2222A33800AAF553 /* CourierAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = C42F802B2222A33800AAF553 /* CourierAlert.xib */; };
+		C42F802F2222A6F600AAF553 /* CourierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42F802E2222A6F600AAF553 /* CourierView.swift */; };
 		C44559AF21AABF8600018EA7 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44559AE21AABF8600018EA7 /* TransactionTableViewCell.swift */; };
 		C447B24E221526A1000520D1 /* FullOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C447B24D221526A1000520D1 /* FullOrderTableViewCell.swift */; };
 		C447B2502215278C000520D1 /* QuatroTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C447B24F2215278C000520D1 /* QuatroTableViewCell.swift */; };
@@ -24,7 +29,6 @@
 		C4C4A07221871CAF0026AA37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4C4A07121871CAF0026AA37 /* Assets.xcassets */; };
 		C4C4A07521871CAF0026AA37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4C4A07321871CAF0026AA37 /* LaunchScreen.storyboard */; };
 		C4C4A07D218727830026AA37 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C4A07C218727830026AA37 /* StartViewController.swift */; };
-		C4C4A07F2187278D0026AA37 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C4A07E2187278D0026AA37 /* LoginViewController.swift */; };
 		C4C4A083218727C10026AA37 /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C4A082218727C10026AA37 /* OrdersViewController.swift */; };
 		C4C4A0852187280D0026AA37 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C4A0842187280D0026AA37 /* SignUpViewController.swift */; };
 		C4C4A087218728620026AA37 /* RecoverPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C4A086218728620026AA37 /* RecoverPasswordViewController.swift */; };
@@ -75,6 +79,11 @@
 		C42297452211A89B003EB496 /* SapsanApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SapsanApp.entitlements; sourceTree = "<group>"; };
 		C422974A22126741003EB496 /* FullOrderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullOrderData.swift; sourceTree = "<group>"; };
 		C422974C221267A7003EB496 /* FullOrder.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = FullOrder.json; path = ../../../../Downloads/FullOrder.json; sourceTree = "<group>"; };
+		C42F8024222285D900AAF553 /* TransactionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailViewController.swift; sourceTree = "<group>"; };
+		C42F8026222286EB00AAF553 /* TransactionDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailViewModel.swift; sourceTree = "<group>"; };
+		C42F802922228D3F00AAF553 /* WriteSupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteSupportViewController.swift; sourceTree = "<group>"; };
+		C42F802B2222A33800AAF553 /* CourierAlert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CourierAlert.xib; sourceTree = "<group>"; };
+		C42F802E2222A6F600AAF553 /* CourierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourierView.swift; sourceTree = "<group>"; };
 		C44559AE21AABF8600018EA7 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
 		C447B24D221526A1000520D1 /* FullOrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullOrderTableViewCell.swift; sourceTree = "<group>"; };
 		C447B24F2215278C000520D1 /* QuatroTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuatroTableViewCell.swift; sourceTree = "<group>"; };
@@ -90,7 +99,6 @@
 		C4C4A07421871CAF0026AA37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C4C4A07621871CAF0026AA37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4C4A07C218727830026AA37 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
-		C4C4A07E2187278D0026AA37 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C4C4A082218727C10026AA37 /* OrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
 		C4C4A0842187280D0026AA37 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		C4C4A086218728620026AA37 /* RecoverPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +161,80 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C42F801F2222830E00AAF553 /* OrderDetail */ = {
+			isa = PBXGroup;
+			children = (
+				C447B24D221526A1000520D1 /* FullOrderTableViewCell.swift */,
+				C447B24F2215278C000520D1 /* QuatroTableViewCell.swift */,
+				C447B25122152792000520D1 /* DoubleTableViewCell.swift */,
+				C447B25322152798000520D1 /* MultiTableViewCell.swift */,
+				C495D26E22226AB600F8003E /* CourierTableViewCell.swift */,
+			);
+			name = OrderDetail;
+			sourceTree = "<group>";
+		};
+		C42F80202222832E00AAF553 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				C42F80222222837000AAF553 /* Orders */,
+				C42F8023222285BF00AAF553 /* Transactions */,
+				C412A72521ABECD600708873 /* BalanceViewController.swift */,
+				C42F802822228D1600AAF553 /* Support */,
+				C4DB32A0218D980100636C1C /* Menu.swift */,
+				C4DBABA121883B2400A6BF05 /* MenuViewController.swift */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
+		C42F80212222835500AAF553 /* Start */ = {
+			isa = PBXGroup;
+			children = (
+				C4C4A07C218727830026AA37 /* StartViewController.swift */,
+				C4C4A0842187280D0026AA37 /* SignUpViewController.swift */,
+				C4C4A086218728620026AA37 /* RecoverPasswordViewController.swift */,
+			);
+			name = Start;
+			sourceTree = "<group>";
+		};
+		C42F80222222837000AAF553 /* Orders */ = {
+			isa = PBXGroup;
+			children = (
+				C4DADA72221013280025F5F2 /* FullOrderViewController.swift */,
+				C4DADA70220FF7DC0025F5F2 /* HeaderDetailViewController.swift */,
+				C4C4A082218727C10026AA37 /* OrdersViewController.swift */,
+			);
+			name = Orders;
+			sourceTree = "<group>";
+		};
+		C42F8023222285BF00AAF553 /* Transactions */ = {
+			isa = PBXGroup;
+			children = (
+				C4DBABA321884B7200A6BF05 /* TransactionViewController.swift */,
+				C42F8024222285D900AAF553 /* TransactionDetailViewController.swift */,
+			);
+			name = Transactions;
+			sourceTree = "<group>";
+		};
+		C42F802822228D1600AAF553 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				C4DB32A2218D998A00636C1C /* SupportViewController.swift */,
+				C42F802922228D3F00AAF553 /* WriteSupportViewController.swift */,
+			);
+			name = Support;
+			sourceTree = "<group>";
+		};
+		C42F802D2222A6BE00AAF553 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C4C4A06B21871CAC0026AA37 /* Main.storyboard */,
+				C4C4A07321871CAF0026AA37 /* LaunchScreen.storyboard */,
+				C42F802B2222A33800AAF553 /* CourierAlert.xib */,
+				C42F802E2222A6F600AAF553 /* CourierView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		C4C4A05B21871CAC0026AA37 = {
 			isa = PBXGroup;
 			children = (
@@ -175,7 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				C42297452211A89B003EB496 /* SapsanApp.entitlements */,
-				C4C4A06B21871CAC0026AA37 /* Main.storyboard */,
+				C42F802D2222A6BE00AAF553 /* Views */,
 				C4C4A06721871CAC0026AA37 /* AppDelegate.swift */,
 				C4F3F214220EC2DD00E64489 /* MenuCoordinator.swift */,
 				C4F3F1982209C5BC00E64489 /* ViewControllers */,
@@ -183,7 +265,6 @@
 				C4F3F19A2209C5F600E64489 /* Model */,
 				C4F3F1BC2209D4C800E64489 /* Services */,
 				C4C4A07121871CAF0026AA37 /* Assets.xcassets */,
-				C4C4A07321871CAF0026AA37 /* LaunchScreen.storyboard */,
 				C422974C221267A7003EB496 /* FullOrder.json */,
 				C4C4A07621871CAF0026AA37 /* Info.plist */,
 				C4F3F1F12209D52B00E64489 /* Roboto */,
@@ -194,18 +275,8 @@
 		C4F3F1982209C5BC00E64489 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				C4DB32A0218D980100636C1C /* Menu.swift */,
-				C4C4A07C218727830026AA37 /* StartViewController.swift */,
-				C4C4A0842187280D0026AA37 /* SignUpViewController.swift */,
-				C4C4A082218727C10026AA37 /* OrdersViewController.swift */,
-				C4DB32A2218D998A00636C1C /* SupportViewController.swift */,
-				C4DADA70220FF7DC0025F5F2 /* HeaderDetailViewController.swift */,
-				C412A72521ABECD600708873 /* BalanceViewController.swift */,
-				C4DADA72221013280025F5F2 /* FullOrderViewController.swift */,
-				C4DBABA321884B7200A6BF05 /* TransactionViewController.swift */,
-				C4DBABA121883B2400A6BF05 /* MenuViewController.swift */,
-				C4C4A07E2187278D0026AA37 /* LoginViewController.swift */,
-				C4C4A086218728620026AA37 /* RecoverPasswordViewController.swift */,
+				C42F80212222835500AAF553 /* Start */,
+				C42F80202222832E00AAF553 /* Menu */,
 				C4F3F1992209C5D200E64489 /* Cells */,
 			);
 			name = ViewControllers;
@@ -216,12 +287,8 @@
 			children = (
 				C4DBAB9F21883B1300A6BF05 /* MenuTableViewCell.swift */,
 				C4DBABA521897A9800A6BF05 /* OrderTableViewCell.swift */,
-				C447B24D221526A1000520D1 /* FullOrderTableViewCell.swift */,
-				C447B24F2215278C000520D1 /* QuatroTableViewCell.swift */,
-				C447B25122152792000520D1 /* DoubleTableViewCell.swift */,
-				C447B25322152798000520D1 /* MultiTableViewCell.swift */,
-				C495D26E22226AB600F8003E /* CourierTableViewCell.swift */,
 				C44559AE21AABF8600018EA7 /* TransactionTableViewCell.swift */,
+				C42F801F2222830E00AAF553 /* OrderDetail */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -246,6 +313,7 @@
 				C4DADA74221013370025F5F2 /* FullOrderViewModel.swift */,
 				C4F3F1A32209CD5200E64489 /* OrdersViewModel.swift */,
 				C4F3F1A52209CD5F00E64489 /* SupportViewModel.swift */,
+				C42F8026222286EB00AAF553 /* TransactionDetailViewModel.swift */,
 				C4F3F1A72209CD6900E64489 /* BalanceViewModel.swift */,
 				C4F3F1A92209CD7600E64489 /* TransactionViewModel.swift */,
 				C4F3F1AB2209CD8400E64489 /* MenuViewModel.swift */,
@@ -366,6 +434,7 @@
 				C4F3F2042209D69000E64489 /* Roboto-Italic.ttf in Resources */,
 				C4F3F2052209D69000E64489 /* Roboto-Light.ttf in Resources */,
 				C4C4A07521871CAF0026AA37 /* LaunchScreen.storyboard in Resources */,
+				C42F802C2222A33800AAF553 /* CourierAlert.xib in Resources */,
 				C4F3F2032209D69000E64489 /* Roboto-BoldItalic.ttf in Resources */,
 				C4F3F2012209D69000E64489 /* Roboto-BlackItalic.ttf in Resources */,
 				C4F3F20A2209D69000E64489 /* Roboto-Thin.ttf in Resources */,
@@ -454,6 +523,7 @@
 				C4F3F1A82209CD6900E64489 /* BalanceViewModel.swift in Sources */,
 				C447B25222152792000520D1 /* DoubleTableViewCell.swift in Sources */,
 				C44559AF21AABF8600018EA7 /* TransactionTableViewCell.swift in Sources */,
+				C42F8025222285D900AAF553 /* TransactionDetailViewController.swift in Sources */,
 				C4F3F213220C67D100E64489 /* TransactionData.swift in Sources */,
 				C4DB32A3218D998A00636C1C /* SupportViewController.swift in Sources */,
 				C4F3F20F220B0A8600E64489 /* AlertBuilder.swift in Sources */,
@@ -466,13 +536,15 @@
 				C495D26F22226AB600F8003E /* CourierTableViewCell.swift in Sources */,
 				C447B256221527B8000520D1 /* FullOrderCellViewModel.swift in Sources */,
 				C4DBABA421884B7200A6BF05 /* TransactionViewController.swift in Sources */,
-				C4C4A07F2187278D0026AA37 /* LoginViewController.swift in Sources */,
+				C42F8027222286EB00AAF553 /* TransactionDetailViewModel.swift in Sources */,
 				C4DB32A1218D980100636C1C /* Menu.swift in Sources */,
 				C4C4A087218728620026AA37 /* RecoverPasswordViewController.swift in Sources */,
 				C4F3F1A62209CD5F00E64489 /* SupportViewModel.swift in Sources */,
 				C4F3F1B12209D04800E64489 /* OrdersData.swift in Sources */,
 				C4590C0F22112AF00026C620 /* DataBaseWorker.swift in Sources */,
 				C447B25422152798000520D1 /* MultiTableViewCell.swift in Sources */,
+				C42F802A22228D3F00AAF553 /* WriteSupportViewController.swift in Sources */,
+				C42F802F2222A6F600AAF553 /* CourierView.swift in Sources */,
 				C422974B22126741003EB496 /* FullOrderData.swift in Sources */,
 				C4C4A06821871CAC0026AA37 /* AppDelegate.swift in Sources */,
 				C4C4A083218727C10026AA37 /* OrdersViewController.swift in Sources */,
