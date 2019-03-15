@@ -339,7 +339,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dbs-bk-ktT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4217" y="931"/>
+            <point key="canvasLocation" x="4207" y="1335"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="RjU-oE-c4e">
@@ -1039,15 +1039,15 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OrderCell" rowHeight="100" id="CjG-8F-Wrh" customClass="OrderTableViewCell" customModule="SapsanApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="98" width="375" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OrderCell" rowHeight="120" id="CjG-8F-Wrh" customClass="OrderTableViewCell" customModule="SapsanApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="98" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CjG-8F-Wrh" id="Gdf-FA-9Dr">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wwd-fL-hXg">
-                                                    <rect key="frame" x="15" y="16" width="345" height="68"/>
+                                                    <rect key="frame" x="15" y="16" width="345" height="88"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="0oZ-HI-fg9">
                                                             <rect key="frame" x="0.0" y="0.0" width="100" height="67.5"/>
@@ -1065,10 +1065,11 @@
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Доставлен" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Z6-xE-piP">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Доставлен" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6Z6-xE-piP">
                                                                     <rect key="frame" x="0.0" y="47" width="100" height="20.5"/>
                                                                     <color key="backgroundColor" red="0.35143139649999999" green="0.73968908629999996" blue="0.398748245" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <constraints>
+                                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="2Wc-Fi-H7A"/>
                                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="vxw-KX-uIg"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1177,6 +1178,11 @@
                                 <action selector="menuBarButtonItem:" destination="6NS-fP-Gvc" id="Pgo-6d-cRf"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="XU5-TX-fjQ">
+                            <connections>
+                                <action selector="createOrderAction:" destination="6NS-fP-Gvc" id="TyC-Cm-9IA"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="detailsLabel" destination="q5E-Oz-hfa" id="adx-wP-EBv"/>
@@ -1190,6 +1196,401 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tnY-67-qe9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3088.8000000000002" y="131.78410794602701"/>
+        </scene>
+        <!--Create Order View Controller-->
+        <scene sceneID="E6x-wI-u9K">
+            <objects>
+                <viewController storyboardIdentifier="CreateOrderViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hWm-Hb-Kz8" customClass="CreateOrderViewController" customModule="SapsanApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="k7O-AG-YkQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Lbu-A3-7fW">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DropDownCreateTableViewCell" id="8aH-ww-HEg" customClass="DropDownCreateTableViewCell" customModule="SapsanApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8aH-ww-HEg" id="Cdl-aa-IpV">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DROPDOWN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Dk-Fi-AvE">
+                                                    <rect key="frame" x="131" y="11" width="99" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddressCreateTableViewCell" rowHeight="110" id="Npb-ra-xvh" customClass="AddressCreateTableViewCell" customModule="SapsanApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="375" height="110"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Npb-ra-xvh" id="7kc-P6-VxX">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="109.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yea-gI-RMU">
+                                                    <rect key="frame" x="16" y="42" width="343" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="OBS-jy-oqU"/>
+                                                    </constraints>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="answerTextField:" destination="Npb-ra-xvh" eventType="editingDidEnd" id="ixP-iE-UcO"/>
+                                                    </connections>
+                                                </textField>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SOLO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qf2-7l-Gtl">
+                                                    <rect key="frame" x="16" y="4" width="343" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="d26-8p-MO8"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Yea-gI-RMU" secondAttribute="bottom" constant="8" id="4KI-Nf-wpG"/>
+                                                <constraint firstItem="qf2-7l-Gtl" firstAttribute="leading" secondItem="7kc-P6-VxX" secondAttribute="leading" constant="16" id="9LA-kz-DNX"/>
+                                                <constraint firstAttribute="trailing" secondItem="Yea-gI-RMU" secondAttribute="trailing" constant="16" id="B11-Ns-Bgd"/>
+                                                <constraint firstItem="Yea-gI-RMU" firstAttribute="leading" secondItem="7kc-P6-VxX" secondAttribute="leading" constant="16" id="M0i-Mb-Fi4"/>
+                                                <constraint firstAttribute="trailing" secondItem="qf2-7l-Gtl" secondAttribute="trailing" constant="16" id="Pbl-ZX-NxU"/>
+                                                <constraint firstItem="qf2-7l-Gtl" firstAttribute="top" secondItem="7kc-P6-VxX" secondAttribute="top" constant="4" id="XyM-RR-IoK"/>
+                                                <constraint firstItem="Yea-gI-RMU" firstAttribute="top" secondItem="qf2-7l-Gtl" secondAttribute="bottom" constant="8" id="zKp-IX-py8"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="questionLabel" destination="qf2-7l-Gtl" id="sMP-dW-vWt"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="QuatroCreateTableViewCell" rowHeight="198" id="u37-8c-79D" customClass="QuatroCreateTableViewCell" customModule="SapsanApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="182" width="375" height="198"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="u37-8c-79D" id="5nj-Lw-yZw">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="197.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="7Y5-mo-Hyn">
+                                                    <rect key="frame" x="16" y="4" width="343" height="30"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SOLO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PgW-OH-NkZ">
+                                                            <rect key="frame" x="0.0" y="0.0" width="163.5" height="30"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="30" id="uSM-yq-Bml"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SOLO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NcH-2p-lgF">
+                                                            <rect key="frame" x="179.5" y="0.0" width="163.5" height="30"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="30" id="dWW-R4-X1e"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="V1X-Ew-6gQ"/>
+                                                    </constraints>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="lmx-vm-oZQ">
+                                                    <rect key="frame" x="16" y="80" width="343" height="30"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SOLO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHa-G4-1Ih">
+                                                            <rect key="frame" x="0.0" y="0.0" width="163.5" height="30"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="30" id="5RO-DW-rfx"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SOLO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNj-RK-gVI">
+                                                            <rect key="frame" x="179.5" y="0.0" width="163.5" height="30"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="30" id="b6t-PX-Zbf"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="aw2-e5-mO5"/>
+                                                    </constraints>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="GrG-3z-Ndl">
+                                                    <rect key="frame" x="16" y="42" width="343" height="30"/>
+                                                    <subviews>
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wji-Ad-NZi">
+                                                            <rect key="frame" x="0.0" y="0.0" width="163.5" height="30"/>
+                                                            <nil key="textColor"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k2M-oX-y4k">
+                                                            <rect key="frame" x="179.5" y="0.0" width="163.5" height="30"/>
+                                                            <nil key="textColor"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="quZ-z9-dwz"/>
+                                                        <constraint firstAttribute="height" constant="30" id="sBY-45-6L9"/>
+                                                    </constraints>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="VPw-8n-M9X">
+                                                    <rect key="frame" x="16" y="118" width="343" height="30"/>
+                                                    <subviews>
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QFc-8B-JGA">
+                                                            <rect key="frame" x="0.0" y="0.0" width="163.5" height="30"/>
+                                                            <nil key="textColor"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iVz-Cw-f2F">
+                                                            <rect key="frame" x="179.5" y="0.0" width="163.5" height="30"/>
+                                                            <nil key="textColor"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="Fvv-6Z-tuh"/>
+                                                        <constraint firstAttribute="height" constant="30" id="ZVW-Wt-bEp"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="VPw-8n-M9X" firstAttribute="top" secondItem="lmx-vm-oZQ" secondAttribute="bottom" constant="8" id="1NZ-tf-ywH"/>
+                                                <constraint firstItem="lmx-vm-oZQ" firstAttribute="leading" secondItem="5nj-Lw-yZw" secondAttribute="leading" constant="16" id="22X-d4-aqJ"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="VPw-8n-M9X" secondAttribute="bottom" constant="8" id="3Km-au-pdb"/>
+                                                <constraint firstItem="7Y5-mo-Hyn" firstAttribute="leading" secondItem="5nj-Lw-yZw" secondAttribute="leading" constant="16" id="7Uk-Ol-gYK"/>
+                                                <constraint firstAttribute="trailing" secondItem="lmx-vm-oZQ" secondAttribute="trailing" constant="16" id="IbV-ee-j6s"/>
+                                                <constraint firstItem="GrG-3z-Ndl" firstAttribute="leading" secondItem="5nj-Lw-yZw" secondAttribute="leading" constant="16" id="JOf-eu-9q4"/>
+                                                <constraint firstAttribute="trailing" secondItem="7Y5-mo-Hyn" secondAttribute="trailing" constant="16" id="KQP-do-b5O"/>
+                                                <constraint firstItem="VPw-8n-M9X" firstAttribute="leading" secondItem="5nj-Lw-yZw" secondAttribute="leading" constant="16" id="OWK-Jh-nth"/>
+                                                <constraint firstItem="7Y5-mo-Hyn" firstAttribute="top" secondItem="5nj-Lw-yZw" secondAttribute="top" constant="4" id="OXY-74-ehU"/>
+                                                <constraint firstItem="GrG-3z-Ndl" firstAttribute="top" secondItem="7Y5-mo-Hyn" secondAttribute="bottom" constant="8" id="Qnb-et-Ot2"/>
+                                                <constraint firstAttribute="trailing" secondItem="VPw-8n-M9X" secondAttribute="trailing" constant="16" id="SW7-3g-QQz"/>
+                                                <constraint firstAttribute="trailing" secondItem="GrG-3z-Ndl" secondAttribute="trailing" constant="16" id="T25-KG-Bnq"/>
+                                                <constraint firstItem="lmx-vm-oZQ" firstAttribute="top" secondItem="GrG-3z-Ndl" secondAttribute="bottom" constant="8" id="feY-HC-3XN"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="botLeftLabel" destination="lHa-G4-1Ih" id="9li-p8-6tp"/>
+                                            <outlet property="botLeftTextField" destination="QFc-8B-JGA" id="gI8-BU-lH8"/>
+                                            <outlet property="botRightLabel" destination="LNj-RK-gVI" id="onP-OS-K2Y"/>
+                                            <outlet property="botRightTextField" destination="iVz-Cw-f2F" id="qLg-n2-tcv"/>
+                                            <outlet property="topLeftLabel" destination="PgW-OH-NkZ" id="VwG-I6-fhC"/>
+                                            <outlet property="topLeftTextField" destination="Wji-Ad-NZi" id="xin-fh-wzS"/>
+                                            <outlet property="topRightLabel" destination="NcH-2p-lgF" id="kgF-tU-ld3"/>
+                                            <outlet property="topRightTextField" destination="k2M-oX-y4k" id="PvC-vJ-N9v"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DoubleCreateTableViewCell" rowHeight="145" id="qR9-Ts-V1d" customClass="DoubleCreateTableViewCell" customModule="SapsanApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="380" width="375" height="145"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qR9-Ts-V1d" id="4WT-Xn-mDF">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="144.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="LeZ-CV-rfv">
+                                                    <rect key="frame" x="16" y="4" width="343" height="30"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SOLO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Urg-bS-8Sm">
+                                                            <rect key="frame" x="0.0" y="0.0" width="163.5" height="30"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="30" id="Ikr-xL-U19"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SOLO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZ5-KL-lrj">
+                                                            <rect key="frame" x="179.5" y="0.0" width="163.5" height="30"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="30" id="Mkg-9z-qha"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="JFE-Lg-ySM">
+                                                    <rect key="frame" x="16" y="42" width="343" height="30"/>
+                                                    <subviews>
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Llp-HD-Cgz">
+                                                            <rect key="frame" x="0.0" y="0.0" width="163.5" height="30"/>
+                                                            <nil key="textColor"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TNc-6D-zBW">
+                                                            <rect key="frame" x="179.5" y="0.0" width="163.5" height="30"/>
+                                                            <nil key="textColor"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="3PB-bM-sqq"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="LeZ-CV-rfv" firstAttribute="top" secondItem="4WT-Xn-mDF" secondAttribute="top" constant="4" id="9Sx-cK-YAr"/>
+                                                <constraint firstAttribute="trailing" secondItem="JFE-Lg-ySM" secondAttribute="trailing" constant="16" id="F6e-fz-3JR"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="JFE-Lg-ySM" secondAttribute="bottom" constant="8" id="G9G-Ng-SlG"/>
+                                                <constraint firstItem="LeZ-CV-rfv" firstAttribute="leading" secondItem="4WT-Xn-mDF" secondAttribute="leading" constant="16" id="ZC4-QF-kJY"/>
+                                                <constraint firstAttribute="trailing" secondItem="LeZ-CV-rfv" secondAttribute="trailing" constant="16" id="ipE-uB-o3a"/>
+                                                <constraint firstItem="JFE-Lg-ySM" firstAttribute="leading" secondItem="4WT-Xn-mDF" secondAttribute="leading" constant="16" id="nr7-xf-V9s"/>
+                                                <constraint firstItem="JFE-Lg-ySM" firstAttribute="top" secondItem="LeZ-CV-rfv" secondAttribute="bottom" constant="8" id="sRf-CY-fN2"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="leftLabel" destination="Urg-bS-8Sm" id="hqw-ET-jSF"/>
+                                            <outlet property="leftTextField" destination="Llp-HD-Cgz" id="Rzi-hs-5E3"/>
+                                            <outlet property="rightLabel" destination="bZ5-KL-lrj" id="rhO-LS-U1s"/>
+                                            <outlet property="rightTextField" destination="TNc-6D-zBW" id="SOY-5P-O9J"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SoloCreateTableViewCell" rowHeight="73" id="7IH-Jb-FaC" customClass="SoloCreateTableViewCell" customModule="SapsanApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="525" width="375" height="73"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7IH-Jb-FaC" id="hhu-r3-sWa">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="72.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SOLO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IoS-Cb-GS6">
+                                                    <rect key="frame" x="16" y="4" width="343" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="WNN-d1-OWU"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7hj-dW-cXc">
+                                                    <rect key="frame" x="16" y="34" width="343" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="MPM-FP-hwZ"/>
+                                                    </constraints>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="IoS-Cb-GS6" firstAttribute="top" secondItem="hhu-r3-sWa" secondAttribute="top" constant="4" id="1C3-9x-FX2"/>
+                                                <constraint firstItem="7hj-dW-cXc" firstAttribute="leading" secondItem="hhu-r3-sWa" secondAttribute="leading" constant="16" id="3Hw-xX-O8X"/>
+                                                <constraint firstAttribute="bottom" secondItem="7hj-dW-cXc" secondAttribute="bottom" constant="8" id="4f3-l4-9YN"/>
+                                                <constraint firstItem="7hj-dW-cXc" firstAttribute="top" secondItem="IoS-Cb-GS6" secondAttribute="bottom" id="ARY-Fq-DnS"/>
+                                                <constraint firstAttribute="trailing" secondItem="IoS-Cb-GS6" secondAttribute="trailing" constant="16" id="G6L-cT-v8o"/>
+                                                <constraint firstAttribute="trailing" secondItem="7hj-dW-cXc" secondAttribute="trailing" constant="16" id="hZm-k3-Wxc"/>
+                                                <constraint firstItem="7hj-dW-cXc" firstAttribute="bottom" secondItem="hhu-r3-sWa" secondAttribute="bottomMargin" constant="8" id="luZ-1A-lAX"/>
+                                                <constraint firstItem="IoS-Cb-GS6" firstAttribute="leading" secondItem="hhu-r3-sWa" secondAttribute="leading" constant="16" id="rPi-LY-SJU"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="answerTextField" destination="7hj-dW-cXc" id="I9O-AY-jsc"/>
+                                            <outlet property="questionLabel" destination="IoS-Cb-GS6" id="VTh-Ne-dp7"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CheckBoxesCreateTableViewCell" rowHeight="55" id="ih7-yG-Ovj" customClass="CheckBoxesCreateTableViewCell" customModule="SapsanApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="598" width="375" height="55"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ih7-yG-Ovj" id="uYG-fg-g1u">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="54.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="EHO-A3-Xv3">
+                                                    <rect key="frame" x="16" y="4" width="343" height="30"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="8e7-1c-ugd">
+                                                            <rect key="frame" x="0.0" y="0.0" width="163.5" height="30"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SOLO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07G-95-JAa">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="110.5" height="30"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="30" id="Eum-w4-4qG"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="qud-Gl-eqj">
+                                                                    <rect key="frame" x="114.5" y="0.0" width="51" height="30"/>
+                                                                </switch>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="LDt-Oj-V9m">
+                                                            <rect key="frame" x="179.5" y="0.0" width="163.5" height="30"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SOLO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZR-oL-xUe">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="110.5" height="30"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="30" id="YUq-xu-DgY"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gbC-Ng-a6q">
+                                                                    <rect key="frame" x="114.5" y="0.0" width="51" height="30"/>
+                                                                </switch>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="Ava-eu-hEV"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="EHO-A3-Xv3" secondAttribute="trailing" constant="16" id="9ts-gU-zAO"/>
+                                                <constraint firstItem="EHO-A3-Xv3" firstAttribute="leading" secondItem="uYG-fg-g1u" secondAttribute="leading" constant="16" id="NsA-NK-JmC"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="EHO-A3-Xv3" secondAttribute="bottom" constant="8" id="O5W-so-Ib8"/>
+                                                <constraint firstItem="EHO-A3-Xv3" firstAttribute="top" secondItem="uYG-fg-g1u" secondAttribute="top" constant="4" id="epL-SO-ie9"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="leftCheckBox" destination="qud-Gl-eqj" id="pQC-JO-VIG"/>
+                                            <outlet property="leftLabel" destination="07G-95-JAa" id="31y-cb-fQS"/>
+                                            <outlet property="rightCheckBox" destination="gbC-Ng-a6q" id="JcY-2L-kfO"/>
+                                            <outlet property="rightLabel" destination="LZR-oL-xUe" id="zBp-do-7Rb"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Lbu-A3-7fW" firstAttribute="top" secondItem="AWI-de-zCr" secondAttribute="top" id="JyJ-cc-yb6"/>
+                            <constraint firstItem="AWI-de-zCr" firstAttribute="trailing" secondItem="Lbu-A3-7fW" secondAttribute="trailing" id="SQd-IQ-3G7"/>
+                            <constraint firstItem="AWI-de-zCr" firstAttribute="bottom" secondItem="Lbu-A3-7fW" secondAttribute="bottom" id="nYa-0B-QmX"/>
+                            <constraint firstItem="Lbu-A3-7fW" firstAttribute="leading" secondItem="AWI-de-zCr" secondAttribute="leading" id="uaT-9R-Tvr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="AWI-de-zCr"/>
+                    </view>
+                    <connections>
+                        <outlet property="createOrderTableView" destination="Lbu-A3-7fW" id="N2X-zj-hgR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fix-3l-2QO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3858.4000000000001" y="2.2488755622188905"/>
         </scene>
         <!--Full Order View Controller-->
         <scene sceneID="SUM-yy-qyt">
@@ -1466,7 +1867,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lkI-X0-97x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3911" y="289"/>
+            <point key="canvasLocation" x="4148" y="732"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jeG-10-VpM">
@@ -1559,7 +1960,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m37-Co-uKb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3279" y="932"/>
+            <point key="canvasLocation" x="3278" y="1245"/>
         </scene>
     </scenes>
     <resources>

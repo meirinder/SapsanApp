@@ -88,7 +88,12 @@ class OrdersViewController: Menu, UITableViewDataSource, UITableViewDelegate {
     }
 
     
-
+    @IBAction func createOrderAction(_ sender: UIBarButtonItem) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "CreateOrderViewController") as? CreateOrderViewController
+        vc?.viewModel = CreateOrderViewModel()
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
+    
     @IBAction func menuBarButtonItem(_ sender: Any) {
         if AppDelegate.isMenuVC{
             showMenu()
@@ -150,7 +155,7 @@ class OrdersViewController: Menu, UITableViewDataSource, UITableViewDelegate {
     
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return  100
+        return  UITableView.automaticDimension
     }
 }
 

@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SapsanApp/JSONWorker.swift"
-            timestampString = "572685381.536992"
+            filePath = "SapsanApp/MultiTableViewCell.swift"
+            timestampString = "574322101.465764"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
-            landmarkName = "parseRows(dictionary:)"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "setCell()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

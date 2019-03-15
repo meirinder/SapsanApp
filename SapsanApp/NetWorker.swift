@@ -133,8 +133,8 @@ class NetWorker {
                 print("response = \(String(describing: response))")
             }
             completion(data)
-//                        let responseString = String(data: data, encoding: .utf8)
-//                        print("responseString = \(String(describing: responseString))")
+                        let responseString = String(data: data, encoding: .utf8)
+                        print("responseString = \(String(describing: responseString))")
             
         }
         task.resume()
@@ -229,8 +229,8 @@ class NetWorker {
                 print("response = \(String(describing: response))")
             }
             completion(data)
-                                    let responseString = String(data: data, encoding: .utf8)
-                                    print("responseString = \(String(describing: responseString))")
+//                                    let responseString = String(data: data, encoding: .utf8)
+//                                    print("responseString = \(String(describing: responseString))")
             
         }
         task.resume()

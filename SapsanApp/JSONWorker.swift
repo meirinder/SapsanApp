@@ -11,26 +11,18 @@ import UIKit
 class JSONWorker: NSObject {
     
     
-    static func parseFullOrdersInFile() -> FullOrderData{
+    static func parseFullOrdersInFile(data: Data) -> FullOrderData{
         let fullOrderData = FullOrderData()
-        if let path = Bundle.main.path(forResource: "FullOrder", ofType: "json") {
-            do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                let jsonResult  = try? JSONSerialization.jsonObject(with: data, options: [])
-                if let dictionary = jsonResult as? [String: Any] {
-                    if let status = dictionary["status"] as? String {
-                        fullOrderData.status = status
-                    }
-                    if let balance = dictionary["balance"] as? String {
-                        fullOrderData.balance = balance
-                        UserDefaults.standard.set(balance, forKey: "balance")
-                    }
-                    fullOrderData.fullOrderLayout = parseFullOrderLayput(dictionary: dictionary)
-                }
-            } catch {
-        // handle error
+        let jsonResult  = try? JSONSerialization.jsonObject(with: data, options: [])
+        if let dictionary = jsonResult as? [String: Any] {
+            if let status = dictionary["status"] as? String {
+                fullOrderData.status = status
             }
-    
+            if let balance = dictionary["balance"] as? String {
+                fullOrderData.balance = balance
+                UserDefaults.standard.set(balance, forKey: "balance")
+            }
+            fullOrderData.fullOrderLayout = parseFullOrderLayput(dictionary: dictionary)
         }
         return fullOrderData
     }
@@ -276,8 +268,8 @@ class JSONWorker: NSObject {
                     if let companyMoney = order["companyMoney"] as? String {
                         localOrder.companyMoney = companyMoney
                     }
-                    if let deliveryMoney = order["deliveryMoney"] as? String {
-                        localOrder.deliveryMoney = deliveryMoney
+                     if let deliveryMoney = order["deliveryMoney"] {
+                        localOrder.deliveryMoney = "\(deliveryMoney)"
                     }
                     if let statusText = order["statusText"] as? String {
                         localOrder.statusText = statusText
@@ -445,7 +437,190 @@ class JSONWorker: NSObject {
         }
         return (true,"OK")
     }
+    
+    private static func parseDropDownItems(dict: [String: Any]) -> [DropDownItem] {
+        var dropDownItems = [DropDownItem]()
+        if let localItems = dict["items"] as? [Any] {
+            for i in 0..<localItems.count {
+                if let localItem = localItems[i] as? [String: Any] {
+                    let item = DropDownItem()
+                    if let id = localItem["id"] as? String {
+                        item.id = id
+                    }
+                    if let name = localItem["name"] as? String {
+                        item.name = name
+                    }
+                    dropDownItems.append(item)
+                }
+            }
+        }
+        return dropDownItems
+    }
+    
+    private static func parseCreationRowValue(dict: [String: Any]) -> CreationRowValue {
+        let value = CreationRowValue()
+        if let hint = dict["hint"] as? String {
+            value.hint = hint
+        }
+        if let keyboard_type = dict["keyboard_type"] as? String {
+            value.keyboard_type = keyboard_type
+        }
+        if let type = dict["type"] as? String {
+            value.type = type
+        }
+        if let label = dict["label"] as? String {
+            value.label = label
+        }
+        if let name = dict["name"] as? String {
+            value.name = name
+        }
+        return value
+        
+    }
+    
+    private static func parseCreationRows(dict: [String: Any]) -> [CreationRow] {
+        var rows = [CreationRow]()
+        if let localRows = dict["rows"] as? [Any] {
+            for j in 0..<localRows.count {
+                if let localRow = localRows[j] as? [String: Any] {
+                    if let type = localRow["type"] as? String {
+                        switch type {
+                        case "when_dropdown":
+                            let row = WhenDropDownRow()
+                            row.type = type
+                            if let label = localRow["label"] as? String {
+                                row.label = label
+                            }
+                            if let name = localRow["name"] as? String {
+                                row.name = name
+                            }
+                            row.items = parseDropDownItems(dict: localRow)
+                            rows.append(row)
+                            break
+                        case "from_dropdown":
+                            let row = FromDropDownRow()
+                            row.type = type
+                            if let label = localRow["label"] as? String {
+                                row.label = label
+                            }
+                            if let name = localRow["name"] as? String {
+                                row.name = name
+                            }
+                            row.items = parseDropDownItems(dict: localRow)
+                            rows.append(row)
+                            break
+                        case "2x2_grid":
+                            let row = DoubleDoubleGridRow()
+                            row.type = type
+                            if let topLeftText = localRow["left_top"] as? [String: Any] {
+                                row.topLeftText = parseCreationRowValue(dict: topLeftText)
+                            }
+                            if let topRightText = localRow["right_top"] as? [String: Any] {
+                                row.topRightText = parseCreationRowValue(dict: topRightText)
+                            }
+                            if let botLeftText = localRow["left_bottom"] as? [String: Any] {
+                                row.botLeftText = parseCreationRowValue(dict: botLeftText)
+                            }
+                            if let botRightText = localRow["right_bottom"] as? [String: Any] {
+                                row.botRightText = parseCreationRowValue(dict: botRightText)
+                            }
+                            rows.append(row)
+                            break
+                        case "2x1_grid":
+                            let row = DoubleSoloGridRow()
+                            row.type = type
+                            if let leftText = localRow["left"] as? [String: Any] {
+                                row.leftText = parseCreationRowValue(dict: leftText)
+                            }
+                            if let rightText = localRow["right"] as? [String: Any] {
+                                row.rightText = parseCreationRowValue(dict: rightText)
+                            }
+                            
+                            rows.append(row)
+                            break
+                        case "solo_grid":
+                            let row = SoloGridRow()
+                            row.type = type
+                            if let value = localRow["value"] as? [String: Any] {
+                                row.value = parseCreationRowValue(dict: value)
+                            }
+                            
+                            rows.append(row)
+                            break
+                        case "2_checkboxes":
+                            let row = DoubleCheckBoxesRow()
+                            row.type = type
+                            if let left = localRow["left"] as? [String: Any] {
+                                row.left = parseCreationRowValue(dict: left)
+                            }
+                            if let right = localRow["right"] as? [String: Any] {
+                                row.right = parseCreationRowValue(dict: right)
+                            }
+                            
+                            rows.append(row)
+                            break
+                        case "address_edit_text":
+                            let row = AdressEditRow()
+                            row.type = type
+                            if let label = localRow["label"] as? String {
+                                row.label = label
+                            }
+                            if let name = localRow["name"] as? String {
+                                row.name = name
+                            }
+                            if let hint = localRow["hint"] as? String {
+                                row.hint = hint
+                            }
+                            
+                            rows.append(row)
+                            break
+                        default:
+                            let row = CreationRow()
+                            row.type = type
+
+                            rows.append(row)
+                            break
+                        }
+                    }
+                }
+            }
+        }
+        return rows
+    }
+    
+    private static func parseCreationRows(dict: [String: Any]) -> [CreationBlock] {
+        var blocks = [CreationBlock]()
+        if let localBlocks = dict["blocks"] as? [Any] {
+            for i in 0..<localBlocks.count {
+                if let localBlock = localBlocks[i] as? [String: Any] {
+                    let block = CreationBlock()
+                    block.rows = parseCreationRows(dict: localBlock)
+                    blocks.append(block)
+                }
+            }
+        }
+        return blocks
+    }
   
+    static func parseCreationLayout(data: Data) -> CreationOrderData {
+        let creationOrderData = CreationOrderData()
+        let jsonResult  = try? JSONSerialization.jsonObject(with: data, options: [])
+        if let dictionary = jsonResult as? [String: Any] {
+            if let status = dictionary["status"] as? String {
+                creationOrderData.status = status
+            }
+            if let balance = dictionary["balance"] as? String {
+                creationOrderData.balance = balance
+                UserDefaults.standard.set(balance, forKey: "balance")
+            }
+            if let creationLayout = dictionary["creationLayout"] as? [String: Any] {
+                creationOrderData.creationLayout = CreationLayout()
+                creationOrderData.creationLayout!.blocks = parseCreationRows(dict: creationLayout)
+            }
+        }
+        return creationOrderData
+    }
+    
 }
 
 protocol LogInDelegate: class {

@@ -82,18 +82,18 @@ class FullOrderViewModel: NSObject {
 //    }
     
     func title() -> String {
-        return ""
-//        return "Заказ № " + (fullOrderData.fullOrderLayout?.orderNumber ?? "0")
+//        return ""
+        return "Заказ № " + (fullOrderData.fullOrderLayout?.orderNumber ?? "0")
     }
     
     func getMarkup() {
-//        NetWorker.getFullOrders(idCompany: (UserDefaults.standard.object(forKey: "idCompany") as? String) ?? "",
-//                                idUser: (UserDefaults.standard.object(forKey: "idUser") as? String)  ?? "",
-//                                idOrder: orderId,
-//                                key: (UserDefaults.standard.object(forKey: "key") as? String)  ?? "" ){ outData in
-                                    self.fullOrderData = JSONWorker.parseFullOrdersInFile()
+        NetWorker.getFullOrders(idCompany: (UserDefaults.standard.object(forKey: "idCompany") as? String) ?? "",
+                                idUser: (UserDefaults.standard.object(forKey: "idUser") as? String)  ?? "",
+                                idOrder: orderId,
+                                key: (UserDefaults.standard.object(forKey: "key") as? String)  ?? "" ){ outData in
+                                    self.fullOrderData = JSONWorker.parseFullOrdersInFile(data: outData)
                                     self.delegate?.reloadViews()
-//        }
+        }
     }
     
 }
