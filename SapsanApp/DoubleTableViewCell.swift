@@ -15,7 +15,7 @@ class DoubleTableViewCell: FullOrderTableViewCell {
     
     override func setCell() {
         let attributes = fullOrderCellViewModel?.doubleDict()
-        topLabel.attributedText = attributes?["top"]?.content?.htmlToAttributedString
+        topLabel.setHTMLFromString(text: attributes?["top"]?.content ?? "")
         if let hexColor =  attributes?["top"]?.color {
             topLabel.textColor = UIColor(hexString:hexColor)
         }
@@ -23,7 +23,7 @@ class DoubleTableViewCell: FullOrderTableViewCell {
             topLabel.backgroundColor = UIColor(hexString:BGHexColor)
         }
         
-        botLabel.attributedText = attributes?["bot"]?.content?.htmlToAttributedString
+        botLabel.setHTMLFromString(text: attributes?["bot"]?.content ?? "")
         if let hexColor =  attributes?["bot"]?.color {
             botLabel.textColor = UIColor(hexString:hexColor)
         }

@@ -17,7 +17,7 @@ class MultiTableViewCell: FullOrderTableViewCell {
     
     override func setCell() {
         let attributes = fullOrderCellViewModel?.multiDict()
-        leftKeyLabel.attributedText = attributes?["leftKey"]?.content?.htmlToAttributedString
+        leftKeyLabel.setHTMLFromString(text: attributes?["leftKey"]?.content ?? "")
         if let hexColor =  attributes?["leftKey"]?.color {
             leftKeyLabel.textColor = UIColor(hexString:hexColor)
         }
@@ -25,7 +25,7 @@ class MultiTableViewCell: FullOrderTableViewCell {
             leftKeyLabel.backgroundColor = UIColor(hexString:BGHexColor)
         }
         
-        rightKeyLabel.attributedText = attributes?["rightKey"]?.content?.htmlToAttributedString
+        rightKeyLabel.setHTMLFromString(text: attributes?["rightKey"]?.content ?? "")
         if let hexColor =  attributes?["rightKey"]?.color {
             rightKeyLabel.textColor = UIColor(hexString:hexColor)
         }
@@ -35,7 +35,8 @@ class MultiTableViewCell: FullOrderTableViewCell {
         
         if let typeOfValue = attributes?["leftValue"]?.type {
             if typeOfValue == "label" {
-                leftValueButton.setAttributedTitle(attributes?["leftValue"]?.content?.htmlToAttributedString, for: .normal)
+                leftValueButton.setHTMLFromString(text: attributes?["leftValue"]?.content ?? "")
+                leftValueButton.layer.cornerRadius = 8
                 if let hexColor =  attributes?["leftValue"]?.color {
                     leftValueButton.setTitleColor(UIColor(hexString:hexColor), for: .normal)
                 }
@@ -56,7 +57,8 @@ class MultiTableViewCell: FullOrderTableViewCell {
         
         if let typeOfValue = attributes?["rightValue"]?.type {
             if typeOfValue == "label" {
-                rightValueButton.setAttributedTitle(attributes?["rightValue"]?.content?.htmlToAttributedString, for: .normal)
+                rightValueButton.setHTMLFromString(text: attributes?["rightValue"]?.content ?? "")
+                rightValueButton.layer.cornerRadius = 8
                 if let hexColor = attributes?["rightValue"]?.color {
                     rightValueButton.setTitleColor(UIColor(hexString:hexColor), for: .normal)
                 }

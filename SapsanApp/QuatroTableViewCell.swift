@@ -16,7 +16,7 @@ class QuatroTableViewCell: FullOrderTableViewCell {
     
     override func setCell() {
         let attributes = fullOrderCellViewModel?.quatroDict()
-        topLeftLabel.attributedText  = attributes?["topLeft"]?.content?.htmlToAttributedString
+        topLeftLabel.setHTMLFromString(text: attributes?["topLeft"]?.content ?? "")
         if let hexColor =  attributes?["topLeft"]?.color {
             topLeftLabel.textColor = UIColor(hexString:hexColor)
         }
@@ -25,7 +25,7 @@ class QuatroTableViewCell: FullOrderTableViewCell {
         }
         
  
-        botLeftLabel.attributedText = attributes?["botLeft"]?.content?.htmlToAttributedString
+        botLeftLabel.setHTMLFromString(text: attributes?["botLeft"]?.content ?? "")
         if let hexColor =  attributes?["botLeft"]?.color {
             botLeftLabel.textColor = UIColor(hexString:hexColor)
         }
@@ -33,7 +33,7 @@ class QuatroTableViewCell: FullOrderTableViewCell {
             botLeftLabel.backgroundColor = UIColor(hexString:BGHexColor)
         }
             
-        topRightLabel.attributedText = attributes?["topRight"]?.content?.htmlToAttributedString
+        topRightLabel.setHTMLFromString(text: attributes?["topRight"]?.content ?? "")
         topRightLabel.textAlignment = .right
         if let hexColor =  attributes?["topRight"]?.color {
             topRightLabel.textColor = UIColor(hexString:hexColor)
@@ -42,7 +42,7 @@ class QuatroTableViewCell: FullOrderTableViewCell {
             topRightLabel.backgroundColor = UIColor(hexString:BGHexColor)
         }
         
-        botRightLabel.attributedText = attributes?["botRight"]?.content?.htmlToAttributedString
+        botRightLabel.setHTMLFromString(text: attributes?["botRight"]?.content ?? "")
         botRightLabel.textAlignment = .right
         if let hexColor =  attributes?["botRight"]?.color {
             botRightLabel.textColor = UIColor(hexString:hexColor)
@@ -69,12 +69,39 @@ extension String {
     var htmlToAttributedString: NSAttributedString? {
         guard let data = data(using: .utf8) else { return NSAttributedString() }
         do {
-            return try NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue], documentAttributes: nil)
+            
+            return try NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue ], documentAttributes: nil)
         } catch {
             return NSAttributedString()
         }
     }
     var htmlToString: String {
         return htmlToAttributedString?.string ?? ""
+    }
+}
+
+extension UIButton {
+    func setHTMLFromString(text: String) {
+        let modifiedFont = NSString(format:"<span style=\"font-family: \(self.titleLabel!.font!.fontName); font-size: \(self.titleLabel!.font!.pointSize)\">%@</span>" as NSString, text)
+        
+        let attrStr = try! NSAttributedString(
+            data: modifiedFont.data(using: String.Encoding.unicode.rawValue, allowLossyConversion: true)!,
+            options: [NSAttributedString.DocumentReadingOptionKey.documentType:NSAttributedString.DocumentType.html, NSAttributedString.DocumentReadingOptionKey.characterEncoding: String.Encoding.utf8.rawValue],
+            documentAttributes: nil)
+        
+        self.setAttributedTitle(attrStr, for: .normal)
+    }
+}
+
+extension UILabel {
+    func setHTMLFromString(text: String) {
+        let modifiedFont = NSString(format:"<span style=\"font-family: \(self.font!.fontName); font-size: \(self.font!.pointSize)\">%@</span>" as NSString, text)
+        
+        let attrStr = try! NSAttributedString(
+            data: modifiedFont.data(using: String.Encoding.unicode.rawValue, allowLossyConversion: true)!,
+            options: [NSAttributedString.DocumentReadingOptionKey.documentType:NSAttributedString.DocumentType.html, NSAttributedString.DocumentReadingOptionKey.characterEncoding: String.Encoding.utf8.rawValue],
+            documentAttributes: nil)
+        
+        self.attributedText = attrStr
     }
 }

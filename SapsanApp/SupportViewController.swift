@@ -38,6 +38,7 @@ class SupportViewController: Menu {
     
     @IBAction func writeSupportAction(_ sender: UIButton) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "WriteSupportViewController") as! WriteSupportViewController
+        vc.helpTypes = supportViewModel.getTypes()
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -60,6 +61,7 @@ class SupportViewController: Menu {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        supportViewModel.getInstructions()
         
         // Do any additional setup after loading the view.
     }

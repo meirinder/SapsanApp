@@ -11,14 +11,24 @@ import UIKit
 class AddressCreateTableViewCell: UITableViewCell {
 
     var viewModel: CreateOrderCellViewModel?
+    weak var delegate: AddressVCDelegate?
 
     func setCell() {
-        
+        let dict = viewModel?.addressDict()
+        questionLabel.attributedText = dict?["label"]??.htmlToAttributedString
+        answerTextField.placeholder = dict?["hint"] ?? "errorHint"
     }
     
     @IBOutlet weak var questionLabel: UILabel!
-    @IBAction func answerTextField(_ sender: Any) {
+    @IBOutlet weak var answerTextField: UITextField!
+    @IBAction func editingDidBeginAction(_ sender: Any) {
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "AddressViewController") as! AddressViewController
+        vc.delegate = delegate
+        self.answerTextField.endEditing(true)
+        delegate?.pushVC(vc: vc)
     }
+    
     
     
     

@@ -16,6 +16,7 @@ class CreateOrderViewModel {
         }
     }
     
+    weak var delegate: ReloadTableViewDelegate?
     var viewModels = [[CreateOrderCellViewModel]]()
 
     private func parseViewModels() {
@@ -53,15 +54,10 @@ class CreateOrderViewModel {
     }
     
     func getLayout() {
-        if let path = Bundle.main.path(forResource: "CreateOrder", ofType: "json") {
-            do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                layout = JSONWorker.parseCreationLayout(data: data)
-            } catch {
-                // handle error
-            }
+        NetWorker.getMakeOrders { (data) in
+            self.layout = JSONWorker.parseCreationLayout(data: data)
+            self.delegate?.reloadTableView()
         }
-        
     }
     
     

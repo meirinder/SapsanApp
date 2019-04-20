@@ -20,20 +20,15 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_bg" translatesAutoresizingMaskIntoConstraints="NO" id="SAS-P3-kYU">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_no_text" translatesAutoresizingMaskIntoConstraints="NO" id="aao-yf-kVq">
+                                <rect key="frame" x="37" y="258" width="300" height="150"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oq4-fF-wSS">
                                 <rect key="frame" x="22.5" y="243.5" width="330" height="180"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_no_text" translatesAutoresizingMaskIntoConstraints="NO" id="aao-yf-kVq">
-                                        <rect key="frame" x="15" y="15" width="300" height="150"/>
-                                    </imageView>
-                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.65178189212328763" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="aao-yf-kVq" firstAttribute="leading" secondItem="oq4-fF-wSS" secondAttribute="leading" constant="15" id="5nY-5g-C5u"/>
                                     <constraint firstAttribute="height" constant="180" id="Fv4-Xp-gkg"/>
-                                    <constraint firstAttribute="trailing" secondItem="aao-yf-kVq" secondAttribute="trailing" constant="15" id="P4z-Bd-2hi"/>
-                                    <constraint firstAttribute="bottom" secondItem="aao-yf-kVq" secondAttribute="bottom" constant="15" id="Psq-iw-caS"/>
-                                    <constraint firstItem="aao-yf-kVq" firstAttribute="top" secondItem="oq4-fF-wSS" secondAttribute="top" constant="15" id="fXc-o7-pWR"/>
                                     <constraint firstAttribute="width" constant="330" id="nlA-Zq-Nuy"/>
                                 </constraints>
                             </view>
@@ -48,6 +43,12 @@
                             <constraint firstItem="SAS-P3-kYU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uqB-3N-3SX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="aao-yf-kVq"/>
+                                <exclude reference="oq4-fF-wSS"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -32,6 +32,10 @@ class CreateOrderCellViewModel {
         return dict
     }
     
+    func dropDownRow() -> CreationRow {
+         return row
+    }
+    
     func doubleDict() -> [String: String?] {
         let localRow = row as! DoubleSoloGridRow
         let leftText = localRow.leftText
@@ -40,6 +44,12 @@ class CreateOrderCellViewModel {
                 "leftTextLabel": leftText?.label, "leftTextName": leftText?.name,
                 "rightTextHint": rightText?.hint, "rightTextKeyboard_type":  rightText?.keyboard_type,
                 "rightTextLabel": rightText?.label, "rightTextName": rightText?.name]
+        return dict
+    }
+    
+    func addressDict() -> [String: String?] {
+        let localRow = row as! AdressEditRow
+        let dict = ["hint": localRow.hint, "label": localRow.label ,"name": localRow.name]
         return dict
     }
     

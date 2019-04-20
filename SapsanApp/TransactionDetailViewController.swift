@@ -28,9 +28,9 @@ class TransactionDetailViewController: UIViewController {
     
     @IBAction func openOrderAction(_ sender: UIButton) {
         let fullorderViewModel = FullOrderViewModel(orderId: transactionDetailViewModel?.orderId() ?? "")
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "FullOrderViewController") as? FullOrderViewController
-        vc?.fullOrderViewModel = fullorderViewModel
-        self.navigationController?.pushViewController(vc!, animated: true)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "FullOrderViewController") as! FullOrderViewController
+        vc.fullOrderViewModel = fullorderViewModel
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     override func viewDidLoad() {

@@ -15,6 +15,7 @@ class FullOrderViewModel: NSObject {
     private var fullOrderData = FullOrderData() {
         didSet {
             setViewModels()
+            delegate?.reloadViews()
         }
     }
     private var viewModels = [[FullOrderCellViewModel]]()
@@ -44,6 +45,36 @@ class FullOrderViewModel: NSObject {
             return rowType
         }
         return .none
+    }
+    
+    func deleteOrder() {
+        NetWorker.deleteOrder(idOrder: orderId) { (data) in
+            let jsonResult  = try? JSONSerialization.jsonObject(with: data, options: [])
+            if let dictionary = jsonResult as? [String: Any] {
+                if let balance = dictionary["balance"] {
+                    UserDefaults.standard.set(balance, forKey: "balance")
+                }
+            }
+        }
+    }
+    
+    func checkDelete(completion: @escaping(String) -> (), failure: @escaping() -> ())  {
+         NetWorker.checkDelete(idOrder: orderId) { (data) in
+            let result = JSONWorker.parseDeleteInfo(data: data)
+            if result.show {
+                completion(result.text)
+            }else {
+                failure()
+            }
+        }
+    }
+    
+    func isDeleteble() -> Bool {
+        return fullOrderData.fullOrderLayout?.showDeleteButton ?? false
+    }
+    
+    func deleteText() -> String {
+        return fullOrderData.fullOrderLayout?.deleteButtonText ?? ""
     }
     
     func buildViewModelForCell(section: Int, index: Int) -> FullOrderCellViewModel {

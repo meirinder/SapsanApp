@@ -11,6 +11,7 @@ import UIKit
 class SupportViewModel: NSObject {
 
     private var supportInfo: SupportInfo!
+    private var helpTypes: [HelpTypes]?
     
     func phone() -> String {
         return (supportInfo?.phone)!
@@ -28,5 +29,14 @@ class SupportViewModel: NSObject {
         supportInfo = Menu.menuViewModel.loginData.supportInfo
     }
     
+    func getTypes() -> [HelpTypes]? {
+        return helpTypes  
+    }
+    
+    func getInstructions() {
+        NetWorker.getInstructions { (data) in
+            self.helpTypes = JSONWorker.parseInstructions(data: data)
+        }
+    }
     
 }

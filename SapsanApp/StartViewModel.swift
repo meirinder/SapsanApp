@@ -54,6 +54,7 @@ class StartViewModel: NSObject {
                     self.delegate?.failure(text: logData.errorText ?? "errorText")
                     return
                 }
+                
                 self.data = logData
                 UserDefaults.standard.set(phoneText, forKey: "phoneText")
                 UserDefaults.standard.set(passText, forKey: "passText")

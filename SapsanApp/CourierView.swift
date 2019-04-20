@@ -63,14 +63,14 @@ extension CourierView {
     }
     
     @IBAction func endEditingTextField(_ sender: UITextField) {
-        commentTextFieldBorder.borderColor = UIColor.darkGray.cgColor
+        commentTextFieldBorder.borderColor = UIColor.clear.cgColor
     }
     
     func setTextFieldBorders() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.endEditing))
         self.addGestureRecognizer(tapGesture)
         let width = CGFloat(1.0)
-        commentTextFieldBorder.borderColor = UIColor.darkGray.cgColor
+        commentTextFieldBorder.borderColor = UIColor.clear.cgColor
         commentTextFieldBorder.frame = CGRect(x: 0, y: commentTextField.frame.size.height - width, width: self.bounds.width + 64, height: commentTextField.frame.size.height)
         commentTextFieldBorder.borderWidth = width
         commentTextField.layer.addSublayer(commentTextFieldBorder)

@@ -10,6 +10,45 @@ import UIKit
 
 class JSONWorker: NSObject {
     
+    static func parseDeleteInfo(data: Data) -> (show: Bool,text: String) {
+        var resultString = ""
+        let jsonResult  = try? JSONSerialization.jsonObject(with: data, options: [])
+        if let dictionary = jsonResult as? [String: Any] {
+            if let deleteInfo = dictionary["deleteInfo"] as? [String: Any] {
+                if let status = dictionary["deleteStatus"] as? Int {
+                    if status == 0 {
+                        return (false,"")
+                    }
+                }
+                if let title = deleteInfo["buttonText"] as? String {
+                    resultString = title
+                }
+            }
+        }
+        return (true,resultString)
+    }
+    
+    static func parseInstructions(data: Data) -> [HelpTypes] {
+        var result = [HelpTypes]()
+        let jsonResult  = try? JSONSerialization.jsonObject(with: data, options: [])
+        if let dictionary = jsonResult as? [String: Any] {
+            if let helpTypes = dictionary["helpTypes"] as? [Any] {
+                for i in 0..<helpTypes.count {
+                    let localHelp = HelpTypes()
+                    if let helpType = helpTypes[i] as? [String: Any] {
+                        if let id = helpType["id"] as? Int {
+                            localHelp.id = id
+                        }
+                        if let value = helpType["value"] as? String {
+                            localHelp.value = value
+                        }
+                    }
+                    result.append(localHelp)
+                }
+            }
+        }
+        return result
+    }
     
     static func parseFullOrdersInFile(data: Data) -> FullOrderData{
         let fullOrderData = FullOrderData()
@@ -332,6 +371,7 @@ class JSONWorker: NSObject {
     static func parseLoginData(data: Data) -> LoginData? {
         let jsonResult  = try? JSONSerialization.jsonObject(with: data, options: [])
         if let dictionary = jsonResult as? [String: Any] {
+            
             if !checkErrorInLogin(dictionary: dictionary).0 {
                 let loginData = LoginData()
                 loginData.status = dictionary["status"] as? String
@@ -339,6 +379,9 @@ class JSONWorker: NSObject {
                 return loginData
             }
             let outData = setLoginProperties(dictionarie: dictionary)
+            if let status = dictionary["status"] as? String {
+                outData.status = status
+            }
             DataBaseWorker.saveLoginData(loginData: outData)
             return outData
         }
@@ -588,7 +631,7 @@ class JSONWorker: NSObject {
         return rows
     }
     
-    private static func parseCreationRows(dict: [String: Any]) -> [CreationBlock] {
+    private static func parseCreationBlocks(dict: [String: Any]) -> [CreationBlock] {
         var blocks = [CreationBlock]()
         if let localBlocks = dict["blocks"] as? [Any] {
             for i in 0..<localBlocks.count {
@@ -602,6 +645,46 @@ class JSONWorker: NSObject {
         return blocks
     }
   
+    
+    static func parseAdresses(data: Data) -> [Address] {
+        var addresses = [Address]()
+        let jsonResult  = try? JSONSerialization.jsonObject(with: data, options: [])
+        if let dictionary = jsonResult as? [String: Any] {
+            if let searchAddresses = dictionary["searchAddresses"] as? [Any] {
+                for i in 0..<searchAddresses.count {
+                    if let searchAddress = searchAddresses[i] as? [String: Any] {
+                        let address = Address()
+                        if let coordi = dictionary["coord"] as? [String: Any] {
+                            let coordinat = Coord()
+                            if let lat = coordi["lat"] as? String {
+                                coordinat.lat = lat
+                            }
+                            if let lng = coordi["lng"] as? String {
+                                coordinat.lng = lng
+                            }
+                            if let coord = coordi["coord"] as? String {
+                                coordinat.coord = coord
+                            }
+                            address.coord = coordinat
+                        }
+                        if let city = dictionary["city"] as? String  {
+                            address.city = city
+                        }
+                        if let text = dictionary["text"] as? String  {
+                            address.text = text
+                        }
+                        if let region = dictionary["region"] as? String  {
+                            address.region = region
+                        }
+                        addresses.append(address)
+                    }
+                }
+            }
+            
+        }
+        return addresses
+    }
+    
     static func parseCreationLayout(data: Data) -> CreationOrderData {
         let creationOrderData = CreationOrderData()
         let jsonResult  = try? JSONSerialization.jsonObject(with: data, options: [])
@@ -615,7 +698,7 @@ class JSONWorker: NSObject {
             }
             if let creationLayout = dictionary["creationLayout"] as? [String: Any] {
                 creationOrderData.creationLayout = CreationLayout()
-                creationOrderData.creationLayout!.blocks = parseCreationRows(dict: creationLayout)
+                creationOrderData.creationLayout!.blocks = parseCreationBlocks(dict: creationLayout)
             }
         }
         return creationOrderData

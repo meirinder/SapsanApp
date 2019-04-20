@@ -16,8 +16,8 @@ class CourierTableViewCell: FullOrderTableViewCell {
     
     override func setCell() {
         let attributes = fullOrderCellViewModel?.courierDict()
-        phoneLabel.attributedText = attributes?["phoneText"]?.content?.htmlToAttributedString
-        nameLabel.attributedText = attributes?["nameText"]?.content?.htmlToAttributedString
+        phoneLabel.setHTMLFromString(text: attributes?["phoneText"]?.content ?? "")
+        nameLabel.setHTMLFromString(text: attributes?["nameText"]?.content ?? "")
         phoneLabel.textAlignment = .right
         nameLabel.textAlignment = .right
         if let link = attributes?["photoLink"]?.content {

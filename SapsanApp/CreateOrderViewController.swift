@@ -12,6 +12,7 @@ class CreateOrderViewController: UIViewController {
 
     var viewModel: CreateOrderViewModel?{
         didSet {
+            viewModel?.delegate = self
             viewModel!.getLayout()
         }
     }
@@ -62,11 +63,13 @@ extension CreateOrderViewController: UITableViewDelegate, UITableViewDataSource 
         case "from_dropdown":
             let cell = tableView.dequeueReusableCell(withIdentifier: "DropDownCreateTableViewCell", for: indexPath) as! DropDownCreateTableViewCell
             cell.viewModel = viewModel?.viewModel(section: indexPath.section, index: indexPath.row)
+            cell.delegate = tableView
             cell.setCell()
             return cell
         case "when_dropdown":
             let cell = tableView.dequeueReusableCell(withIdentifier: "DropDownCreateTableViewCell", for: indexPath) as! DropDownCreateTableViewCell
             cell.viewModel = viewModel?.viewModel(section: indexPath.section, index: indexPath.row)
+            cell.delegate = tableView
             cell.setCell()
             return cell
         case "solo_grid":
@@ -76,6 +79,7 @@ extension CreateOrderViewController: UITableViewDelegate, UITableViewDataSource 
             return cell
         case "address_edit_text":
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddressCreateTableViewCell", for: indexPath) as! AddressCreateTableViewCell
+            cell.delegate = self
             cell.viewModel = viewModel?.viewModel(section: indexPath.section, index: indexPath.row)
             cell.setCell()
             return cell
@@ -114,4 +118,26 @@ extension CreateOrderViewController {
             }
         }
     }
+}
+
+extension CreateOrderViewController: ReloadTableViewDelegate, AddressVCDelegate {
+    func popToThisVC() {
+        self.navigationController?.popToViewController(self, animated: true)
+    }
+    
+    func pushVC(vc: UIViewController) {
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func reloadTableView() {
+        DispatchQueue.main.async {
+            self.createOrderTableView.reloadData()
+        }
+    }
+}
+
+ 
+protocol AddressVCDelegate: class {
+    func popToThisVC()
+    func pushVC(vc: UIViewController)
 }

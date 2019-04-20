@@ -11,7 +11,7 @@ import UIKit
 class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
 
     @IBOutlet weak var dispatcherPhoneButton: UIButton!
-    static var currentCompany = 0
+//    static var currentCompany = 0
     static var currentMenu = 0
     @IBOutlet weak var chooseCompanyButton: UIButton!
     @IBOutlet weak var menuTableView: UITableView!
@@ -63,7 +63,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         default:
             break
         }
-        let companyName = "  " + (loginData.userCompanies?[MenuViewController.currentCompany].companyName!)! + "  "
+        let currentCompany = UserDefaults.standard.object(forKey: "currentCompany") as? Int ?? 0
+        let companyName = "  " + (loginData.userCompanies?[currentCompany].companyName!)! + "  "
         chooseCompanyButton.setTitle(companyName, for: .normal)
         menuTableView.reloadData()
     }
@@ -83,8 +84,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             companies.append(company.companyName!)
         }
         
-        
-        userNameLabel.text = "  " +  (loginData.userCompanies?[MenuViewController.currentCompany].name!)! + "  "
+        let currentCompany = UserDefaults.standard.object(forKey: "currentCompany") as? Int ?? 0
+        userNameLabel.text = "  " +  (loginData.userCompanies?[currentCompany].name!)! + "  "
         
         dispatcherPhoneButton.setTitle("+7 ("+formatPhone(), for: .normal)
     }
@@ -127,7 +128,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             return titles.count
         }
         if tableView == self.dropDownMenuTableView{
-            return companies.count
+            return companies.count - 1
         }
         return 0
     }
@@ -141,7 +142,12 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         if tableView == self.dropDownMenuTableView{
             let cell = dropDownMenuTableView.dequeueReusableCell(withIdentifier: "DropDownCell", for: indexPath)
-            cell.textLabel?.text = companies[indexPath.row]
+            let currentCompany = UserDefaults.standard.object(forKey: "currentCompany") as? Int ?? 0
+            if indexPath.row >= currentCompany {
+                cell.textLabel?.text = companies[indexPath.row + 1]
+            } else {
+                cell.textLabel?.text = companies[indexPath.row]
+            }
             return cell
         }
         let cell = MenuTableViewCell()
@@ -149,9 +155,9 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if tableView == self.menuTableView{
-            return 60;
-        }
+//        if tableView == self.menuTableView{
+//            return 60;
+//        }
         return 40
     }
 
@@ -191,23 +197,51 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         if tableView == self.dropDownMenuTableView{
             animate(toggle: false)
-            chooseCompanyButton.setTitle("  " + companies[indexPath.row] + "  ", for: .normal)
-            NetWorker.changeUser(newIdCompany: loginData.userCompanies?[indexPath.row].idCompany ?? "", newIdUser: loginData.userCompanies?[indexPath.row].idUser ?? ""  ) {data in
-                let newData = JSONWorker.parseLoginData(data: data)
-                Menu.menuViewModel.loginData.supportInfo = newData?.supportInfo
-                Menu.menuViewModel.loginData.key = newData?.key
-                Menu.menuViewModel.loginData.dispatcherPhone = newData?.dispatcherPhone
-                Menu.menuViewModel.loginData.balance = newData?.balance
-                UserDefaults.standard.set(newData?.key, forKey: "key")
-                UserDefaults.standard.set(self.loginData.userCompanies?[indexPath.row].idCompany, forKey: "idCompany")
-                UserDefaults.standard.set(self.loginData.userCompanies?[indexPath.row].idUser, forKey: "idUser")
-                UserDefaults.standard.set(newData?.balance, forKey: "balance")
-                self.setBalance()
-
-                self.delegate?.handleEvent(event: .changeUser)
+            let currentCompany = UserDefaults.standard.object(forKey: "currentCompany") as? Int ?? 0
+            if indexPath.row >= currentCompany {
+                chooseCompanyButton.setTitle("  " + companies[indexPath.row + 1] + "  ", for: .normal)
+                NetWorker.changeUser(newIdCompany: loginData.userCompanies?[indexPath.row + 1].idCompany ?? "", newIdUser: loginData.userCompanies?[indexPath.row + 1].idUser ?? ""  ) {data in
+                    let newData = JSONWorker.parseLoginData(data: data)
+                    AlertBuilder.errorAlert(controller: self.navigationController!)
+                    Menu.menuViewModel.loginData.supportInfo = newData?.supportInfo
+                    Menu.menuViewModel.loginData.key = newData?.key
+                    Menu.menuViewModel.loginData.dispatcherPhone = newData?.dispatcherPhone
+                    Menu.menuViewModel.loginData.balance = newData?.balance
+                    DataBaseWorker.saveLoginData(loginData: Menu.menuViewModel.loginData)
+                    UserDefaults.standard.set(newData?.key, forKey: "key")
+                    UserDefaults.standard.set(self.loginData.userCompanies?[indexPath.row + 1].idCompany, forKey: "idCompany")
+                    UserDefaults.standard.set(self.loginData.userCompanies?[indexPath.row + 1].idUser, forKey: "idUser")
+                    UserDefaults.standard.set(newData?.balance, forKey: "balance")
+                    self.setBalance()
+                    
+                    self.delegate?.handleEvent(event: .changeUser)
+                }
+                UserDefaults.standard.set(indexPath.row + 1, forKey: "currentCompany")
+            } else {
+                chooseCompanyButton.setTitle("  " + companies[indexPath.row] + "  ", for: .normal)
+                NetWorker.changeUser(newIdCompany: loginData.userCompanies?[indexPath.row].idCompany ?? "", newIdUser: loginData.userCompanies?[indexPath.row].idUser ?? ""  ) {data in
+                    let newData = JSONWorker.parseLoginData(data: data)
+                    AlertBuilder.errorAlert(controller: self.navigationController!)
+                    Menu.menuViewModel.loginData.supportInfo = newData?.supportInfo
+                    Menu.menuViewModel.loginData.key = newData?.key
+                    Menu.menuViewModel.loginData.dispatcherPhone = newData?.dispatcherPhone
+                    Menu.menuViewModel.loginData.balance = newData?.balance
+                    DataBaseWorker.saveLoginData(loginData: Menu.menuViewModel.loginData)
+                    UserDefaults.standard.set(newData?.key, forKey: "key")
+                    UserDefaults.standard.set(self.loginData.userCompanies?[indexPath.row].idCompany, forKey: "idCompany")
+                    UserDefaults.standard.set(self.loginData.userCompanies?[indexPath.row].idUser, forKey: "idUser")
+                    UserDefaults.standard.set(newData?.balance, forKey: "balance")
+                    self.setBalance()
+                    
+                    self.delegate?.handleEvent(event: .changeUser)
+                }
+                UserDefaults.standard.set(indexPath.row, forKey: "currentCompany")
             }
             
-            MenuViewController.currentCompany = indexPath.row
+            DispatchQueue.main.async {
+                self.dropDownMenuTableView.reloadData()
+            }
+//            MenuViewController.currentCompany = indexPath.row
         }
 
     }
@@ -228,7 +262,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     func setBalance() {
         DispatchQueue.main.async {
-             self.balanceButton.setTitle(((UserDefaults.standard.object(forKey: "balance")) as! String), for: .normal)
+             self.balanceButton.setTitle(((UserDefaults.standard.object(forKey: "balance")) as? String), for: .normal)
         }
     }
     
