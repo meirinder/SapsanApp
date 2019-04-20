@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		250E85FD947A728C34AEB60A /* Pods_SapsanApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9D77A9B273E9BDE534BB2C /* Pods_SapsanApp.framework */; };
-		C412A72621ABECD600708873 /* BalanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C412A72521ABECD600708873 /* BalanceViewController.swift */; };
 		C422974B22126741003EB496 /* FullOrderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C422974A22126741003EB496 /* FullOrderData.swift */; };
 		C422974D221267A7003EB496 /* FullOrder.json in Resources */ = {isa = PBXBuildFile; fileRef = C422974C221267A7003EB496 /* FullOrder.json */; };
 		C42F8025222285D900AAF553 /* TransactionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42F8024222285D900AAF553 /* TransactionDetailViewController.swift */; };
@@ -16,6 +15,10 @@
 		C42F802A22228D3F00AAF553 /* WriteSupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42F802922228D3F00AAF553 /* WriteSupportViewController.swift */; };
 		C42F802C2222A33800AAF553 /* CourierAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = C42F802B2222A33800AAF553 /* CourierAlert.xib */; };
 		C42F802F2222A6F600AAF553 /* CourierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42F802E2222A6F600AAF553 /* CourierView.swift */; };
+		C4392060226B597500F9A050 /* DeleteAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = C439205F226B597500F9A050 /* DeleteAlert.xib */; };
+		C4392062226B598300F9A050 /* DeleteAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4392061226B598300F9A050 /* DeleteAlertView.swift */; };
+		C4392064226B5B3500F9A050 /* SupportAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4392063226B5B3500F9A050 /* SupportAlert.xib */; };
+		C4392066226B5B3E00F9A050 /* SupportAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4392065226B5B3E00F9A050 /* SupportAlertView.swift */; };
 		C43968B5225F816000418BCE /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = C43968A8225F816000418BCE /* LICENSE.txt */; };
 		C43968B6225F816000418BCE /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C43968A9225F816000418BCE /* Roboto-Black.ttf */; };
 		C43968B7225F816000418BCE /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C43968AA225F816000418BCE /* Roboto-LightItalic.ttf */; };
@@ -92,7 +95,6 @@
 		1DDDB39D75A6923FD7394567 /* Pods-SapsanApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SapsanApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SapsanApp/Pods-SapsanApp.debug.xcconfig"; sourceTree = "<group>"; };
 		4BB4B5068D8AF2C1C705AF9D /* Pods-SapsanApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SapsanApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-SapsanApp/Pods-SapsanApp.release.xcconfig"; sourceTree = "<group>"; };
 		8B9D77A9B273E9BDE534BB2C /* Pods_SapsanApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SapsanApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C412A72521ABECD600708873 /* BalanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceViewController.swift; sourceTree = "<group>"; };
 		C42297452211A89B003EB496 /* SapsanApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SapsanApp.entitlements; sourceTree = "<group>"; };
 		C422974A22126741003EB496 /* FullOrderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullOrderData.swift; sourceTree = "<group>"; };
 		C422974C221267A7003EB496 /* FullOrder.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = FullOrder.json; path = ../../../../Downloads/FullOrder.json; sourceTree = "<group>"; };
@@ -101,6 +103,10 @@
 		C42F802922228D3F00AAF553 /* WriteSupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteSupportViewController.swift; sourceTree = "<group>"; };
 		C42F802B2222A33800AAF553 /* CourierAlert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CourierAlert.xib; sourceTree = "<group>"; };
 		C42F802E2222A6F600AAF553 /* CourierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourierView.swift; sourceTree = "<group>"; };
+		C439205F226B597500F9A050 /* DeleteAlert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeleteAlert.xib; sourceTree = "<group>"; };
+		C4392061226B598300F9A050 /* DeleteAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAlertView.swift; sourceTree = "<group>"; };
+		C4392063226B5B3500F9A050 /* SupportAlert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SupportAlert.xib; sourceTree = "<group>"; };
+		C4392065226B5B3E00F9A050 /* SupportAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportAlertView.swift; sourceTree = "<group>"; };
 		C43968A8225F816000418BCE /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE.txt; path = roboto/LICENSE.txt; sourceTree = "<group>"; };
 		C43968A9225F816000418BCE /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Black.ttf"; path = "roboto/Roboto-Black.ttf"; sourceTree = "<group>"; };
 		C43968AA225F816000418BCE /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-LightItalic.ttf"; path = "roboto/Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
@@ -214,7 +220,6 @@
 			children = (
 				C42F80222222837000AAF553 /* Orders */,
 				C42F8023222285BF00AAF553 /* Transactions */,
-				C412A72521ABECD600708873 /* BalanceViewController.swift */,
 				C42F802822228D1600AAF553 /* Support */,
 				C4DB32A0218D980100636C1C /* Menu.swift */,
 				C4DBABA121883B2400A6BF05 /* MenuViewController.swift */,
@@ -271,6 +276,10 @@
 				C42F802E2222A6F600AAF553 /* CourierView.swift */,
 				C479DF83226B066A0065EBE9 /* BalanceAlert.xib */,
 				C479DF85226B07720065EBE9 /* BalanceAlertView.swift */,
+				C439205F226B597500F9A050 /* DeleteAlert.xib */,
+				C4392061226B598300F9A050 /* DeleteAlertView.swift */,
+				C4392063226B5B3500F9A050 /* SupportAlert.xib */,
+				C4392065226B5B3E00F9A050 /* SupportAlertView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -490,6 +499,7 @@
 			files = (
 				C4A040FC222427C90016B03E /* CreateOrder.json in Resources */,
 				C4C4A07521871CAF0026AA37 /* LaunchScreen.storyboard in Resources */,
+				C4392064226B5B3500F9A050 /* SupportAlert.xib in Resources */,
 				C43968BE225F816000418BCE /* Roboto-Regular.ttf in Resources */,
 				C43968BD225F816000418BCE /* Roboto-Light.ttf in Resources */,
 				C42F802C2222A33800AAF553 /* CourierAlert.xib in Resources */,
@@ -500,6 +510,7 @@
 				C43968B7225F816000418BCE /* Roboto-LightItalic.ttf in Resources */,
 				C43968BB225F816000418BCE /* Roboto-BlackItalic.ttf in Resources */,
 				C43968B8225F816000418BCE /* Roboto-MediumItalic.ttf in Resources */,
+				C4392060226B597500F9A050 /* DeleteAlert.xib in Resources */,
 				C43968C1225F816000418BCE /* Roboto-BoldItalic.ttf in Resources */,
 				C4C4A07221871CAF0026AA37 /* Assets.xcassets in Resources */,
 				C43968BA225F816000418BCE /* Roboto-Medium.ttf in Resources */,
@@ -591,13 +602,14 @@
 				C44559AF21AABF8600018EA7 /* TransactionTableViewCell.swift in Sources */,
 				C42F8025222285D900AAF553 /* TransactionDetailViewController.swift in Sources */,
 				C4F3F213220C67D100E64489 /* TransactionData.swift in Sources */,
+				C4392062226B598300F9A050 /* DeleteAlertView.swift in Sources */,
 				C4DB32A3218D998A00636C1C /* SupportViewController.swift in Sources */,
 				C479DF86226B07720065EBE9 /* BalanceAlertView.swift in Sources */,
 				C4F3F20F220B0A8600E64489 /* AlertBuilder.swift in Sources */,
 				C49D54F5223E0100009F6384 /* HelpTypes.swift in Sources */,
 				C4F3F1A22209CD2400E64489 /* SingUpViewModel.swift in Sources */,
-				C412A72621ABECD600708873 /* BalanceViewController.swift in Sources */,
 				C49D54E722390757009F6384 /* QuatroCreateTableViewCell.swift in Sources */,
+				C4392066226B5B3E00F9A050 /* SupportAlertView.swift in Sources */,
 				C4F3F1B82209D1CB00E64489 /* NetWorker.swift in Sources */,
 				C447B2502215278C000520D1 /* QuatroTableViewCell.swift in Sources */,
 				C49D54E3223906DD009F6384 /* SoloCreateTableViewCell.swift in Sources */,

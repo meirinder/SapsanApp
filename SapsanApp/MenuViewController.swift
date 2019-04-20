@@ -257,6 +257,15 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     @IBAction func balanceAction(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.frame = CGRect(x: -UIScreen.main.bounds.size.width,
+                                            y: UIScreen.main.bounds.minY,
+                                            width: UIScreen.main.bounds.size.width,
+                                            height: UIScreen.main.bounds.size.height)
+            
+        }){ (finished) in self.view.removeFromSuperview()
+            AppDelegate.isMenuVC = true
+        }
         delegate?.handleEvent(event: .balance)
     }
 

@@ -58,8 +58,12 @@ class MenuCoordinator: EventHadlerDelegate {
             }
             break
         case .balance:
-            let detVC = storyboard.instantiateViewController(withIdentifier: "BalanceViewController")
-            navController.pushViewController(detVC, animated: true)
+            DispatchQueue.main.async {
+                AlertBuilder.balanceAlert(controller: self.navController.topViewController!)
+            }
+
+//            let detVC = storyboard.instantiateViewController(withIdentifier: "BalanceViewController")
+//            navController.pushViewController(detVC, animated: true)
             break
         case .exit:
             break

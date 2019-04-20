@@ -37,9 +37,10 @@ class SupportViewController: Menu {
     }
     
     @IBAction func writeSupportAction(_ sender: UIButton) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "WriteSupportViewController") as! WriteSupportViewController
-        vc.helpTypes = supportViewModel.getTypes()
-        self.navigationController?.pushViewController(vc, animated: true)
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "WriteSupportViewController") as! WriteSupportViewController
+//        vc.helpTypes = supportViewModel.getTypes()
+//        self.navigationController?.present(vc, animated: true, completion: nil)  //pushViewController(vc, animated: true)
+        AlertBuilder.supportAlert(controller: self, helpTypes: supportViewModel.getTypes()!)
     }
     
     @IBAction func emailAction(_ sender: UIButton) {
@@ -98,14 +99,6 @@ class SupportViewController: Menu {
     }
     
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }

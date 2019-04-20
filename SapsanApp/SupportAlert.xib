@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="svV-xM-jrM" customClass="SupportAlertView" customModule="SapsanApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nfa-SP-01T">
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <connections>
+                        <action selector="endAction:" destination="svV-xM-jrM" eventType="touchUpInside" id="stA-jT-LFu"/>
+                    </connections>
+                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="aV9-g7-hXg">
+                    <rect key="frame" x="32" y="84" width="311" height="362"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="-70" translatesAutoresizingMaskIntoConstraints="NO" id="mB1-pX-g9L">
+                            <rect key="frame" x="0.0" y="0.0" width="311" height="70"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PDO-cf-Tku">
+                                    <rect key="frame" x="0.0" y="0.0" width="311" height="70"/>
+                                    <state key="normal">
+                                        <color key="titleColor" red="0.1228740108" green="0.0" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="chooseSubjectAction:" destination="svV-xM-jrM" eventType="touchUpInside" id="LFj-IS-6rp"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выберите тему обращения" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W6s-Lf-xNZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="311" height="70"/>
+                                    <color key="backgroundColor" red="0.1137254902" green="0.15686274510000001" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="70" id="kIN-Zq-uDD"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="PDO-cf-Tku" firstAttribute="height" secondItem="W6s-Lf-xNZ" secondAttribute="height" id="bX7-vP-zqd"/>
+                                <constraint firstAttribute="bottom" secondItem="PDO-cf-Tku" secondAttribute="bottom" id="lTm-6a-uck"/>
+                            </constraints>
+                        </stackView>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Y6q-sM-tHL">
+                            <rect key="frame" x="0.0" y="70" width="311" height="292"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="292" id="rjg-tM-EhL"/>
+                            </constraints>
+                        </tableView>
+                    </subviews>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j2h-Hk-eiu">
+                    <rect key="frame" x="32" y="573" width="311" height="50"/>
+                    <color key="backgroundColor" red="0.1215686275" green="0.0" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="ZEE-uy-Bmh"/>
+                    </constraints>
+                    <state key="normal" title="Написать">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="writeAction:" destination="svV-xM-jrM" eventType="touchUpInside" id="RFF-FG-maC"/>
+                    </connections>
+                </button>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SKT-ZM-I2P">
+                    <rect key="frame" x="32" y="478" width="311" height="63"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="63" id="bIW-Do-Cz8"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SA0-E1-zgw">
+                    <rect key="frame" x="8" y="28" width="32" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="POK-ss-Cv8"/>
+                        <constraint firstAttribute="width" constant="32" id="TfI-fd-SIa"/>
+                    </constraints>
+                    <state key="normal" image="false"/>
+                    <connections>
+                        <action selector="exitAction:" destination="svV-xM-jrM" eventType="touchUpInside" id="MjI-4T-jV8"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.70272367294520544" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="aV9-g7-hXg" firstAttribute="leading" secondItem="LJM-vB-zPE" secondAttribute="leading" constant="32" id="2WQ-fg-YDm"/>
+                <constraint firstItem="LJM-vB-zPE" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="j2h-Hk-eiu" secondAttribute="bottom" constant="40" id="7C0-Uy-TKZ"/>
+                <constraint firstItem="SKT-ZM-I2P" firstAttribute="leading" secondItem="LJM-vB-zPE" secondAttribute="leading" constant="32" id="961-oE-dBf"/>
+                <constraint firstItem="aV9-g7-hXg" firstAttribute="top" secondItem="LJM-vB-zPE" secondAttribute="top" constant="64" id="DDN-3O-l0r"/>
+                <constraint firstItem="LJM-vB-zPE" firstAttribute="trailing" secondItem="j2h-Hk-eiu" secondAttribute="trailing" constant="32" id="Eud-d7-nK7"/>
+                <constraint firstItem="SA0-E1-zgw" firstAttribute="top" secondItem="LJM-vB-zPE" secondAttribute="top" constant="8" id="FT0-gz-cEM"/>
+                <constraint firstItem="SA0-E1-zgw" firstAttribute="leading" secondItem="LJM-vB-zPE" secondAttribute="leading" constant="8" id="JPX-fQ-vnu"/>
+                <constraint firstItem="Nfa-SP-01T" firstAttribute="bottom" secondItem="LJM-vB-zPE" secondAttribute="bottom" id="Q30-zX-fh4"/>
+                <constraint firstItem="Nfa-SP-01T" firstAttribute="leading" secondItem="LJM-vB-zPE" secondAttribute="leading" id="RtQ-ZM-b0Z"/>
+                <constraint firstItem="j2h-Hk-eiu" firstAttribute="top" secondItem="SKT-ZM-I2P" secondAttribute="bottom" constant="32" id="Ygt-nR-cQ0"/>
+                <constraint firstItem="LJM-vB-zPE" firstAttribute="trailing" secondItem="SKT-ZM-I2P" secondAttribute="trailing" constant="32" id="c49-Wk-yIM"/>
+                <constraint firstItem="LJM-vB-zPE" firstAttribute="trailing" secondItem="aV9-g7-hXg" secondAttribute="trailing" constant="32" id="fnZ-WG-ZqX"/>
+                <constraint firstItem="j2h-Hk-eiu" firstAttribute="leading" secondItem="LJM-vB-zPE" secondAttribute="leading" constant="32" id="p7h-ju-KFO"/>
+                <constraint firstItem="SKT-ZM-I2P" firstAttribute="top" secondItem="aV9-g7-hXg" secondAttribute="bottom" constant="32" id="q2s-Ra-bJC"/>
+                <constraint firstItem="LJM-vB-zPE" firstAttribute="trailing" secondItem="Nfa-SP-01T" secondAttribute="trailing" id="y5v-RJ-NtI"/>
+                <constraint firstItem="Nfa-SP-01T" firstAttribute="top" secondItem="LJM-vB-zPE" secondAttribute="top" id="zix-qa-0iQ"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="LJM-vB-zPE"/>
+            <connections>
+                <outlet property="objectTextView" destination="SKT-ZM-I2P" id="OTW-b8-ELz"/>
+                <outlet property="subjectButton" destination="PDO-cf-Tku" id="O4L-ax-d1Z"/>
+                <outlet property="subjectLabel" destination="W6s-Lf-xNZ" id="gLY-nL-Q8d"/>
+                <outlet property="subjectTableViewHeightConstraint" destination="rjg-tM-EhL" id="FIv-3G-S8G"/>
+                <outlet property="subjectsTableView" destination="Y6q-sM-tHL" id="yUI-cd-KAa"/>
+                <outlet property="writeButton" destination="j2h-Hk-eiu" id="5Ze-3g-xby"/>
+            </connections>
+            <point key="canvasLocation" x="53.600000000000001" y="66.11694152923539"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="false" width="64" height="64"/>
+    </resources>
+</document>
