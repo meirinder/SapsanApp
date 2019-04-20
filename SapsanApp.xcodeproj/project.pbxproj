@@ -36,6 +36,9 @@
 		C447B25422152798000520D1 /* MultiTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C447B25322152798000520D1 /* MultiTableViewCell.swift */; };
 		C447B256221527B8000520D1 /* FullOrderCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C447B255221527B8000520D1 /* FullOrderCellViewModel.swift */; };
 		C4590C0F22112AF00026C620 /* DataBaseWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4590C0E22112AF00026C620 /* DataBaseWorker.swift */; };
+		C479DF82226B02190065EBE9 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C479DF81226B02190065EBE9 /* WebKit.framework */; };
+		C479DF84226B066A0065EBE9 /* BalanceAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = C479DF83226B066A0065EBE9 /* BalanceAlert.xib */; };
+		C479DF86226B07720065EBE9 /* BalanceAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C479DF85226B07720065EBE9 /* BalanceAlertView.swift */; };
 		C495D26F22226AB600F8003E /* CourierTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C495D26E22226AB600F8003E /* CourierTableViewCell.swift */; };
 		C49D54E0223905BD009F6384 /* CreateOrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49D54DF223905BD009F6384 /* CreateOrderViewModel.swift */; };
 		C49D54E3223906DD009F6384 /* SoloCreateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49D54E2223906DD009F6384 /* SoloCreateTableViewCell.swift */; };
@@ -118,6 +121,9 @@
 		C447B25322152798000520D1 /* MultiTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiTableViewCell.swift; sourceTree = "<group>"; };
 		C447B255221527B8000520D1 /* FullOrderCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullOrderCellViewModel.swift; sourceTree = "<group>"; };
 		C4590C0E22112AF00026C620 /* DataBaseWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseWorker.swift; sourceTree = "<group>"; };
+		C479DF81226B02190065EBE9 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		C479DF83226B066A0065EBE9 /* BalanceAlert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BalanceAlert.xib; sourceTree = "<group>"; };
+		C479DF85226B07720065EBE9 /* BalanceAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceAlertView.swift; sourceTree = "<group>"; };
 		C495D26E22226AB600F8003E /* CourierTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourierTableViewCell.swift; sourceTree = "<group>"; };
 		C49D54DF223905BD009F6384 /* CreateOrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOrderViewModel.swift; sourceTree = "<group>"; };
 		C49D54E2223906DD009F6384 /* SoloCreateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoloCreateTableViewCell.swift; sourceTree = "<group>"; };
@@ -174,6 +180,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C479DF82226B02190065EBE9 /* WebKit.framework in Frameworks */,
 				250E85FD947A728C34AEB60A /* Pods_SapsanApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -184,6 +191,7 @@
 		674FACD0B938B84260E596A5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C479DF81226B02190065EBE9 /* WebKit.framework */,
 				8B9D77A9B273E9BDE534BB2C /* Pods_SapsanApp.framework */,
 			);
 			name = Frameworks;
@@ -261,6 +269,8 @@
 				C4C4A07321871CAF0026AA37 /* LaunchScreen.storyboard */,
 				C42F802B2222A33800AAF553 /* CourierAlert.xib */,
 				C42F802E2222A6F600AAF553 /* CourierView.swift */,
+				C479DF83226B066A0065EBE9 /* BalanceAlert.xib */,
+				C479DF85226B07720065EBE9 /* BalanceAlertView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -493,6 +503,7 @@
 				C43968C1225F816000418BCE /* Roboto-BoldItalic.ttf in Resources */,
 				C4C4A07221871CAF0026AA37 /* Assets.xcassets in Resources */,
 				C43968BA225F816000418BCE /* Roboto-Medium.ttf in Resources */,
+				C479DF84226B066A0065EBE9 /* BalanceAlert.xib in Resources */,
 				C43968BC225F816000418BCE /* Roboto-ThinItalic.ttf in Resources */,
 				C4C4A06D21871CAC0026AA37 /* Main.storyboard in Resources */,
 				C43968B9225F816000418BCE /* Roboto-Italic.ttf in Resources */,
@@ -581,6 +592,7 @@
 				C42F8025222285D900AAF553 /* TransactionDetailViewController.swift in Sources */,
 				C4F3F213220C67D100E64489 /* TransactionData.swift in Sources */,
 				C4DB32A3218D998A00636C1C /* SupportViewController.swift in Sources */,
+				C479DF86226B07720065EBE9 /* BalanceAlertView.swift in Sources */,
 				C4F3F20F220B0A8600E64489 /* AlertBuilder.swift in Sources */,
 				C49D54F5223E0100009F6384 /* HelpTypes.swift in Sources */,
 				C4F3F1A22209CD2400E64489 /* SingUpViewModel.swift in Sources */,

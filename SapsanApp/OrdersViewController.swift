@@ -41,7 +41,7 @@ class OrdersViewController: Menu, UITableViewDataSource, UITableViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
- 
+        JSONWorker.navigationController = self.navigationController!
         AlertBuilder.courierAlert(name: "Классный пацанчик", photoLink: "333", controller: self)
         
         orderTableView.refreshControl = refresher
@@ -51,6 +51,7 @@ class OrdersViewController: Menu, UITableViewDataSource, UITableViewDelegate {
 
 
     @objc func refreshOrderTable(){
+        JSONWorker.navigationController = self.navigationController!
         ordersViewModel?.getOrders(first: 0, count: 20)
     }
 
@@ -130,6 +131,7 @@ class OrdersViewController: Menu, UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if ((indexPath.section == ordersViewModel?.sectionsCount() ?? 0 - 1) && (indexPath.row == ordersViewModel?.ordersInSectionCount(index: ordersViewModel?.sectionsCount() ?? 0 - 1) ?? 0 - 1)) {
+            JSONWorker.navigationController = self.navigationController!
             ordersViewModel?.getOrders(first: ordersViewModel?.ordersCount() ?? 0, count: 20)
         }
         let cell = orderTableView.dequeueReusableCell(withIdentifier: "OrderCell") as! OrderTableViewCell

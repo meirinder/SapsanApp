@@ -201,8 +201,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             if indexPath.row >= currentCompany {
                 chooseCompanyButton.setTitle("  " + companies[indexPath.row + 1] + "  ", for: .normal)
                 NetWorker.changeUser(newIdCompany: loginData.userCompanies?[indexPath.row + 1].idCompany ?? "", newIdUser: loginData.userCompanies?[indexPath.row + 1].idUser ?? ""  ) {data in
+                    JSONWorker.navigationController = self.navigationController  ?? UINavigationController()
                     let newData = JSONWorker.parseLoginData(data: data)
-                    AlertBuilder.errorAlert(controller: self.navigationController!)
                     Menu.menuViewModel.loginData.supportInfo = newData?.supportInfo
                     Menu.menuViewModel.loginData.key = newData?.key
                     Menu.menuViewModel.loginData.dispatcherPhone = newData?.dispatcherPhone
@@ -219,9 +219,9 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
                 UserDefaults.standard.set(indexPath.row + 1, forKey: "currentCompany")
             } else {
                 chooseCompanyButton.setTitle("  " + companies[indexPath.row] + "  ", for: .normal)
-                NetWorker.changeUser(newIdCompany: loginData.userCompanies?[indexPath.row].idCompany ?? "", newIdUser: loginData.userCompanies?[indexPath.row].idUser ?? ""  ) {data in
+                NetWorker.changeUser(newIdCompany: loginData.userCompanies?[indexPath.row].idCompany ?? "", newIdUser: loginData.userCompanies?[indexPath.row].idUser ?? ""  ) { data in
+                    JSONWorker.navigationController = self.navigationController!
                     let newData = JSONWorker.parseLoginData(data: data)
-                    AlertBuilder.errorAlert(controller: self.navigationController!)
                     Menu.menuViewModel.loginData.supportInfo = newData?.supportInfo
                     Menu.menuViewModel.loginData.key = newData?.key
                     Menu.menuViewModel.loginData.dispatcherPhone = newData?.dispatcherPhone

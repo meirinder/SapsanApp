@@ -10,9 +10,11 @@ import UIKit
 
 class AlertBuilder: NSObject {
 
-    static func simpleAlert(title: String, message: String, controller: UIViewController) {
+    static func simpleAlert(title: String, message: String, controller: UIViewController,
+                            completion: @escaping () -> () = {}) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
+                completion()
          }))
         controller.present(alert, animated: true)
     }
@@ -31,11 +33,7 @@ class AlertBuilder: NSObject {
 //        lastWindow?.addSubview(backView)
         lastWindow?.addSubview(alert)
     }
-    
-    static func errorAlert(status: String, controller: UINavigationController) {
-        
-    }
-    
+ 
     static func deleteAlert(title: String, message: String, controller: UIViewController, completion: @escaping (String) -> ()) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addTextField { (textField) in

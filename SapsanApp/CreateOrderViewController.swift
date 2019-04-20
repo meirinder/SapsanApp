@@ -13,6 +13,7 @@ class CreateOrderViewController: UIViewController {
     var viewModel: CreateOrderViewModel?{
         didSet {
             viewModel?.delegate = self
+            JSONWorker.navigationController = self.navigationController!
             viewModel!.getLayout()
         }
     }

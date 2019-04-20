@@ -29,6 +29,7 @@ class TransactionViewController: Menu, ReloadTableViewDelegate {
     }()
     
     @objc func refreshTransactionTable(){
+        JSONWorker.navigationController = self.navigationController  ?? UINavigationController()
         transactionViewModel.getTransactions(first: 0, count: 20)
      }
     
@@ -38,6 +39,7 @@ class TransactionViewController: Menu, ReloadTableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        JSONWorker.navigationController = self.navigationController!
         transactionViewModel.getTransactions(first: 0, count: 20)
         transactionTableView.refreshControl = refresher
         transactionTableView.delegate = self
@@ -92,7 +94,9 @@ extension TransactionViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         if ((indexPath.section == transactionViewModel.sectionsCount() - 1) && (indexPath.row ==  transactionViewModel.transactionsInSectionCount(index: transactionViewModel.sectionsCount() - 1) - 1)) {
+            JSONWorker.navigationController = self.navigationController!
             transactionViewModel.getTransactions(first: transactionViewModel.transactionsCount(), count: 20)
         }
         let cell = transactionTableView.dequeueReusableCell(withIdentifier: "transactionCell") as! TransactionTableViewCell

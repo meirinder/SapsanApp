@@ -54,6 +54,7 @@ class StartViewController: UIViewController {
         if segue.identifier == "signUpSegue" {
             let vc = segue.destination as! SignUpViewController
             NetWorker.signUp(){ outData in
+                JSONWorker.navigationController = self.navigationController  ?? UINavigationController()
                 let link = JSONWorker.parseSignUp(data: outData)
                 vc.link = link
                 vc.reloadView()
@@ -84,6 +85,7 @@ class StartViewController: UIViewController {
                 AlertBuilder.simpleAlert(title: "Ошибка", message: "Пустое поле логина или пароля", controller: self)
             }
         }
+        JSONWorker.navigationController = self.navigationController!
         startViewModel.enter(phoneText: phone, passText: password)
     }
     

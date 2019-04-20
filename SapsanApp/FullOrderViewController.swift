@@ -23,26 +23,23 @@ class FullOrderViewController: UIViewController, FullOrderDelegate {
         self.navigationController?.navigationBar.tintColor = .white
         self.navigationItem.titleView?.tintColor = .white
         
+        JSONWorker.navigationController = self.navigationController ?? UINavigationController()
         
-       
-
-      
         fullOrderViewModel.getMarkup()
  
-        
         
         // Do any additional setup after loading the view.
     }
     @objc
     func deleteAction() {
 //        let message = fullOrderViewModel.deleteText()
+        JSONWorker.navigationController = self.navigationController!
         fullOrderViewModel.checkDelete(completion: { (message) in
             AlertBuilder.deleteAlert(title: "Подтверждение", message: message, controller: self, completion:  { text in
                 self.fullOrderViewModel.deleteOrder()
             })
         }, failure: {
             self.navigationItem.rightBarButtonItem = nil
-            
         })
         
 //        AlertBuilder.simpleAlert(title: , message: message, controller: self)

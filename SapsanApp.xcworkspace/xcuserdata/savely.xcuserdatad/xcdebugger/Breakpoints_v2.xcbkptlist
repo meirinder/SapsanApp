@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SapsanApp/JSONWorker.swift"
-            timestampString = "575011900.1254539"
+            timestampString = "577457238.812256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "637"
-            endingLineNumber = "637"
+            startingLineNumber = "681"
+            endingLineNumber = "681"
             landmarkName = "parseCreationBlocks(dict:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SapsanApp/JSONWorker.swift"
-            timestampString = "575011900.125582"
+            timestampString = "577457238.812351"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "635"
-            endingLineNumber = "635"
+            startingLineNumber = "679"
+            endingLineNumber = "679"
             landmarkName = "parseCreationBlocks(dict:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SapsanApp/JSONWorker.swift"
-            timestampString = "575011900.125734"
+            timestampString = "577457238.812417"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "638"
-            endingLineNumber = "638"
+            startingLineNumber = "682"
+            endingLineNumber = "682"
             landmarkName = "parseCreationBlocks(dict:)"
             landmarkType = "7">
          </BreakpointContent>

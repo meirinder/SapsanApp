@@ -61,6 +61,7 @@ class SupportViewController: Menu {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        JSONWorker.navigationController = self.navigationController!
         supportViewModel.getInstructions()
         
         // Do any additional setup after loading the view.

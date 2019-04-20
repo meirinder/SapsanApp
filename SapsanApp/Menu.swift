@@ -59,6 +59,7 @@ class Menu: UIViewController {
     }
     
     func showMenu() {
+        self.view.endEditing(true)
         UIView.animate(withDuration: 0.3){
             self.menuVC.view.frame = CGRect(x: 0,
                                             y: UIScreen.main.bounds.minY ,
@@ -71,6 +72,7 @@ class Menu: UIViewController {
     }
     
     func hideMenu() {
+        self.view.endEditing(true)
         UIView.animate(withDuration: 0.3, animations: {
             self.menuVC.view.frame = CGRect(x: -UIScreen.main.bounds.size.width,
                                             y: UIScreen.main.bounds.minY,

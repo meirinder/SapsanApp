@@ -10,6 +10,40 @@ import UIKit
 
 class JSONWorker: NSObject {
     
+    static var navigationController = UINavigationController() {
+        didSet{
+            print(self.navigationController as Any)
+        }
+    }
+    
+    private static func checkError(status: String) {
+        if status == "DISACTIVE" {
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "StartViewController") as! StartViewController
+            AlertBuilder.simpleAlert(title: "Ошибка", message: "Ваш аккаунт заблокирован", controller: (JSONWorker.navigationController.topViewController)!){
+                DispatchQueue.main.async {
+                    UserDefaults.standard.removeObject(forKey: "key")
+                    JSONWorker.navigationController.setViewControllers([vc], animated: true)
+                }
+            }
+        }
+        if status == "NO_ACCESS" {
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "StartViewController") as! StartViewController
+            AlertBuilder.simpleAlert(title: "Ошибка", message: "Сессия истекла", controller: (JSONWorker.navigationController.topViewController)!) {
+                    DispatchQueue.main.async {
+                        UserDefaults.standard.removeObject(forKey: "key")
+                        JSONWorker.navigationController.setViewControllers([vc], animated: true)
+                    }
+            }
+           
+            
+        }
+        if status == "DEPRECATED" {
+            AlertBuilder.simpleAlert(title: "Новости", message: "Пожалуйста, обновите приложение", controller: (JSONWorker.navigationController.topViewController)!)
+        }
+    }
+    
     static func parseDeleteInfo(data: Data) -> (show: Bool,text: String) {
         var resultString = ""
         let jsonResult  = try? JSONSerialization.jsonObject(with: data, options: [])
@@ -56,6 +90,7 @@ class JSONWorker: NSObject {
         if let dictionary = jsonResult as? [String: Any] {
             if let status = dictionary["status"] as? String {
                 fullOrderData.status = status
+                JSONWorker.checkError(status: fullOrderData.status ?? "")
             }
             if let balance = dictionary["balance"] as? String {
                 fullOrderData.balance = balance
@@ -222,6 +257,7 @@ class JSONWorker: NSObject {
         if let dictionary = jsonResult as? [String: Any] {
             if let status = dictionary["status"] as? String {
                 transactionsData.status = status
+                JSONWorker.checkError(status: transactionsData.status ?? "")
             }
             if let balance = dictionary["balance"] as? String {
                 transactionsData.balance = balance
@@ -277,6 +313,7 @@ class JSONWorker: NSObject {
         if let dictionary = jsonResult as? [String: Any] {
             if let status = dictionary["status"] as? String {
                 ordersData.status = status
+                JSONWorker.checkError(status: ordersData.status ?? "")
             }
             if let balance = dictionary["balance"] as? String {
                 ordersData.balance = balance
@@ -375,6 +412,7 @@ class JSONWorker: NSObject {
             if !checkErrorInLogin(dictionary: dictionary).0 {
                 let loginData = LoginData()
                 loginData.status = dictionary["status"] as? String
+                JSONWorker.checkError(status: loginData.status ?? "")
                 loginData.errorText = checkErrorInLogin(dictionary: dictionary).text
                 return loginData
             }
@@ -393,6 +431,7 @@ class JSONWorker: NSObject {
         let jsonResult  = try? JSONSerialization.jsonObject(with: data, options: [])
         if let dictionary = jsonResult as? [String: Any] {
             if let status = dictionary["status"] as? String {
+                JSONWorker.checkError(status: status )
                 if status == "OK" {
                     if let str = dictionary["signUpLink"] as? String {
                         resString = str
@@ -407,6 +446,7 @@ class JSONWorker: NSObject {
         let loginData = LoginData()
         if let status = dictionarie["status"] as? String {
             loginData.status = status
+            JSONWorker.checkError(status: loginData.status ?? "")
         }
         if let key = dictionarie["key"] as? String {
             loginData.key = key
@@ -691,6 +731,7 @@ class JSONWorker: NSObject {
         if let dictionary = jsonResult as? [String: Any] {
             if let status = dictionary["status"] as? String {
                 creationOrderData.status = status
+                JSONWorker.checkError(status: creationOrderData.status ?? "")
             }
             if let balance = dictionary["balance"] as? String {
                 creationOrderData.balance = balance

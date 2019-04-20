@@ -54,13 +54,14 @@ class CourierView: UIView {
         // Drawing code
     }
     */
-
-}
-
-extension CourierView {
     @IBAction func startEditingTextField(_ sender: UITextField) {
         commentTextFieldBorder.borderColor = UIColor(rgb: 0x1D2880).cgColor
     }
+    
+}
+
+extension CourierView {
+    
     
     @IBAction func endEditingTextField(_ sender: UITextField) {
         commentTextFieldBorder.borderColor = UIColor.clear.cgColor
