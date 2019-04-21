@@ -80,12 +80,15 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         menuTableView.delegate = self
         menuTableView.dataSource = self
         dropDownMenuTableView.isHidden = true
-        for company in loginData!.userCompanies! {
-            companies.append(company.companyName!)
+        if let userCompanies = loginData.userCompanies {
+            for company in userCompanies {
+                companies.append(company.companyName!)
+            }
+            if let currentCompany = UserDefaults.standard.object(forKey: "currentCompany") as? Int {
+                userNameLabel.text = "  " +  (userCompanies[currentCompany].name ?? "errorCompany") + "  "
+            }
         }
         
-        let currentCompany = UserDefaults.standard.object(forKey: "currentCompany") as? Int ?? 0
-        userNameLabel.text = "  " +  (loginData.userCompanies?[currentCompany].name!)! + "  "
         
         dispatcherPhoneButton.setTitle("+7 ("+formatPhone(), for: .normal)
     }
@@ -97,7 +100,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     
     func formatPhone() -> String {
-        let phoneNumber = loginData.dispatcherPhone!
+        guard let phoneNumber = loginData.dispatcherPhone else { return "" }
         var startThree = phoneNumber.dropLast(7)
         startThree += ") "
         var nextThree = phoneNumber.dropLast(4)

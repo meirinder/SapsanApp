@@ -11,10 +11,12 @@ import UIKit
 class SoloCreateTableViewCell: UITableViewCell {
 
     var viewModel: CreateOrderCellViewModel?
+    var creationDictionary: ResultOrderCreation!
+
     
     func setCell() {
         let dict = viewModel?.soloDict()
-        questionLabel.attributedText = dict?["label"]??.htmlToAttributedString
+        questionLabel.setHTMLFromString(text: (dict?["label"] ?? "errolLabel") ?? "errorLabel")
         answerTextField.placeholder = dict?["hint"] ?? "errorHint"
         if dict?["keyboard_type"] == "text" {
             answerTextField.keyboardType = .default
@@ -25,9 +27,16 @@ class SoloCreateTableViewCell: UITableViewCell {
         
     }
     
-    
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var answerTextField: UITextField!
+    
+    @IBAction func endAction(_ sender: UITextField) {
+        if let dict = viewModel?.soloDict() {
+            if let name = dict["name"] as? String {
+                creationDictionary.dict[name] = sender.text
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

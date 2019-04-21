@@ -11,11 +11,15 @@ import UIKit
 class QuatroCreateTableViewCell: UITableViewCell {
 
     var viewModel: CreateOrderCellViewModel?
+    var creationDictionary: ResultOrderCreation!
 
     func setCell() {
     
         let dict = viewModel?.quatroDict()
-        topLeftLabel.attributedText = dict?["topLeftTextLabel"]??.htmlToAttributedString
+        topLeftLabel.setHTMLFromString(text: (dict?["topLeftTextLabel"] ?? "") ?? "")
+        if topLeftLabel.attributedText == NSAttributedString(string: "") {
+            botRightTextField.isHidden = true
+        }
         topLeftTextField.placeholder = dict?["topLeftTextHint"] ?? "errorHint"
         if dict?["topLeftTextKeyboard_type"] == "text" {
             topLeftTextField.keyboardType = .default
@@ -23,7 +27,10 @@ class QuatroCreateTableViewCell: UITableViewCell {
         if dict?["topLeftTextKeyboard_type"] == "phone" {
             topLeftTextField.keyboardType = .phonePad
         }
-        topRightLabel.attributedText = dict?["topRightTextLabel"]??.htmlToAttributedString
+        topRightLabel.setHTMLFromString(text: (dict?["topRightTextLabel"] ?? "") ?? "")
+        if topRightLabel.attributedText == NSAttributedString(string: "") {
+            botRightTextField.isHidden = true
+        }
         topRightTextField.placeholder = dict?["topRightTextHint"] ?? "errorHint"
         if dict?["topRightTextKeyboard_type"] == "text" {
             topRightTextField.keyboardType = .default
@@ -31,7 +38,10 @@ class QuatroCreateTableViewCell: UITableViewCell {
         if dict?["topRightTextKeyboard_type"] == "phone" {
             topRightTextField.keyboardType = .phonePad
         }
-        botLeftLabel.attributedText = dict?["botLeftTextLabel"]??.htmlToAttributedString
+        botLeftLabel.setHTMLFromString(text: (dict?["botLeftTextLabel"] ?? "") ?? "")
+        if botLeftLabel.attributedText == NSAttributedString(string: "") {
+            botRightTextField.isHidden = true
+        }
         botLeftTextField.placeholder = dict?["botLeftTextHint"] ?? "errorHint"
         if dict?["botLeftTextKeyboard_type"] == "text" {
             botLeftTextField.keyboardType = .default
@@ -39,7 +49,10 @@ class QuatroCreateTableViewCell: UITableViewCell {
         if dict?["botLeftTextKeyboard_type"] == "phone" {
             botLeftTextField.keyboardType = .phonePad
         }
-        botRightLabel.attributedText = dict?["botRightTextLabel"]??.htmlToAttributedString
+        botRightLabel.setHTMLFromString(text: (dict?["botRightTextLabel"] ?? "") ?? "")
+        if botRightLabel.attributedText == NSAttributedString(string: "") {
+            botRightTextField.isHidden = true
+        }
         botRightTextField.placeholder = dict?["botRightTextHint"] ?? "errorHint"
         if dict?["botRightTextKeyboard_type"] == "text" {
             botRightTextField.keyboardType = .default
@@ -58,6 +71,37 @@ class QuatroCreateTableViewCell: UITableViewCell {
     @IBOutlet weak var botLeftTextField: UITextField!
     @IBOutlet weak var botRightTextField: UITextField!
     
+    @IBAction func topLeftEndAction(_ sender: UITextField) {
+        if let dict = viewModel?.quatroDict() {
+            if let name = dict["topLeftTextName"] as? String {
+                creationDictionary.dict[name] = sender.text
+            }
+        }
+    }
+    
+    @IBAction func topRightEndAction(_ sender: UITextField) {
+        if let dict = viewModel?.quatroDict() {
+            if let name = dict["topRightTextName"] as? String {
+                creationDictionary.dict[name] = sender.text
+            }
+        }
+    }
+    
+    @IBAction func botLeftEndAction(_ sender: UITextField) {
+        if let dict = viewModel?.quatroDict() {
+            if let name = dict["botLeftTextName"] as? String {
+                creationDictionary.dict[name] = sender.text
+            }
+        }
+    }
+    
+    @IBAction func botRightEndAction(_ sender: UITextField) {
+        if let dict = viewModel?.quatroDict() {
+            if let name = dict["botRightTextName"] as? String {
+                creationDictionary.dict[name] = sender.text
+            }
+        }
+    }
     
     
     override func awakeFromNib() {

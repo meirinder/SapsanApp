@@ -92,6 +92,7 @@ class OrdersViewController: Menu, UITableViewDataSource, UITableViewDelegate {
     @IBAction func createOrderAction(_ sender: UIBarButtonItem) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "CreateOrderViewController") as? CreateOrderViewController
         vc?.viewModel = CreateOrderViewModel()
+        self.hideMenu()
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     

@@ -11,9 +11,13 @@ import UIKit
 class CheckBoxesCreateTableViewCell: UITableViewCell {
 
     var viewModel: CreateOrderCellViewModel?
+    var creationDictionary: ResultOrderCreation!
 
     func setCell() {
-        
+        let dict = viewModel?.checkBoxesDict()
+        leftLabel.setHTMLFromString(text: (dict?["left"] ?? "errolLabel") ?? "errorLabel")
+        rightLabel.setHTMLFromString(text: (dict?["right"] ?? "errolLabel") ?? "errorLabel")
+
     }
     
     @IBOutlet weak var leftLabel: UILabel!
@@ -21,6 +25,20 @@ class CheckBoxesCreateTableViewCell: UITableViewCell {
     @IBOutlet weak var leftCheckBox: UISwitch!
     @IBOutlet weak var rightCheckBox: UISwitch!
     
+    @IBAction func rightAction(_ sender: UISwitch) {
+        if let dict = viewModel?.checkBoxesDict() {
+            if let name = dict["rightName"] as? String {
+                creationDictionary.dict[name] = sender.isOn.description
+            }
+        }
+    }
+    @IBAction func leftAction(_ sender: UISwitch) {
+        if let dict = viewModel?.checkBoxesDict() {
+            if let name = dict["leftName"] as? String {
+                creationDictionary.dict[name] = sender.isOn.description
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

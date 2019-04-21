@@ -694,7 +694,7 @@ class JSONWorker: NSObject {
                 for i in 0..<searchAddresses.count {
                     if let searchAddress = searchAddresses[i] as? [String: Any] {
                         let address = Address()
-                        if let coordi = dictionary["coord"] as? [String: Any] {
+                        if let coordi = searchAddress["coord"] as? [String: Any] {
                             let coordinat = Coord()
                             if let lat = coordi["lat"] as? String {
                                 coordinat.lat = lat
@@ -707,13 +707,13 @@ class JSONWorker: NSObject {
                             }
                             address.coord = coordinat
                         }
-                        if let city = dictionary["city"] as? String  {
+                        if let city = searchAddress["city"] as? String  {
                             address.city = city
                         }
-                        if let text = dictionary["text"] as? String  {
+                        if let text = searchAddress["text"] as? String  {
                             address.text = text
                         }
-                        if let region = dictionary["region"] as? String  {
+                        if let region = searchAddress["region"] as? String  {
                             address.region = region
                         }
                         addresses.append(address)

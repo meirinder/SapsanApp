@@ -15,24 +15,34 @@ class DropDownCreateTableViewCell: UITableViewCell {
     @IBOutlet weak var filialsTableView: UITableView!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     private var row: CreationRow?
+    var tableHeight: Int?
     var delegate: UITableView?
+    var creationDictionary: ResultOrderCreation!
+
     
     func setCell() {
         let outRow = viewModel?.dropDownRow()
         row = outRow
+        if row?.type == "from_dropdown" {
+            let localRow = row as! FromDropDownRow
+            tableHeight = (localRow.items?.count ?? 0) * 45
+        } else {
+            let localRow = row as! WhenDropDownRow
+            tableHeight = (localRow.items?.count ?? 0) * 45
+        }
         if outRow?.type == "from_dropdown" {
             let localRow = outRow as! FromDropDownRow
-            titleButton.setAttributedTitle(localRow.label?.htmlToAttributedString, for: .normal)
+            titleButton.setHTMLFromString(text: localRow.label ?? "erroLabel")
 
         } else {
             let localRow = outRow as! WhenDropDownRow
-             titleButton.setAttributedTitle(localRow.label?.htmlToAttributedString, for: .normal)
+             titleButton.setHTMLFromString(text: localRow.label ?? "errorLabel")
         }
     }
     
     @IBAction func dropDownAction(_ sender: UIButton) {
         if tableViewHeight.constant == 0 {
-            tableViewHeight.constant = 160
+            tableViewHeight.constant = CGFloat(tableHeight!)
         } else {
             tableViewHeight.constant = 0
         }
@@ -58,6 +68,28 @@ class DropDownCreateTableViewCell: UITableViewCell {
 }
 
 extension DropDownCreateTableViewCell: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if row?.type == "from_dropdown" {
+            let localRow = row as! FromDropDownRow
+            UserDefaults.standard.set(localRow.items?[indexPath.row].id, forKey: "filialId")
+            localRow.label = localRow.prefix + (localRow.items?[indexPath.row].name ?? "errorLabel")
+            if let name = localRow.name {
+                creationDictionary.dict[name] = localRow.items?[indexPath.row].id ?? ""
+            }
+            tableViewHeight.constant = 0
+            delegate?.reloadData()
+        } else {
+            let localRow = row as! WhenDropDownRow
+            localRow.label = localRow.prefix + (localRow.items?[indexPath.row].name ?? "errorLabel")
+            if let name = localRow.name {
+                creationDictionary.dict[name] = localRow.items?[indexPath.row].name ?? ""
+            }
+            tableViewHeight.constant = 0
+            delegate?.reloadData()
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if row?.type == "from_dropdown" {
             let localRow = row as! FromDropDownRow

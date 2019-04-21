@@ -51,9 +51,11 @@ class NetWorker {
         let idCompany = UserDefaults.standard.object(forKey: "idCompany") as? String ?? ""
         let idUser = UserDefaults.standard.object(forKey: "idUser") as? String ?? ""
         let key = UserDefaults.standard.object(forKey: "key") as? String ?? ""
+        let filialId = UserDefaults.standard.object(forKey: "filialId") as? String ?? ""
         
         let body = "class=orders_helper&method=add_searched_addresses&idCompany=" + idCompany + "&" + "idUser=" + idUser
-        + "&address=" + address
+        + "&address=" + address + "&filial_id=" + filialId
+        
         let dataOfBody = body.data(using: String.Encoding.utf8)
         let loginURL = URL(string:"http://app.citycourier.pro/api/client/"+APIVERSION+"/orders.php")!
         var reqest = URLRequest(url: loginURL )
@@ -72,11 +74,10 @@ class NetWorker {
                 print("statusCode should be 200, but is \(httpStatus.statusCode)")
                 print("response = \(String(describing: response))")
             }
-            if let responseString = String(data: data, encoding: .utf8) {
-                
-                print("responseString = \(String(describing: responseString))")
+//            if let responseString = String(data: data, encoding: .utf8) {
+//                print("responseString = \(String(describing: responseString))")
                 completion(data)
-            }
+//            }
             
             
             

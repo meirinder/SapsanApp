@@ -19,9 +19,9 @@ class FullOrderViewController: UIViewController, FullOrderDelegate {
         fullOrderViewModel.delegate = self
         layoutTableView.delegate = self
         layoutTableView.dataSource = self
-        self.navigationController?.navigationBar.barTintColor =  UIColor(hexString: "#1D2880")
-        self.navigationController?.navigationBar.tintColor = .white
-        self.navigationItem.titleView?.tintColor = .white
+//        self.navigationController?.navigationBar.barTintColor =  UIColor(hexString: "#1D2880")
+//        self.navigationController?.navigationBar.tintColor = .white
+//        self.navigationItem.titleView?.tintColor = .white
         
         JSONWorker.navigationController = self.navigationController ?? UINavigationController()
         
@@ -30,6 +30,9 @@ class FullOrderViewController: UIViewController, FullOrderDelegate {
         
         // Do any additional setup after loading the view.
     }
+    
+ 
+    
     @objc
     func deleteAction() {
 //        let message = fullOrderViewModel.deleteText()

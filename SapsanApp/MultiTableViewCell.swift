@@ -57,7 +57,7 @@ class MultiTableViewCell: FullOrderTableViewCell {
         
         if let typeOfValue = attributes?["rightValue"]?.type {
             if typeOfValue == "label" {
-                rightValueButton.setHTMLFromString(text: attributes?["rightValue"]?.content ?? "")
+                rightValueButton.setHTMLFromString(text: attributes?["rightValue"]?.content ?? "", textColor: .white)
                 rightValueButton.layer.cornerRadius = 8
                 if let hexColor = attributes?["rightValue"]?.color {
                     rightValueButton.setTitleColor(UIColor(hexString:hexColor), for: .normal)

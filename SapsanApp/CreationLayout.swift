@@ -23,12 +23,14 @@ class CreationBlock {
 }
 
 class WhenDropDownRow: CreationRow {
+    var prefix = "Когда: "
     var label: String?
     var name: String?
     var items: [DropDownItem]?
 }
 
 class FromDropDownRow: CreationRow {
+     var prefix = "Откуда: "
     var label: String?
     var name: String?
     var items: [DropDownItem]?

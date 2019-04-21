@@ -81,26 +81,29 @@ extension String {
 }
 
 extension UIButton {
-    func setHTMLFromString(text: String) {
+    func setHTMLFromString(text: String, textColor: UIColor = UIColor.black) {
         let modifiedFont = NSString(format:"<span style=\"font-family: \(self.titleLabel!.font!.fontName); font-size: \(self.titleLabel!.font!.pointSize)\">%@</span>" as NSString, text)
         
-        let attrStr = try! NSAttributedString(
+        let attrStr = try! NSMutableAttributedString(
             data: modifiedFont.data(using: String.Encoding.unicode.rawValue, allowLossyConversion: true)!,
             options: [NSAttributedString.DocumentReadingOptionKey.documentType:NSAttributedString.DocumentType.html, NSAttributedString.DocumentReadingOptionKey.characterEncoding: String.Encoding.utf8.rawValue],
             documentAttributes: nil)
+        attrStr.addAttribute(NSAttributedString.Key.foregroundColor, value: textColor, range: NSRange(location: 0, length: attrStr.length))
+        
         
         self.setAttributedTitle(attrStr, for: .normal)
     }
 }
 
 extension UILabel {
-    func setHTMLFromString(text: String) {
+    func setHTMLFromString(text: String, textColor: UIColor = UIColor.black) {
         let modifiedFont = NSString(format:"<span style=\"font-family: \(self.font!.fontName); font-size: \(self.font!.pointSize)\">%@</span>" as NSString, text)
         
-        let attrStr = try! NSAttributedString(
+        let attrStr = try! NSMutableAttributedString(
             data: modifiedFont.data(using: String.Encoding.unicode.rawValue, allowLossyConversion: true)!,
             options: [NSAttributedString.DocumentReadingOptionKey.documentType:NSAttributedString.DocumentType.html, NSAttributedString.DocumentReadingOptionKey.characterEncoding: String.Encoding.utf8.rawValue],
             documentAttributes: nil)
+        attrStr.addAttribute(NSAttributedString.Key.foregroundColor, value: textColor, range: NSRange(location: 0, length: attrStr.length))
         
         self.attributedText = attrStr
     }

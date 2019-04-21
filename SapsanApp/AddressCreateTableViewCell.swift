@@ -12,10 +12,22 @@ class AddressCreateTableViewCell: UITableViewCell {
 
     var viewModel: CreateOrderCellViewModel?
     weak var delegate: AddressVCDelegate?
+    var creationDictionary: ResultOrderCreation!
+
+    var textStr = "" {
+        didSet {
+            if let dict = viewModel?.addressDict() {
+                if let name = dict["name"] as? String {
+                    creationDictionary.dict[name] = textStr
+                    answerTextField.text = textStr
+                }
+            }
+        }
+    }
 
     func setCell() {
         let dict = viewModel?.addressDict()
-        questionLabel.attributedText = dict?["label"]??.htmlToAttributedString
+        questionLabel.setHTMLFromString(text: (dict?["label"] ?? "errorLabel") ?? "errorLabel")
         answerTextField.placeholder = dict?["hint"] ?? "errorHint"
     }
     
@@ -25,6 +37,7 @@ class AddressCreateTableViewCell: UITableViewCell {
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "AddressViewController") as! AddressViewController
         vc.delegate = delegate
+        vc.updateTextDelegate = self
         self.answerTextField.endEditing(true)
         delegate?.pushVC(vc: vc)
     }
@@ -43,4 +56,19 @@ class AddressCreateTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+}
+
+extension AddressCreateTableViewCell: UpdateTextDelegate {
+    func update(text: String, coord: Coord) {
+        if let dict = viewModel?.addressDict() {
+            if let name = dict["name"] as? String {
+                creationDictionary.dict[name] = coord.coord
+            }
+        }
+        self.textStr = text
+    }
+}
+
+protocol UpdateTextDelegate: class {
+    func update(text: String, coord: Coord)
 }

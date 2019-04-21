@@ -19,6 +19,7 @@
 		C4392062226B598300F9A050 /* DeleteAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4392061226B598300F9A050 /* DeleteAlertView.swift */; };
 		C4392064226B5B3500F9A050 /* SupportAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4392063226B5B3500F9A050 /* SupportAlert.xib */; };
 		C4392066226B5B3E00F9A050 /* SupportAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4392065226B5B3E00F9A050 /* SupportAlertView.swift */; };
+		C439206A226C5C3700F9A050 /* ResultOrderCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4392069226C5C3700F9A050 /* ResultOrderCreation.swift */; };
 		C43968B5225F816000418BCE /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = C43968A8225F816000418BCE /* LICENSE.txt */; };
 		C43968B6225F816000418BCE /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C43968A9225F816000418BCE /* Roboto-Black.ttf */; };
 		C43968B7225F816000418BCE /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C43968AA225F816000418BCE /* Roboto-LightItalic.ttf */; };
@@ -107,6 +108,7 @@
 		C4392061226B598300F9A050 /* DeleteAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAlertView.swift; sourceTree = "<group>"; };
 		C4392063226B5B3500F9A050 /* SupportAlert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SupportAlert.xib; sourceTree = "<group>"; };
 		C4392065226B5B3E00F9A050 /* SupportAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportAlertView.swift; sourceTree = "<group>"; };
+		C4392069226C5C3700F9A050 /* ResultOrderCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultOrderCreation.swift; sourceTree = "<group>"; };
 		C43968A8225F816000418BCE /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE.txt; path = roboto/LICENSE.txt; sourceTree = "<group>"; };
 		C43968A9225F816000418BCE /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Black.ttf"; path = "roboto/Roboto-Black.ttf"; sourceTree = "<group>"; };
 		C43968AA225F816000418BCE /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-LightItalic.ttf"; path = "roboto/Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
@@ -363,6 +365,7 @@
 				C4F3F1B02209D04800E64489 /* OrdersData.swift */,
 				C49D54F4223E0100009F6384 /* HelpTypes.swift */,
 				C422974A22126741003EB496 /* FullOrderData.swift */,
+				C4392069226C5C3700F9A050 /* ResultOrderCreation.swift */,
 				C4BC96C72243D5E400EA6308 /* Address.swift */,
 				C4A040FD222428050016B03E /* CreationLayout.swift */,
 				C4F3F1B32209D09100E64489 /* LoginData.swift */,
@@ -623,6 +626,7 @@
 				C4DB32A1218D980100636C1C /* Menu.swift in Sources */,
 				C4C4A087218728620026AA37 /* RecoverPasswordViewController.swift in Sources */,
 				C4F3F1A62209CD5F00E64489 /* SupportViewModel.swift in Sources */,
+				C439206A226C5C3700F9A050 /* ResultOrderCreation.swift in Sources */,
 				C4F3F1B12209D04800E64489 /* OrdersData.swift in Sources */,
 				C4A041002224392A0016B03E /* CreateOrderViewController.swift in Sources */,
 				C4590C0F22112AF00026C620 /* DataBaseWorker.swift in Sources */,

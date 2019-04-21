@@ -53,6 +53,13 @@ class CreateOrderCellViewModel {
         return dict
     }
     
+    func checkBoxesDict() -> [String: String?] {
+        let localRow = row as! DoubleCheckBoxesRow
+        let dict = ["left": localRow.left?.label, "right": localRow.right?.label,
+                "leftName": localRow.left?.name, "rightName": localRow.right?.name]
+        return dict
+    }
+    
     func soloDict() -> [String: String?] {
         let localRow = row as! SoloGridRow
         let value = localRow.value
